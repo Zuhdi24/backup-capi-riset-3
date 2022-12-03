@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="org.odk.collect.android.pkl.activity.OnBoardingActivity">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager_introduction"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_footer" />
+
+    <LinearLayout
+        android:id="@+id/viewPagerCountDots"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pager_height"
+        android:layout_above="@+id/ll_footer"
+        android:layout_marginBottom="12dp"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="horizontal" >
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:alpha="0.12"
+        android:background="@android:color/white" />
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/ll_footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <android.widget.Button
+            android:id="@+id/aob_b_skip"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_marginLeft="24dp"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:layout_gravity="start|center"
+            android:text="Skip"
+            android:textColor="@color/colorPrimary" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+            android:id="@+id/progress_1"
+            android:layout_width="140dp"
+            android:layout_height="15dp"
+            android:layout_gravity="start|center"
+            android:padding="2dp"
+            android:radius="30dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <android.widget.Button
+            android:id="@+id/btn_get_started"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:layout_gravity="end|center"
+            android:layout_marginRight="24dp"
+            android:text="FINISH"
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/intro_btn_next"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:layout_gravity="end|center"
+            android:layout_marginRight="24dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:src="@drawable/ic_chevron_right_24dp"
+            android:tint="@color/colorPrimary"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+

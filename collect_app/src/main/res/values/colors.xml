@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+Copyright (C) 2009 University of Washington
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License. You may obtain a copy of
+the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations under
+the License.
+    -->
+<resources>
+
+    <!--    <color name="colorPrimary">#57b05c</color>-->
+    <color name="colorPrimary">#6F86C5</color>
+    <!--    <color name="colorPrimaryDark">#119945</color>-->
+    <color name="colorPrimaryDark">#506396</color>
+    <!--    <color name="colorAccent">#288034</color>-->
+    <color name="colorAccent">#5270BF</color>
+    <color name="textColorPrimary">#fff</color>
+
+    <color name="bg_dasar">#7894DF</color>
+    <color name="bg_userlogin">#506396</color>
+
+    <!-- custom color di bawah ini banyak redundant, someone please fix it -->
+    <drawable name="white">#ffffffff</drawable>
+    <drawable name="black">#ff000000</drawable>
+    <!--    <color name="pkl61_dark">#269421</color>-->
+    <color name="pkl61_dark">#295CEA</color>
+    <!--    <color name="pkl61_light2">#3ba858</color>-->
+    <color name="pkl61_light2">#6287EF</color>
+    <!--    <color name="pkl61_light4">#68e875</color>-->
+    <color name="pkl61_light4">#8DA3E3</color>
+
+    <color name="pkl61_bg">#fcf9fa</color>
+    <color name="pkl61_bg2">#f9f0f5</color>
+
+    <color name="pkl_gs_3">#FFFFFF</color>
+
+    <color name="pkl_basic_1_1">#4d9e2b</color>
+    <color name="pkl_basic_1_3">#a1f272</color>
+
+    <color name="pkl_sk_1">#448727</color>
+
+    <color name="pkl_se_1">#448727</color>
+
+    <color name="pkl_error">#ff6961</color>
+
+    <color name="bg_screen">#FFFFFF</color>
+    <color name="black">#636060</color>
+    <color name="accent_3">#B3B3B3</color>
+    <color name="white2">#FFFFFF</color>
+    <color name="color_name">#3E3E3E</color>
+    <color name="bg_ruta">#636060</color>
+
+    <color name="accent_grey">#B3B3B3</color>
+    <color name="green">#94ffbb</color>
+
+    <!--OnBoard-->
+
+    <color name="selected_dot">#3bb02e</color>
+    <color name="idle_dot">#206119</color>
+    <color name="ob_header">#4A4A4A</color>
+    <color name="ob_desc">#4A4A4A</color>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/anggota"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/nama_anggota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rahadi Jalu"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nim_anggota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14.8219"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+<com.white.progressview.CircleProgressView
+    android:id="@+id/progres_ang"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="@id/linearLayout2"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/barrier"
+    app:layout_constraintTop_toTopOf="@id/linearLayout2"
+    app:progressReachColor="@color/colorPrimary"
+    app:progressTextColor="@color/colorPrimary"/>
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="linearLayout2"
+        tools:layout_editor_absoluteX="402dp"
+        tools:layout_editor_absoluteY="10dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

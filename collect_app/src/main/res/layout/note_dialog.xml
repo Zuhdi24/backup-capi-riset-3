@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="350dp"
+        android:id="@+id/editText"
+        android:longClickable="false"
+        android:layout_margin="15dp" />
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/pkl_basic_1_1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="18sp"
+                android:text="Simpan"
+                android:textColor="@color/pkl_gs_3"
+                android:textStyle="bold"
+                android:id="@+id/simpanCat" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="18sp"
+                android:text="Batal"
+                android:textColor="@color/pkl_gs_3"
+                android:textStyle="bold"
+                android:id="@+id/cancelCat" />
+        </LinearLayout>
+        <!--<Button-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:background="@color/pkl.basic.1.1"-->
+        <!--android:clickable="true"-->
+        <!--android:text="Simpan"-->
+        <!--android:textColor="@color/pkl.gs.3"-->
+        <!--android:textStyle="bold"-->
+        <!--android:id="@+id/simpanCat"-->
+        <!--android:layout_weight="1"-->
+        <!--android:padding="3dp" />-->
+
+        <!--<Button-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:background="@color/pkl.basic.1.1"-->
+        <!--android:clickable="true"-->
+        <!--android:text="Batal"-->
+        <!--android:textColor="@color/pkl.gs.3"-->
+        <!--android:textStyle="bold"-->
+        <!--android:id="@+id/cancelCat"-->
+        <!--android:layout_weight="1"-->
+        <!--android:padding="3dp" />-->
+
+    </LinearLayout>
+
+</LinearLayout>

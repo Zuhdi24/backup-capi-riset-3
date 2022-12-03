@@ -1,0 +1,176 @@
+import com.android.ddmlib.DdmPreferences
+
+//noinspection GradleDeprecatedConfiguration
+/**************************************************************************************************
+ GRADLE CONFIG
+ *************************************************************************************************/
+
+
+apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
+apply plugin: 'com.google.gms.google-services'
+
+DdmPreferences.setTimeOut(60000)
+
+ant.condition(property: "os", value: "windows") { os(family: "windows") }
+ant.condition(property: "os", value: "unix") { os(family: "unix") }
+
+android {
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    signingConfigs {
+        signer {
+            keyAlias 'pkl57'
+            keyPassword 'capi57'
+            storePassword 'capi57'
+            storeFile file("${project.rootDir}/pkl57.jks")
+        }
+    }
+    compileSdkVersion(28)
+    buildToolsVersion '28.0.3'
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId('id.stis.capi.D4.listing.pkl59')
+        minSdkVersion(16)
+        targetSdkVersion(25)
+        versionCode(1043)
+        versionName('pkl61.R4.1.7')
+        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+        multiDexEnabled true
+        manifestPlaceholders = [onesignal_app_id               : "2e8c2954-1ba7-4f1c-821d-f6c8fec65445",
+                                onesignal_google_project_number: "221471679171"]
+
+
+        signingConfig signingConfigs.signer
+    }
+    buildTypes {
+        release {
+//            minifyEnabled(true)
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            debuggable(false)
+        }
+        debug {
+            debuggable(true)
+            // Allows AndroidTest JaCoCo reports to be generated
+            testCoverageEnabled(true)
+            signingConfig signingConfigs.signer
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    packagingOptions {
+        // Pick first occurrence of any
+        //
+        //
+        // /.;files that cause conflicts, as defined
+        // in common.gradle
+        pickFirst 'META-INF/DEPENDENCIES'
+        pickFirst 'META-INF/LICENSE'
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'META-INF/NOTICE'
+        pickFirst 'META-INF/NOTICE.txt'
+        pickFirst 'META-INF/services/com.fasterxml.jackson.core.JsonFactory'
+        pickFirst 'META-INF/services/com.fasterxml.jackson.core.ObjectCodec'
+        pickFirst 'META-INF/services/javax.ws.rs.ext.MessageBodyReader'
+        pickFirst 'META-INF/services/javax.ws.rs.ext.MessageBodyWriter'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+//    sourceSets {
+//        main.java.srcDirs += 'src/main/java/org.odk.collect.android'
+//    }
+    //
+//    configuratixons {
+//        all*.exclude group: 'com.android.support', module: 'support-v4'
+//        all*.exclude group: 'com.android.support', module: 'support-annotations'
+//    }
+    productFlavors {
+    }
+}
+
+task checkstyle(type: Checkstyle) {
+    configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
+}
+
+configurations.all {
+//    exclude group: 'com.android.support', module: 'support-v4'
+//    exclude group: 'com.android.support', module: 'support-annotations'
+    resolutionStrategy {
+        cacheDynamicVersionsFor(0, 'seconds')
+        cacheChangingModulesFor(0, 'seconds')
+    }
+    transitive = true
+}
+
+allprojects {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:deprecation"
+    }
+}
+dependencies {
+
+    implementation 'com.github.deano2390:MaterialShowcaseView:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation fileTree(include: '*.jar', dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation 'com.github.javiersantos:AppUpdater:2.7'
+
+    implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    implementation 'org.apache.commons:commons-lang3:3.1'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable-animated:1.0.0'
+    implementation 'androidx.mediarouter:mediarouter:1.0.0'
+    implementation 'com.onesignal:OneSignal:3.4.3@aar'
+    implementation 'com.google.android.gms:play-services-gcm:10.0.1'
+    implementation 'com.google.android.gms:play-services-fitness:10.0.1'
+    implementation 'com.google.android.gms:play-services-wearable:10.0.1'
+    implementation 'com.google.android.gms:play-services-maps:10.0.1'
+    implementation 'com.google.android.gms:play-services-location:10.0.1'
+    implementation 'com.google.android.gms:play-services-auth:10.0.1'
+    implementation 'com.google.android.gms:play-services:10.0.1'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'com.white:progressview:1.0.1'
+    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
+    implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+//    compile 'com.jakewharton:butterknife:6.1.0'
+//    compile 'com.mikhaellopez:circularimageview:2.1.1'
+//    compile 'com.squareup.okhttp3:okhttp:3.0.1'
+//    compile 'com.synnapps:carouselview:0.0.10'
+//    compile 'com.pusher:pusher-java-client:1.4.0'
+//    compile 'com.github.quentin7b:android-location-tracker:3.2'
+//    compile 'com.onesignal:OneSignal:[3.7.1, 3.99.99]'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+    implementation 'com.google.code.gson:gson:1.7.2'
+    implementation 'com.bignerdranch.android:expandablerecyclerview:2.1.1'
+    implementation 'com.mikepenz:actionitembadge:3.3.1@aar'
+    implementation 'com.mikepenz:iconics-core:2.8.1@aar'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    testImplementation 'junit:junit:4.12'
+
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+    debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
+
+}

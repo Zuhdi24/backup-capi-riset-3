@@ -1,0 +1,30 @@
+-dontwarn butterknife.internal.**
+-dontwarn com.google.**
+-dontwarn au.com.**
+-dontwarn com.roughike.**
+-dontwarn okio.**
+-dontwarn org.apache.**
+-dontwarn org.joda.time.**
+-dontwarn org.slf4j.**
+-dontwarn android.graphics.**
+-dontwarn android.util.**
+-dontwarn android.content.**
+-dontwarn android.view.**
+#
+#
+#-keep class org.javarosa.**
+#-keep class **$$ViewInjector { *; }
+#-keepnames class * { @butterknife.InjectView *;}
+
+-dontwarn com.google.**
+-dontwarn au.com.bytecode.**
+-dontwarn org.joda.time.**
+-dontwarn org.osmdroid.**
+-dontwarn org.xmlpull.v1.**
+
+-keep class org.javarosa.**
+
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+}

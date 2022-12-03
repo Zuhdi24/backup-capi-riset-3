@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/tab_listing"
+        android:enabled="true"
+        android:icon="@drawable/list"
+        android:iconTint="@color/pkl61_light4"
+        android:title="Sampling"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/tab_beranda"
+        android:enabled="true"
+        android:icon="@drawable/beranda"
+        android:iconTint="@color/pkl61_light4"
+        android:title="Beranda"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/tab_kuesioner"
+        android:enabled="true"
+        android:icon="@drawable/kues"
+        android:iconTint="@color/pkl61_light4"
+        android:title="Kuesioner"
+        app:showAsAction="ifRoom" />
+
+</menu>

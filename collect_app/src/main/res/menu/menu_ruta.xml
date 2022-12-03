@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:iconTint="@android:color/white"
+        android:title="Cari Ruta"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_action_sorting"
+        android:iconTint="@android:color/white"
+        android:title="Urutkan Data"
+        app:showAsAction="ifRoom"></item>
+
+    <item
+        android:id="@+id/action_sync"
+        android:icon="@drawable/ic_action_syncc"
+        android:iconTint="@android:color/white"
+        android:title="Sinkronisasi Data"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/action_send"
+        android:icon="@drawable/ic_kirim"
+        android:iconTint="@android:color/white"
+        android:title="Finalisasi BS"
+        app:showAsAction="ifRoom"></item>
+
+    <item
+        android:id="@+id/action_kembalikan"
+        android:title="Kembalikan Status BS"
+        app:showAsAction="never"></item>
+
+    <item
+        android:id="@+id/action_ambil_sampel"
+        android:title="Ambil Sampel"
+        app:showAsAction="never"></item>
+
+    <item
+        android:id="@+id/action_kirim_sampel"
+        android:title="Kirim Sampel"
+        app:showAsAction="never"></item>
+
+    <!--<item-->
+    <!--android:id="@+id/action_generate_kues"-->
+    <!--android:title="Generate Kuesioner"-->
+    <!--app:showAsAction="never"></item>-->
+
+
+</menu>
