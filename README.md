@@ -1,18 +1,16 @@
-# CAPI Riset 4 v1.0
+# CAPI Riset 4 v1.1
 
-## Update Minggu 27 - 11 - 2022 Kos Biru
+## Update Minggu 04 - 12 - 2022 Kos Biru
 ```
 Detail Update
-1. Penyesuaian Frontend sementara 
+1. Penyesuaian Frontend sementara
 2. Pengambilan sampel listing
-3. Generate kuesioner dari ambil sampel
+3. Penyesuaian variabel listing r4 terbaru
+4. Penyesuaian validasi listing
 
 Next Update
 1. Penyesuaian frontend icon kuesioner dan warna
-2. Penyesuaian validasi listing isPariwisata
-3. Jika pariwisata "tidak" pertanyaan kebawah auto-null
-4. Menambah opsi "lainnya" pada listing jenis UUP
-5. Filter download kuesioner (prioritas rendah)
-6. Update metode pengambilan sampel
-7. Update lainnya menunggu dari riset
+2. Filter download kuesioner (prioritas rendah)
+3. Update metode pengambilan sampel
+4. Update lainnya menunggu dari riset
 ```
