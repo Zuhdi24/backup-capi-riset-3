@@ -100,7 +100,7 @@ public class SynchronizeTask extends AsyncTask<String, String, String> {
         nimKortim = (String) pref.get(CapiKey.KEY_NIM_KORTIM);
         preference = PreferenceManager.getDefaultSharedPreferences(activity);
         //TODO COBA
-        serviceBaseUrl = preference.getString("host", "http://192.168.18.22/kuliah/web-service-62/public");
+        serviceBaseUrl = preference.getString("host", "https://capi62.stis.ac.id/web-service-62/public");
         serviceUrl = serviceBaseUrl + "/listingr4";
         drp = new DefaultRetryPolicy(8000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         db = DatabaseSampling.getInstance();

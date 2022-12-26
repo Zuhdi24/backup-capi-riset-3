@@ -609,7 +609,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             if (kodeUUP != null && posisi == 0) {
                 if(no_urt.getText().toString().equals("000")){
                     unitUsahaPariwisata.setNoUrutRuta("000");
-                }else{
 //                    RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
 //                    rumahTanggaRiset4.setNoUrutRuta(no_urt.getText().toString());
                 }

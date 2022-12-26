@@ -108,7 +108,7 @@
             android:title="@string/password" />
         <ListPreference
             android:id="@+id/host"
-            android:defaultValue="http://192.168.18.22/kuliah/web-service-62/public"
+            android:defaultValue="https://capi62.stis.ac.id/web-service-62/public"
             android:dialogTitle="@string/navigation"
             android:entries="@array/listHost"
             android:entryValues="@array/listHost_values"

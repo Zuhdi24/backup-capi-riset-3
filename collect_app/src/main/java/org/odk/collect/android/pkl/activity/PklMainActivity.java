@@ -139,7 +139,7 @@ public class PklMainActivity extends AppCompatActivity
             return;
         }
         String serviceBaseUrl = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext()).getString("host", "http://192.168.18.22/kuliah/web-service-62/public");
+                .getDefaultSharedPreferences(getApplicationContext()).getString("host", "https://capi62.stis.ac.id/web-service-62/public");
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         DefaultRetryPolicy drp = new DefaultRetryPolicy(8000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
@@ -212,7 +212,7 @@ public class PklMainActivity extends AppCompatActivity
                 .setButtonDismiss("Nanti")
                 .setButtonDoNotShowAgain(null)
                 .setUpdateFrom(UpdateFrom.JSON)
-                .setUpdateJSON("http://192.168.18.22/kuliah/web-service-62/latestVersion/index/4");
+                .setUpdateJSON("https://capi62.stis.ac.id/web-service-62/latestVersion/index/4");
         appUpdater.start();
 
     }
