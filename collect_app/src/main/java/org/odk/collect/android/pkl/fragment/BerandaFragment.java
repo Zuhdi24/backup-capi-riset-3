@@ -182,7 +182,7 @@ public class BerandaFragment extends Fragment {
         defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         serviceBaseUrl = defaultSharedPreferences.getString("host", "https://capi.pkl59.stis.ac.id");
 //        urlAvatar = serviceBaseUrl + "assets/img/" + preference.get(CapiKey.KEY_NIM) + ".png";
-        urlAvatar = "http://192.168.18.22/kuliah/web-service-62/assets/img/" + preference.get(CapiKey.KEY_NIM) + ".png";
+        urlAvatar = "https://capi62.stis.ac.id/web-service-62/assets/img/" + preference.get(CapiKey.KEY_NIM) + ".png";
         Log.d("avatarAang", urlAvatar);
         progressAva.setVisibility(View.VISIBLE);
         Picasso.with(context)

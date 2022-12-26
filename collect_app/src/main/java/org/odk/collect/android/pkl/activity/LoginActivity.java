@@ -186,7 +186,7 @@ public class LoginActivity extends AppCompatActivity implements LoginTask.LoginL
         timerDelayRemoveDialog(10000, progressDialog);
 
         serviceBaseUrl = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext()).getString("host", "http://192.168.18.22/kuliah/web-service-62/public");
+                .getDefaultSharedPreferences(getApplicationContext()).getString("host", "https://capi62.stis.ac.id/web-service-62/public");
 
         String hashPassUrl = serviceBaseUrl + "/gethashpw?nim=" + nim;
 
