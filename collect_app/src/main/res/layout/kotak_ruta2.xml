@@ -58,13 +58,13 @@
                                 android:tint="@color/colorPrimaryDark" />
 
                             <TextView
-                                android:id="@+id/nama_krt"
+                                android:id="@+id/nama_pemilik"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:fontFamily="@font/quicksand_bold"
                                 android:paddingLeft="10dp"
-                                android:text="Nama Kepala Rumah Tangga"
+                                android:text="Nama Pemilik Usaha Pariwisata"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="16sp" />
 

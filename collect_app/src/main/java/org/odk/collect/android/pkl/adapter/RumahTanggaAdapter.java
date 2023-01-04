@@ -111,10 +111,10 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
         nomorbs.setText(item.getBs());
         nomorbf.setText(item.getBf());
         NoUrut.setText(String.valueOf(item.getNoUrutRuta()));
-        NamaKRT.setText(item.getNamaUUP());
+        NamaKRT.setText(item.getNamaKRT());
 
         try {
-            String namas = item.getNamaUUP().toLowerCase(Locale.getDefault());
+            String namas = item.getNamaKRT().toLowerCase(Locale.getDefault());
             if (namas.contains(searchKey) && searchKey.length() != 0) {
                 int startPos = namas.indexOf(searchKey);
                 int endPos = startPos + searchKey.length();
@@ -261,11 +261,10 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+                TextView noUrutUUP = (TextView) dialog.findViewById(R.id.no_uup);
+
                 TextView noSegmen = (TextView) dialog.findViewById(R.id.noSegmen);
                 noSegmen.setText(String.valueOf(item.getNoSegmen()));
-
-                TextView noUrutRuta = (TextView) dialog.findViewById(R.id.no_urt);
-                noUrutRuta.setText(String.valueOf(item.getNoUrutRuta()));
 
                 TextView bf = (TextView) dialog.findViewById(R.id.bf);
                 bf.setText(item.getBf());
@@ -273,59 +272,76 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 TextView bs = (TextView) dialog.findViewById(R.id.bs);
                 bs.setText(item.getBs());
 
+                TextView noUrutRuta = (TextView) dialog.findViewById(R.id.no_ruta);
+                noUrutRuta.setText(String.valueOf(item.getNoUrutRuta()));
+
                 TextView namaKRT = (TextView) dialog.findViewById(R.id.namaKRT);
-                namaKRT.setText(item.getNamaUUP());
+                namaKRT.setText(item.getNamaKRT());
+
+                TextView alamat = (TextView) dialog.findViewById(R.id.alamat);
+                alamat.setText(item.getAlamat());
+
+                TextView jumlah_isUUP = (TextView) dialog.findViewById(R.id.jumlah_isUUP);
+                jumlah_isUUP.setText(item.getJumlahisUUP());
+
+                TextView no_urut_isUUP = (TextView) dialog.findViewById(R.id.no_urut_isUUP);
+                no_urut_isUUP.setText(item.getNoUrutPemilikUUP());
 
                 TextView namaPemilik = (TextView) dialog.findViewById(R.id.namaPemilik);
-                if(item.getNamaPemilikUUP().equals("")){
+                if(item.getNamaPemilikUUP().equals("-")){
                     namaPemilik.setText("-");
                 }else{
                     namaPemilik.setText(item.getNamaPemilikUUP());
                 }
 
-                TextView alamat = (TextView) dialog.findViewById(R.id.alamat);
-                alamat.setText(item.getAlamat());
-
-                TextView noUrutUUP = (TextView) dialog.findViewById(R.id.no_uup);
-                TextView isPariwisata = (TextView) dialog.findViewById(R.id.isPariwisata);
-                if (item.getIsPariwisata().equals("1")) {
-                    isPariwisata.setText("Ya");
+                TextView kedudukanUP = (TextView) dialog.findViewById(R.id.kedudukan_up);
+                if (item.getKedudukanUP().equals("1")) {
+                    kedudukanUP.setText("Pemilik");
+                } else if (item.getKedudukanUP().equals("2")) {
+                    kedudukanUP.setText("Pengelola");
                 } else {
-                    isPariwisata.setText("Tidak");
+                    kedudukanUP.setText("-");
                     noUrutUUP.setText("-");
                 }
 
-                TextView isPandemi = (TextView) dialog.findViewById(R.id.isPandemi);
-                if (item.getIsPandemi().equals("1")) {
-                    isPandemi.setText("Ya");
-                    noUrutUUP.setText(String.valueOf(item.getNoUrutUUP()));
-                } else if(item.getIsPandemi().equals("0")) {
-                    isPandemi.setText("Tidak");
-                    noUrutUUP.setText("-");
+                TextView statusKelola = (TextView) dialog.findViewById(R.id.status_kelola);
+                if (item.getStatusKelola().equals("1")) {
+                    statusKelola.setText("Ya, Bertanggung jawab");
+                } else if (item.getStatusKelola().equals("0")) {
+                    statusKelola.setText("Tidak");
                 } else {
-                    isPandemi.setText("-");
+                    statusKelola.setText("-");
+                    noUrutUUP.setText("-");
                 }
 
-                TextView kegiatanUtama = (TextView) dialog.findViewById(R.id.jenis_pariwisata);
+                TextView lokasiUP = (TextView) dialog.findViewById(R.id.lokasiUP);
+                if (item.getLokasiUP().equals("1")) {
+                    lokasiUP.setText("Dalam Kota Batu");
+                    noUrutUUP.setText(item.getNoUrutUUP());
+                } else if (item.getLokasiUP().equals("0")) {
+                    lokasiUP.setText("Luar Kota Batu");
+                } else {
+                    lokasiUP.setText("-");
+                    noUrutUUP.setText("-");
+                }
+
+                TextView jenisUP = (TextView) dialog.findViewById(R.id.jenis_pariwisata);
                 if (item.getJenisUUP().equals("1")) {
-                    kegiatanUtama.setText("Daya Tarik Wisata");
-                } else if (item.getJenisUUP().equals("2")){
-                    kegiatanUtama.setText("Jasa Perjalanan Wisata");
+                    jenisUP.setText("Jasa Transportasi Wisata");
+                } else if (item.getJenisUUP().equals("2")) {
+                    jenisUP.setText("Jasa Penyediaan Makanan dan Minuman");
                 } else if (item.getJenisUUP().equals("3")) {
-                    kegiatanUtama.setText("Jasa Makanan dan Minuman");
-                } else if (item.getJenisUUP().equals("4")) {
-                    kegiatanUtama.setText("Penyedia Akomodasi");
+                    jenisUP.setText("Penyediaan Akomodasi");
                 } else {
-                    kegiatanUtama.setText("-");
+                    jenisUP.setText("-");
                 }
+//                TextView noHp = (TextView) dialog.findViewById(R.id.no_hp);
+//                if (item.getNoHp().equals("")) {
+//                    noHp.setText("-");
+//                } else {
+//                    noHp.setText(item.getNoHp());
+//                }
 
-
-                TextView noHp = (TextView) dialog.findViewById(R.id.no_hp);
-                if (item.getNoHp().equals("")) {
-                    noHp.setText("-");
-                } else {
-                    noHp.setText(item.getNoHp());
-                }
                 TextView waktu = (TextView) dialog.findViewById(R.id.waktu);
                 waktu.setText(item.getTime());
 
@@ -400,20 +416,20 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                                 break;
                             case 2:
                                 //TODO TARO INTENT CALL NUMBER
-                                final Boolean hasNomor;
-                                final String nomor = ruta.getNoHp();
+//                                final Boolean hasNomor;
+//                                final String nomor = ruta.getNoHp();
 //                                final String nomor = "0";
-                                if (nomor.equalsIgnoreCase("")) {
-                                    hasNomor = false;
-                                } else {
-                                    hasNomor = true;
-                                }
-
-                                if (hasNomor) {
-                                    callContact(nomor);
-                                } else {
-                                    Toast.makeText(activity, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
-                                }
+//                                if (nomor.equalsIgnoreCase("")) {
+//                                    hasNomor = false;
+//                                } else {
+//                                    hasNomor = true;
+//                                }
+//
+//                                if (hasNomor) {
+//                                    callContact(nomor);
+//                                } else {
+//                                    Toast.makeText(activity, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
+//                                }
 
                                 break;
                             case 3:
@@ -452,7 +468,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
             } else {
                 toIsianListing.putExtra("kodeBs", unitUsahaPariwisata.getKodeBs());
                 toIsianListing.putExtra("kodeUUP", unitUsahaPariwisata.getKodeUUP());
-                toIsianListing.putExtra("nama KRT", unitUsahaPariwisata.getNamaUUP());
+                toIsianListing.putExtra("nama KRT", unitUsahaPariwisata.getNamaKRT());
                 toIsianListing.putExtra("posisi", posisi);
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
@@ -540,7 +556,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 } else {
                     searchKey = constraint.toString();
                     for (UnitUsahaPariwisata rt : allRuta) {
-                        String nama = rt.getNamaUUP().toLowerCase();
+                        String nama = rt.getNamaKRT().toLowerCase();
                         String noRuta = String.valueOf(rt.getNoUrutRuta()).toLowerCase();
                         String noBf = rt.getBf().toLowerCase();
                         String noBs = rt.getBs().toLowerCase();

@@ -392,7 +392,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lin_nama_uup"
+                android:id="@+id/lin_namaKRT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -410,7 +410,7 @@
                     android:textColor="@color/colorPrimaryDark" />
 
                 <EditText
-                    android:id="@+id/nama_uup"
+                    android:id="@+id/nama_KRT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -458,7 +458,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lin_uup_yesno"
+                android:id="@+id/lin_isUUP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -467,21 +467,21 @@
                 android:textAppearance="?android:attr/textAppearanceMedium">
 
                 <TextView
-                    android:id="@+id/textview13"
+                    android:id="@+id/isUUP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="7. Rumah Tangga Usaha Pariwisata?"
+                    android:text="7. Apakah terdapat ART Usia Kerja Memiliki/Mengelola Usaha Pariwisata?"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RelativeLayout
-                    android:id="@+id/checkbrp3"
+                    android:id="@+id/check_isUUP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <RadioGroup
-                        android:id="@+id/kategori_uup_yesno"
+                        android:id="@+id/kategori_isUUP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -489,7 +489,7 @@
 
 
                         <RadioButton
-                            android:id="@+id/kategori_uup_yes"
+                            android:id="@+id/kategori_isUUP_yes"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
@@ -497,7 +497,7 @@
                             android:text="Ya" />
 
                         <RadioButton
-                            android:id="@+id/kategori_uup_no"
+                            android:id="@+id/kategori_isUUP_no"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
@@ -509,7 +509,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lin_uup_pandemi"
+                android:id="@+id/lin_jumlah_isUUP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -518,21 +518,185 @@
                 android:textAppearance="?android:attr/textAppearanceMedium">
 
                 <TextView
-                    android:id="@+id/textview16"
+                    android:id="@+id/text_jumlah_isUUP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="8. Mulai Beroperasi Sebelum Pandemi?"
+                    android:text="Jumlah ART Usia Kerja yang Memiliki/ Mengelola Usaha Pariwisata"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RelativeLayout
-                    android:id="@+id/checkbrp4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="0dp">
+
+                    <EditText
+                        android:id="@+id/jumlah_isUUP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="#383838" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/jumlah_isUUP"
+                        android:layout_alignRight="@id/jumlah_isUUP"
+                        android:layout_alignBottom="@id/jumlah_isUUP"
+                        android:orientation="horizontal">
+
+                        <android.widget.Button
+                            android:id="@+id/jumlah_isUUPminus"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="2dp"
+                            android:background="@drawable/tombol_submit"
+                            android:text="-"
+                            android:textColor="#ffffff" />
+
+                        <android.widget.Button
+                            android:id="@+id/jumlah_isUUPplus"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="2dp"
+                            android:background="@drawable/tombol_submit"
+                            android:text="+"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_no_urut_art"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/text_no_urut_art"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="8. Nomor ART Pemilik/Pengelola Usaha Pariwisata"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="0dp">
+
+                    <EditText
+                        android:id="@+id/no_urut_art"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="#383838" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/no_urut_art"
+                        android:layout_alignRight="@id/no_urut_art"
+                        android:layout_alignBottom="@id/no_urut_art"
+                        android:orientation="horizontal">
+
+                        <android.widget.Button
+                            android:id="@+id/no_urut_artminus"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="2dp"
+                            android:background="@drawable/tombol_submit"
+                            android:text="-"
+                            android:textColor="#ffffff" />
+
+                        <android.widget.Button
+                            android:id="@+id/no_urut_artplus"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="2dp"
+                            android:background="@drawable/tombol_submit"
+                            android:text="+"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_nama_pemilik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/textview10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="9. Nama ART Pemilik/Pengelola Usaha Pariwisata"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <EditText
+                    android:id="@+id/nama_pemilik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:backgroundTint="@color/colorAccent"
+                    android:ems="10"
+                    android:inputType="text|textCapCharacters"
+                    android:padding="10dp"
+                    android:textColor="#383838" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_kedudukan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/kedudukan_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="10. Kedudukan dalam Usaha Pariwisata?"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <RelativeLayout
+                    android:id="@+id/check_kedudukan_up"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <RadioGroup
-                        android:id="@+id/kategori_pandemi_yesno"
+                        android:id="@+id/kategori_kedudukan_up"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -540,7 +704,64 @@
 
 
                         <RadioButton
-                            android:id="@+id/kategori_pandemi_yes"
+                            android:id="@+id/kategori_kedudukan_pemilik"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Pemilik" />
+
+                        <RadioButton
+                            android:id="@+id/kategori_kedudukan_pengelola"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Pengelola" />
+
+                    </RadioGroup>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_status_kelola"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/status_kelola"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="11. Status Pengelolaan Usaha?"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/status_kelola_child"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apakah bertanggung jawab terhadap resiko unit usaha?" />
+
+                <RelativeLayout
+                    android:id="@+id/check_status_kelola"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioGroup
+                        android:id="@+id/kategori_status_kelola"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textAppearance="?android:attr/textAppearanceMedium">
+
+
+                        <RadioButton
+                            android:id="@+id/kategori_statuskelola_yes"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
@@ -548,12 +769,69 @@
                             android:text="Ya" />
 
                         <RadioButton
-                            android:id="@+id/kategori_pandemi_no"
+                            android:id="@+id/kategori_statuskelola_no"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentRight="true"
                             android:text="Tidak" />
+
+                    </RadioGroup>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_lokasi_usaha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/lokasi_usaha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="12. Lokasi Usaha Pariwisata yang Dimiliki/Dikelola?"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/lokasi_usaha_child"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usaha Pariwisata berada di dalam Kota Batu atau tidak?" />
+
+                <RelativeLayout
+                    android:id="@+id/check_lokasi_usaha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioGroup
+                        android:id="@+id/kategori_lokasi_usaha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textAppearance="?android:attr/textAppearanceMedium">
+
+
+                        <RadioButton
+                            android:id="@+id/kategori_lokasiusaha_dalam"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Dalam Kota Batu" />
+
+                        <RadioButton
+                            android:id="@+id/kategori_lokasiusaha_luar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Luar Kota Batu" />
 
                     </RadioGroup>
                 </RelativeLayout>
@@ -573,7 +851,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="9. Jenis Usaha Pariwisata?"
+                    android:text="13. Jenis Usaha Pariwisata?"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -595,7 +873,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentRight="true"
-                            android:text="Daya Tarik Wisata" />
+                            android:text="Jasa Transportasi Wisata" />
 
                         <RadioButton
                             android:id="@+id/kategori_uup_2"
@@ -603,18 +881,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentRight="true"
-                            android:text="Jasa Perjalanan Wisata" />
+                            android:text="Jasa Penyediaan Makanan dan Minuman" />
 
                         <RadioButton
                             android:id="@+id/kategori_uup_3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentRight="true"
-                            android:text="Jasa Makanan dan Minuman" />
-
-                        <RadioButton
-                            android:id="@+id/kategori_uup_4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
@@ -623,36 +893,6 @@
 
                     </RadioGroup>
                 </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_nama_pemilik"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium">
-
-                <TextView
-                    android:id="@+id/textview10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="10. Nama Pemilik Usaha Pariwisata"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <EditText
-                    android:id="@+id/nama_pemilik"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:backgroundTint="@color/colorAccent"
-                    android:ems="10"
-                    android:inputType="text|textCapCharacters"
-                    android:padding="10dp"
-                    android:textColor="#383838" />
             </LinearLayout>
 
             <LinearLayout
@@ -669,7 +909,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="11. Nomor Urut Rumah Tangga Usaha Pariwisata"
+                    android:text="14. Nomor Urut Unit Usaha Pariwisata"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -680,7 +920,7 @@
                     android:padding="0dp">
 
                     <EditText
-                        android:id="@+id/no_urut_ruta"
+                        android:id="@+id/no_urut_up"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorAccent"
@@ -692,13 +932,13 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/no_urut_ruta"
-                        android:layout_alignRight="@id/no_urut_ruta"
-                        android:layout_alignBottom="@id/no_urut_ruta"
+                        android:layout_alignTop="@id/no_urut_up"
+                        android:layout_alignRight="@id/no_urut_up"
+                        android:layout_alignBottom="@id/no_urut_up"
                         android:orientation="horizontal">
 
                         <android.widget.Button
-                            android:id="@+id/rutaminus"
+                            android:id="@+id/upminus"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_centerHorizontal="true"
@@ -709,7 +949,7 @@
                             android:textColor="#ffffff" />
 
                         <android.widget.Button
-                            android:id="@+id/rutaplus"
+                            android:id="@+id/upplus"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_centerHorizontal="true"
@@ -722,42 +962,42 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lin_nohp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lin_nohp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:clickable="true"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="10dp"-->
+<!--                android:textAppearance="?android:attr/textAppearanceMedium">-->
 
-                <TextView
-                    android:id="@+id/textview11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="12. No. Telp/HP"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorPrimaryDark" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textview11"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="13. No. Telp/HP"-->
+<!--                    android:textAppearance="?android:attr/textAppearanceMedium"-->
+<!--                    android:textColor="@color/colorPrimaryDark" />-->
 
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Format 628XXXXXXXXX" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView12"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Format 628XXXXXXXXX" />-->
 
-                <EditText
-                    android:id="@+id/nohp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:backgroundTint="@color/colorAccent"
-                    android:ems="10"
-                    android:inputType="text|textCapCharacters"
-                    android:padding="10dp"
-                    android:textColor="#383838" />
+<!--                <EditText-->
+<!--                    android:id="@+id/nohp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:backgroundTint="@color/colorAccent"-->
+<!--                    android:ems="10"-->
+<!--                    android:inputType="text|textCapCharacters"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:textColor="#383838" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -219,11 +219,11 @@ public class AdapterBlokSensus extends BaseAdapter {
         TextView kecamatan = (TextView) convertView.findViewById(R.id.kecamatan);
         TextView kabupaten = (TextView) convertView.findViewById(R.id.kabupaten);
         TextView provinsi = (TextView) convertView.findViewById(R.id.provinsi);
-        TextView stratifikasi = (TextView) convertView.findViewById(R.id.stratifikasi);
+//        TextView stratifikasi = (TextView) convertView.findViewById(R.id.stratifikasi);
 
         TextView jumlahRuta = (TextView) convertView.findViewById(R.id.jumlahRuta);
-        TextView ruta_tp = (TextView) convertView.findViewById(R.id.ruta_pertanian);
-        TextView bukan_ruta_tp = (TextView) convertView.findViewById(R.id.bukan_ruta_pertanian);
+//        TextView ruta_tp = (TextView) convertView.findViewById(R.id.ruta_pertanian);
+//        TextView bukan_ruta_tp = (TextView) convertView.findViewById(R.id.bukan_ruta_pertanian);
 
         TextView statusBs = (TextView) convertView.findViewById(R.id.status_bs);
         TextView statusBsListing = (TextView) convertView.findViewById(R.id.status_listing);
@@ -245,22 +245,22 @@ public class AdapterBlokSensus extends BaseAdapter {
         desa.setText(", Kel. " + WordUtils.capitalize(des)); //TODO Capitalize
         kecamatan.setText("Kec. " + kec);
         kabupaten.setText(kab + ", ");
-        provinsi.setText("Jawa Barat");
-        if ("1".equals(item.getStratifikasi())) {
-            stratifikasi.setText("Perkotaan");
-        } else if ("2".equals(item.getStratifikasi())) {
-            stratifikasi.setText("Perdesaan");
-        } else {
-            stratifikasi.setText("Kode Stratifikasi tidak diketahui");
-        }
+        provinsi.setText("Jawa Timur");
+//        if ("1".equals(item.getStratifikasi())) {
+//            stratifikasi.setText("Perkotaan");
+//        } else if ("2".equals(item.getStratifikasi())) {
+//            stratifikasi.setText("Perdesaan");
+//        } else {
+//            stratifikasi.setText("Kode Stratifikasi tidak diketahui");
+//        }
 
 //        Log.d("hasil", String.valueOf(Integer.valueOf(item.getJumlahRTBaru())-Integer.valueOf(item.getJumlahRTInternet())) );
 //        ruta_tp.setText(item.getJumlahRTInternet());
 //        bukan_ruta_tp.setText(String.valueOf(Integer.valueOf(item.getJumlahRTBaru())-Integer.valueOf(item.getJumlahRTInternet())));
 //        jumlahRuta.setText(item.getJumlahRTBaru());
 
-        ruta_tp.setText(String.valueOf(dbSampling.getJumlahUUPByType(item.getKodeBs(), 1)));
-        bukan_ruta_tp.setText(String.valueOf(dbSampling.getJumlahUUPByType(item.getKodeBs(), 2)));
+//        ruta_tp.setText(String.valueOf(dbSampling.getJumlahUUPByType(item.getKodeBs(), 1)));
+//        bukan_ruta_tp.setText(String.valueOf(dbSampling.getJumlahUUPByType(item.getKodeBs(), 2)));
         jumlahRuta.setText(String.valueOf(dbSampling.getJumlahUUP(item.getKodeBs())));
 
         statusBs.setText("STATUS " + item.getStatus().toUpperCase());

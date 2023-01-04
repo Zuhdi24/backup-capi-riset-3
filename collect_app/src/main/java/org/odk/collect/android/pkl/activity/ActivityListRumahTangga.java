@@ -441,7 +441,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
                                     c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
                                     c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_SUBTEXT)));
 //                            dlkms.addLast(dlkm);
-                            if (dlkm.getDisplayName().contains("R4") || dlkm.getDisplayName().contains("Riset 3")) {
+                            if (dlkm.getDisplayName().contains("R4") || dlkm.getDisplayName().contains("Riset4")) {
                                 dlkms.addLast(dlkm);
                                 Log.d("NAMA FORM", dlkm.getDisplayName());
                             } else {
@@ -488,9 +488,9 @@ public class ActivityListRumahTangga extends AppCompatActivity
                                     bs.getKabupaten(), bs.getNamaKabupaten(),
                                     bs.getKecamatan(), bs.getNamaKecamatan(),
                                     bs.getDesa(), bs.getNamaDesa(),
-                                    bs.getStratifikasi(), bs.getNoBs(),
-                                    rta.getNoUrutUUP(), rta.getNamaPemilikUUP(),
-                                    bs.getKodeBs(), rta.getBs()
+                                    bs.getStratifikasi(), bs.getNoBs(), rta.getNoUrutRuta(),
+                                    rta.getAlamat(), rta.getNamaPemilikUUP(),
+                                    bs.getKodeBs(), rta.getBs(), rta.getNoUrutUUP(), rta.getJenisUUP()
                             );
 
                             AlertDialog.Builder builderInner = new AlertDialog.Builder(ActivityListRumahTangga.this);
@@ -614,7 +614,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
                 Collections.sort(listruta, new Comparator<UnitUsahaPariwisata>() {
                     @Override
                     public int compare(UnitUsahaPariwisata o1, UnitUsahaPariwisata o2) {
-                        return o1.getNamaUUP().compareTo(o2.getNamaUUP());
+                        return o1.getNamaKRT().compareTo(o2.getNamaKRT());
                     }
                 });
                 break;

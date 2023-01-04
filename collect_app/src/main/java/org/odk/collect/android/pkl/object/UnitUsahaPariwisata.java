@@ -22,35 +22,43 @@ public class UnitUsahaPariwisata implements Parcelable {
     private String bf;
     private String bs;
     private String noUrutRuta;
-    private String noUrutUUP;
-    private String namaUUP;
+    private String namaKRT;
     private String alamat;
+    private String jumlahisUUP;
+    private String noUrutPemilikUUP;
     private String namaPemilikUUP;
-    private String isPariwisata;
-    private String isPandemi;
+    private String kedudukanUP;
+    private String statusKelola;
+    private String lokasiUP;
     private String jenisUUP;
-    private String noHp;
+    private String noUrutUUP;
+//    private String noHp;
     private String latitude;
     private String longitude;
     private String akurasi;
     private String status;
     private String time;
 
-    public UnitUsahaPariwisata(String kodeUUP, String kodeBs, String noSegmen, String bf, String bs, String noUrutRuta, String noUrutUUP, String namaUUP, String alamat, String namaPemilikUUP, String isPariwisata, String isPandemi, String jenisUUP, String noHp, String latitude, String longitude, String akurasi, String status, String time) {
+    public UnitUsahaPariwisata(String kodeUUP, String kodeBs, String noSegmen, String bf, String bs, String noUrutRuta, String namaKRT,
+                               String alamat, String jumlahisUUP, String noUrutPemilikUUP, String namaPemilikUUP, String kedudukanUP,
+                               String statusKelola, String lokasiUP, String jenisUUP, String noUrutUUP, String latitude, String longitude,
+                               String akurasi, String status, String time) {
         this.kodeUUP = kodeUUP;
         this.kodeBs = kodeBs;
         this.noSegmen = noSegmen;
         this.bf = bf;
         this.bs = bs;
         this.noUrutRuta = noUrutRuta;
-        this.noUrutUUP = noUrutUUP;
-        this.namaUUP = namaUUP;
+        this.namaKRT = namaKRT;
         this.alamat = alamat;
+        this.jumlahisUUP = jumlahisUUP;
+        this.noUrutPemilikUUP = noUrutPemilikUUP;
         this.namaPemilikUUP = namaPemilikUUP;
-        this.isPariwisata = isPariwisata;
-        this.isPandemi = isPandemi;
+        this.kedudukanUP = kedudukanUP;
+        this.statusKelola = statusKelola;
+        this.lokasiUP = lokasiUP;
         this.jenisUUP = jenisUUP;
-        this.noHp = noHp;
+        this.noUrutUUP = noUrutUUP;
         this.latitude = latitude;
         this.longitude = longitude;
         this.akurasi = akurasi;
@@ -106,20 +114,12 @@ public class UnitUsahaPariwisata implements Parcelable {
         this.noUrutRuta = noUrutRuta;
     }
 
-    public String getNoUrutUUP() {
-        return noUrutUUP;
+    public String getNamaKRT() {
+        return namaKRT;
     }
 
-    public void setNoUrutUUP(String noUrutUUP) {
-        this.noUrutUUP = noUrutUUP;
-    }
-
-    public String getNamaUUP() {
-        return namaUUP;
-    }
-
-    public void setNamaUUP(String namaUUP) {
-        this.namaUUP = namaUUP;
+    public void setNamaKRT(String namaKRT) {
+        this.namaKRT = namaKRT;
     }
 
     public String getAlamat() {
@@ -130,6 +130,22 @@ public class UnitUsahaPariwisata implements Parcelable {
         this.alamat = alamat;
     }
 
+    public String getJumlahisUUP() {
+        return jumlahisUUP;
+    }
+
+    public void setJumlahisUUP(String jumlahisUUP) {
+        this.jumlahisUUP = jumlahisUUP;
+    }
+
+    public String getNoUrutPemilikUUP() {
+        return noUrutPemilikUUP;
+    }
+
+    public void setNoUrutPemilikUUP(String noUrutPemilikUUP) {
+        this.noUrutPemilikUUP = noUrutPemilikUUP;
+    }
+
     public String getNamaPemilikUUP() {
         return namaPemilikUUP;
     }
@@ -138,20 +154,28 @@ public class UnitUsahaPariwisata implements Parcelable {
         this.namaPemilikUUP = namaPemilikUUP;
     }
 
-    public String getIsPariwisata() {
-        return isPariwisata;
+    public String getKedudukanUP() {
+        return kedudukanUP;
     }
 
-    public void setIsPariwisata(String isPariwisata) {
-        this.isPariwisata = isPariwisata;
+    public void setKedudukanUP(String kedudukanUP) {
+        this.kedudukanUP = kedudukanUP;
     }
 
-    public String getIsPandemi() {
-        return isPandemi;
+    public String getStatusKelola() {
+        return statusKelola;
     }
 
-    public void setIsPandemi(String isPandemi) {
-        this.isPandemi = isPandemi;
+    public void setStatusKelola(String statusKelola) {
+        this.statusKelola = statusKelola;
+    }
+
+    public String getLokasiUP() {
+        return lokasiUP;
+    }
+
+    public void setLokasiUP(String lokasiUP) {
+        this.lokasiUP = lokasiUP;
     }
 
     public String getJenisUUP() {
@@ -162,13 +186,21 @@ public class UnitUsahaPariwisata implements Parcelable {
         this.jenisUUP = jenisUUP;
     }
 
-    public String getNoHp() {
-        return noHp;
+    public String getNoUrutUUP() {
+        return noUrutUUP;
     }
 
-    public void setNoHp(String noHp) {
-        this.noHp = noHp;
+    public void setNoUrutUUP(String noUrutUUP) {
+        this.noUrutUUP = noUrutUUP;
     }
+
+//    public String getNoHp() {
+//        return noHp;
+//    }
+//
+//    public void setNoHp(String noHp) {
+//        this.noHp = noHp;
+//    }
 
     public String getLatitude() {
         return latitude;

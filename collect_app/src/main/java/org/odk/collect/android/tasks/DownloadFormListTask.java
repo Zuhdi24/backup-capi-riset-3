@@ -342,9 +342,10 @@ public class DownloadFormListTask extends AsyncTask<Void, String, HashMap<String
 //                    Log.e("NAMA FORM", formName);
 //                }
 
-
-                formList.put(formId, new FormDetails(formName, downloadUrl, manifestUrl, formId, (version != null) ? version : majorMinorVersion));
-                Log.e("NAMA FORM", formName);
+                if(formName.contains("Riset4")){
+                    formList.put(formId, new FormDetails(formName, downloadUrl, manifestUrl, formId, (version != null) ? version : majorMinorVersion));
+                    Log.e("NAMA FORM", formName);
+                }
             }
 
         } else {

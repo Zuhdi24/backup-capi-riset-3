@@ -160,7 +160,7 @@ public class PklMainActivity extends AppCompatActivity
 
                                 StringRequest request = new StringRequest(
                                         Request.Method.POST,
-                                        serviceBaseUrl + "/Posisipcl",
+                                        serviceBaseUrl + "/posisipcl",
                                         requestFuture,
                                         new Response.ErrorListener() {
                                             @Override

@@ -12,7 +12,7 @@
             <!--android:title="@string/server_url" />-->
         <ListPreference
             android:id="@+id/server_url"
-            android:defaultValue="http://192.168.10.109:8080/ODKAggregate"
+            android:defaultValue="http://103.102.152.229:8080/ODKAggregate"
             android:dialogTitle="@string/change_server_url"
             android:entries="@array/listServer"
             android:entryValues="@array/listServer_values"

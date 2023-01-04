@@ -27,6 +27,7 @@ import org.odk.collect.android.tasks.SaveToDiskTask;
 import org.odk.collect.android.utilities.FileUtils;
 
 import java.io.File;
+import java.util.Locale;
 
 /**
  * @author raja
@@ -183,7 +184,7 @@ public class GenerateKuesioner implements FormLoaderListener, FormSavedListener 
 //            namaFile = namaFile+"-M5";
 //        }
         Log.d(ta, "formcontroller" + (fc == null));
-        Log.d(ta + "nama_krt", st.getNamaUUP());
+        Log.d(ta + "nama_krt", st.getNama_pemilik());
 
         String path = Collect.INSTANCES_PATH + File.separator;
 
@@ -206,21 +207,24 @@ public class GenerateKuesioner implements FormLoaderListener, FormSavedListener 
             }
             preference = CapiPreference.getInstance();
             fc.getreRrenceForElementName(VariableGenerate.nama_kabupaten, st.getNama_kabupaten());
-            fc.getreRrenceForElementName(VariableGenerate.kode_kabupaten, st.getKode_kabupaten());
+            fc.getreRrenceForElementName(VariableGenerate.kode_kabupaten, st.getKode_kabupaten().substring(st.getKode_kabupaten().length() - 2));
             fc.getreRrenceForElementName(VariableGenerate.nama_kecamatan, st.getNama_kecamatan());
-            fc.getreRrenceForElementName(VariableGenerate.kode_kecamatan, st.getKode_kecamatan());
+            fc.getreRrenceForElementName(VariableGenerate.kode_kecamatan, st.getKode_kecamatan().substring(st.getKode_kecamatan().length() - 3));
             fc.getreRrenceForElementName(VariableGenerate.nama_desa, st.getNamaDesa());
             fc.getreRrenceForElementName(VariableGenerate.kode_desa, st.getKode_desa());
 //            fc.getreRrenceForElementName(VariableGenerate.klasifikasi, klasifikasi);
             fc.getreRrenceForElementName(VariableGenerate.no_bs, st.getNoBs());
-            fc.getreRrenceForElementName(VariableGenerate.no_bangunan, st.getNo_bangunan());
-            fc.getreRrenceForElementName(VariableGenerate.no_ruta, st.getNoUrutRuta());
+            fc.getreRrenceForElementName(VariableGenerate.no_urut_uup, st.getNo_urut_uup());
+            fc.getreRrenceForElementName(VariableGenerate.nama_pemilik, st.getNama_pemilik());
+            fc.getreRrenceForElementName(VariableGenerate.nama_pemilik2, st.getNama_pemilik());
 //            fc.getreRrenceForElementName(VariableGenerate.sls_r2, dbsampling.getBlokSensusByKode(st.getKodebs()).getSls());
-            fc.getreRrenceForElementName(VariableGenerate.nama_krt, st.getNamaUUP());
-            fc.getreRrenceForElementName(VariableGenerate.namaPcl, String.valueOf(preference.get(CapiKey.KEY_NAMA)));
+            fc.getreRrenceForElementName(VariableGenerate.RTRW, st.getRTRW());
+            fc.getreRrenceForElementName(VariableGenerate.jenisusaha, st.getJenisusaha());
+            fc.getreRrenceForElementName(VariableGenerate.namaPcl, String.valueOf(preference.get(CapiKey.KEY_NAMA)).toUpperCase(Locale.ROOT));
             fc.getreRrenceForElementName(VariableGenerate.nimPcl, String.valueOf(preference.get(CapiKey.KEY_NIM)));
-            fc.getreRrenceForElementName(VariableGenerate.namaKortim, String.valueOf(preference.get(CapiKey.KEY_NAMA_KORTIM)));
+            fc.getreRrenceForElementName(VariableGenerate.namaKortim, String.valueOf(preference.get(CapiKey.KEY_NAMA_KORTIM)).toUpperCase(Locale.ROOT));
             fc.getreRrenceForElementName(VariableGenerate.nimKortim, String.valueOf(preference.get(CapiKey.KEY_NIM_KORTIM)));
+            fc.getreRrenceForElementName(VariableGenerate.kodetim, "3579" + String.valueOf(preference.get(CapiKey.KEY_NAMA_TIM)).substring(String.valueOf(preference.get(CapiKey.KEY_NAMA_TIM)).length() - 3));
 
             fc.setBeforeMetadata();
 

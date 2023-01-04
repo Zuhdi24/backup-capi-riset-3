@@ -75,7 +75,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         TextView NoUrut = (TextView) convertView.findViewById(R.id.no_urt);
 //        TextView NoUrutUP = (TextView) convertView.findViewById(R.id.no_uup);
         TextView Alamat = (TextView) convertView.findViewById(R.id.alamat);
-        TextView NamaKRT = (TextView) convertView.findViewById(R.id.nama_krt);
+        TextView NamaPemilik = (TextView) convertView.findViewById(R.id.nama_pemilik);
 //        TextView NamaPemilikUUP = (TextView) convertView.findViewById(R.id.nama_pemilik_uup);
         TextView kegiatanUtama = (TextView) convertView.findViewById(R.id.ruta_pertanian);
         Button petunjukArah = (Button) convertView.findViewById(R.id.petunjuk_arah_button);
@@ -132,10 +132,10 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         NoBf.setText(item.getBf());
         NoBs.setText(item.getBs());
         Alamat.setText(item.getAlamat());
-        if (("").equals(item.getNamaUUP())) {
-            NamaKRT.setText("-");
+        if (("").equals(item.getNamaKRT())) {
+            NamaPemilik.setText("-");
         } else {
-            NamaKRT.setText(item.getNamaUUP());
+            NamaPemilik.setText(item.getNamaPemilikUUP());
         }
 
         if (item.getJenisUUP().equals("1")){
@@ -179,7 +179,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
                 } else {
                     searchKey = constraint.toString();
                     for (UnitUsahaPariwisata rt : allRuta) {
-                        String nama = rt.getNamaUUP().toLowerCase();
+                        String nama = rt.getNamaKRT().toLowerCase();
                         String noRuta = String.valueOf(rt.getNoUrutRuta()).toLowerCase();
                         String noBf = rt.getBf().toLowerCase();
                         String noBs = rt.getBs().toLowerCase();

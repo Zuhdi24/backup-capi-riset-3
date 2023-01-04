@@ -27,8 +27,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.vision.text.Line;
-
 import org.odk.collect.android.R;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
@@ -49,14 +47,17 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     int posisi = 0, plus = 0, minus = 1;
     LocationService ls;
 
-    EditText no_segmen, no_bf, no_bs, no_urt, no_urut, namaUUP, alamat, namaPemilik, no_hp;
-    RadioGroup isPariwisata, isPandemi, jenisUUP;
-    RadioButton rbyes, rbno, rbyesPandemi, rbnoPandemi;
-    Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_urtplus, no_urtminus, uupplus, uupminus;
-    TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoURT, pertanyaanNoUrut, pertanyaanNamaUUP,
-            pertanyaanAlamat, pertanyaanNamaPemilik, pertanyaanIsPariwisata, pertanyaanJenisUUP, pertanyaanNoHp;
+    EditText no_segmen, no_bf, no_bs, no_urut_ruta, no_urut_up, namaKRT, alamat, namaPemilik, jumlahisUUP, no_urut_isUUP;
+    RadioGroup isUUP, kedudukanUP, statusKelola, lokasiUP, jenisUUP;
+    RadioButton rbyes, rbno, rbPemilik, rbPengelola, rbStatusyes, rbStatusno, rbLokasiluar, rbLokasidalam, rb1jenisUUP,
+            rb2jenisUUP, rb3jenisUUP;
+    Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_rutaplus, no_rutaminus,
+            no_uupplus, no_uupminus, jumlahisUUPplus, jumlahisUUPminus, no_urut_artplus, no_urut_artminus;
+    TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNoUUP, pertanyaanNamaKRT,
+            pertanyaanisUUP, pertanyaanAlamat, pertanyaanJumlahIsUUP, pertanyaanNoUrutIsUUP, pertanyaanKedudukanUP, pertanyaanStatusUP,
+            pertanyaanLokasiUP, pertanyaanNamaPemilik, pertanyaanJenisUUP;
     View noteView;
-    LinearLayout lin_rtup_tp, lin_nortup_tp, lin_ciri_fisik;
+//    LinearLayout lin_rtup_tp, lin_nortup_tp, lin_ciri_fisik;
     TextView noSegmenTerakhir, noBfTerakhir, noBsTerakhir;
     Toolbar toolbar;
     Location lokasi;
@@ -101,42 +102,61 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         no_segmen = findViewById(R.id.no_urut_segmen);
         no_bf = findViewById(R.id.no_urut_bf);
         no_bs = findViewById(R.id.no_urut_bs);
-        no_urt = findViewById(R.id.no_urt);
-        no_urut = findViewById(R.id.no_urut_ruta);
-        namaUUP = findViewById(R.id.nama_uup);
+        no_urut_ruta = findViewById(R.id.no_urt); //no urut rumah tangga
+        no_urut_up = findViewById(R.id.no_urut_up); //no urut unit usaha pariwisata
+        namaKRT = findViewById(R.id.nama_KRT);
         namaPemilik = findViewById(R.id.nama_pemilik);
-        no_hp = findViewById(R.id.nohp);
+//        no_hp = findViewById(R.id.nohp);
         alamat = findViewById(R.id.alamat);
-        isPariwisata = findViewById(R.id.kategori_uup_yesno);
-        rbyes = findViewById(R.id.kategori_uup_yes);
-        rbno = findViewById(R.id.kategori_uup_no);
-        isPandemi = findViewById(R.id.kategori_pandemi_yesno);
-        rbyesPandemi = findViewById(R.id.kategori_pandemi_yes);
-        rbnoPandemi = findViewById(R.id.kategori_pandemi_no);
+        jumlahisUUP = findViewById(R.id.jumlah_isUUP);
+        no_urut_isUUP = findViewById(R.id.no_urut_art);
+        isUUP = findViewById(R.id.kategori_isUUP);
+        rbyes = findViewById(R.id.kategori_isUUP_yes);
+        rbno = findViewById(R.id.kategori_isUUP_no);
+        kedudukanUP = findViewById(R.id.kategori_kedudukan_up);
+        rbPemilik = findViewById(R.id.kategori_kedudukan_pemilik);
+        rbPengelola = findViewById(R.id.kategori_kedudukan_pengelola);
+        statusKelola = findViewById(R.id.kategori_status_kelola);
+        rbStatusyes = findViewById(R.id.kategori_statuskelola_yes);
+        rbStatusno = findViewById(R.id.kategori_statuskelola_no);
+        lokasiUP = findViewById(R.id.kategori_lokasi_usaha);
+        rbLokasiluar = findViewById(R.id.kategori_lokasiusaha_luar);
+        rbLokasidalam = findViewById(R.id.kategori_lokasiusaha_dalam);
         jenisUUP = findViewById(R.id.kategori_uup);
+        rb1jenisUUP = findViewById(R.id.kategori_uup_1);
+        rb2jenisUUP = findViewById(R.id.kategori_uup_2);
+        rb3jenisUUP = findViewById(R.id.kategori_uup_3);
         segmenplus = findViewById(R.id.segmenplus);
         segmenminus = findViewById(R.id.segmenminus);
         bfplus = findViewById(R.id.bfplus);
         bfminus = findViewById(R.id.bfminus);
         bsplus = findViewById(R.id.bsplus);
         bsminus = findViewById(R.id.bsminus);
-        no_urtplus = findViewById(R.id.no_urtplus);
-        no_urtminus = findViewById(R.id.no_urtminus);
-        uupplus = findViewById(R.id.rutaplus);
-        uupminus = findViewById(R.id.rutaminus);
+        no_rutaplus = findViewById(R.id.no_urtplus);
+        no_rutaminus = findViewById(R.id.no_urtminus);
+        no_uupplus = findViewById(R.id.upplus);
+        no_uupminus = findViewById(R.id.upminus);
+        jumlahisUUPplus = findViewById(R.id.jumlah_isUUPplus);
+        jumlahisUUPminus = findViewById(R.id.jumlah_isUUPminus);
+        no_urut_artplus = findViewById(R.id.no_urut_artplus);
+        no_urut_artminus = findViewById(R.id.no_urut_artminus);
         submit = findViewById(R.id.next);
 
         pertanyaanNoSegmen = findViewById(R.id.textview1);
         pertanyaanNoBf = findViewById(R.id.textview2);
         pertanyaanNoBs = findViewById(R.id.textview3);
-        pertanyaanNoURT = findViewById(R.id.textview15);
-        pertanyaanNoUrut = findViewById(R.id.textview4);
-        pertanyaanNamaUUP = findViewById(R.id.textview5);
+        pertanyaanNoRuta = findViewById(R.id.textview15);
+        pertanyaanNoUUP = findViewById(R.id.textview4);
+        pertanyaanNamaKRT = findViewById(R.id.textview5);
         pertanyaanAlamat = findViewById(R.id.textview7);
-        pertanyaanIsPariwisata = findViewById(R.id.textview13);
+        pertanyaanisUUP = findViewById(R.id.isUUP);
+        pertanyaanJumlahIsUUP = findViewById(R.id.text_jumlah_isUUP);
+        pertanyaanNoUrutIsUUP = findViewById(R.id.text_no_urut_art);
         pertanyaanNamaPemilik = findViewById(R.id.textview10);
+        pertanyaanKedudukanUP = findViewById(R.id.kedudukan_up);
+        pertanyaanStatusUP = findViewById(R.id.status_kelola);
+        pertanyaanLokasiUP = findViewById(R.id.lokasi_usaha);
         pertanyaanJenisUUP = findViewById(R.id.textview9);
-        pertanyaanNoHp = findViewById(R.id.textview11);
 
         kodeUUP = getIntent().getStringExtra("kodeUUP");
         kodeBs = getIntent().getStringExtra("kodeBs");
@@ -160,13 +180,16 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         }
 
 
+        // SET CAPSLOCK ON EDITTEXT
         InputFilter allCaps = new InputFilter.AllCaps();
-
         namaPemilik.setFilters(new InputFilter[]{allCaps});
-        namaUUP.setFilters(new InputFilter[]{allCaps});
+        namaKRT.setFilters(new InputFilter[]{allCaps});
         alamat.setFilters(new InputFilter[]{allCaps});
         no_bf.setFilters(new InputFilter[]{allCaps});
+        no_bs.setFilters(new InputFilter[]{allCaps});
+        no_segmen.setFilters(new InputFilter[]{allCaps});
 
+        // SET NUMBER ON CLICK BUTTON
         no_bf.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -263,6 +286,142 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             }
         });
 
+        no_urut_ruta.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (no_urut_ruta.getText().length() < 3) {
+                        no_urut_ruta.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    } else {
+                        no_urut_ruta.setInputType(InputType.TYPE_CLASS_TEXT);
+                    }
+                }
+            }
+        });
+
+        no_urut_ruta.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (no_urut_ruta.getText().length() < 3) {
+                    no_urut_ruta.setInputType(InputType.TYPE_CLASS_NUMBER);
+                } else {
+                    no_urut_ruta.setInputType(InputType.TYPE_CLASS_TEXT);
+                }
+            }
+        });
+
+        jumlahisUUP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (jumlahisUUP.getText().length() < 2) {
+                        jumlahisUUP.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    } else {
+                        jumlahisUUP.setInputType(InputType.TYPE_CLASS_TEXT);
+                    }
+                }
+            }
+        });
+
+        jumlahisUUP.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (jumlahisUUP.getText().length() < 2) {
+                    jumlahisUUP.setInputType(InputType.TYPE_CLASS_NUMBER);
+                } else {
+                    jumlahisUUP.setInputType(InputType.TYPE_CLASS_TEXT);
+                }
+            }
+        });
+//
+//        no_urut_art.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (hasFocus) {
+//                    if (no_urut_art.getText().length() < 2) {
+//                        no_urut_art.setInputType(InputType.TYPE_CLASS_NUMBER);
+//                    } else {
+//                        no_urut_art.setInputType(InputType.TYPE_CLASS_TEXT);
+//                    }
+//                }
+//            }
+//        });
+//
+//        no_urut_art.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if (no_urut_art.getText().length() < 2) {
+//                    no_urut_art.setInputType(InputType.TYPE_CLASS_NUMBER);
+//                } else {
+//                    no_urut_art.setInputType(InputType.TYPE_CLASS_TEXT);
+//                }
+//            }
+//        });
+
+        no_urut_up.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (no_urut_up.getText().length() < 3) {
+                        no_urut_up.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    } else {
+                        no_urut_up.setInputType(InputType.TYPE_CLASS_TEXT);
+                    }
+                }
+            }
+        });
+
+        no_urut_up.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (no_urut_up.getText().length() < 3) {
+                    no_urut_up.setInputType(InputType.TYPE_CLASS_NUMBER);
+                } else {
+                    no_urut_up.setInputType(InputType.TYPE_CLASS_TEXT);
+                }
+            }
+        });
+
         segmenplus.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -329,77 +488,167 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             }
         });
 
-        no_urtplus.setOnClickListener(new View.OnClickListener() {
+        no_rutaplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int art = 0;
-                setPlusMinus(no_urt, plus, art);
+                setPlusMinus(no_urut_ruta, plus, art);
             }
         });
 
-        no_urtminus.setOnClickListener(new View.OnClickListener() {
+        no_rutaminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int art = 0;
-                setPlusMinus(no_urt, minus, art);
+                setPlusMinus(no_urut_ruta, minus, art);
             }
         });
 
-        uupplus.setOnClickListener(new View.OnClickListener() {
+        jumlahisUUPplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int art = 0;
-                setPlusMinus(no_urut, plus, art);
+                setPlusMinus1(jumlahisUUP, plus, art);
             }
         });
 
-        uupminus.setOnClickListener(new View.OnClickListener() {
+        jumlahisUUPminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int art = 0;
-                setPlusMinus(no_urut, minus, art);
+                setPlusMinus1(jumlahisUUP, minus, art);
             }
         });
 
-        LinearLayout llpandemi = (LinearLayout) findViewById(R.id.lin_uup_pandemi);
-        LinearLayout lljenis = (LinearLayout) findViewById(R.id.lin_rtup_tp);
+        no_urut_artplus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int art = 0;
+                setPlusMinus1(no_urut_isUUP, plus, art);
+            }
+        });
+
+        no_urut_artminus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int art = 0;
+                setPlusMinus1(no_urut_isUUP, minus, art);
+            }
+        });
+
+        no_uupplus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int art = 0;
+                setPlusMinus(no_urut_up, plus, art);
+            }
+        });
+
+        no_uupminus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int art = 0;
+                setPlusMinus(no_urut_up, minus, art);
+            }
+        });
+
+        // SET VIEW ON RADIO BUTTON
+        LinearLayout lljumlahisUUP = (LinearLayout) findViewById(R.id.lin_jumlah_isUUP);
+        LinearLayout llnoUrutisUUP = (LinearLayout) findViewById(R.id.lin_no_urut_art);
+        LinearLayout llkedudukan = (LinearLayout) findViewById(R.id.lin_kedudukan);
+        LinearLayout llstatuskelola = (LinearLayout) findViewById(R.id.lin_status_kelola);
+        LinearLayout lllokasi = (LinearLayout) findViewById(R.id.lin_lokasi_usaha);
         LinearLayout llpemilik = (LinearLayout) findViewById(R.id.lin_nama_pemilik);
+        LinearLayout lljenis = (LinearLayout) findViewById(R.id.lin_rtup_tp);
         LinearLayout llnortup = (LinearLayout) findViewById(R.id.lin_no_ruta);
-        LinearLayout llnohp = (LinearLayout) findViewById(R.id.lin_nohp);
+//        LinearLayout llnohp = (LinearLayout) findViewById(R.id.lin_nohp);
 
-        llpandemi.setVisibility(View.GONE);
-        lljenis.setVisibility(View.GONE);
+        lljumlahisUUP.setVisibility(View.GONE);
+        llnoUrutisUUP.setVisibility(View.GONE);
         llpemilik.setVisibility(View.GONE);
+        llkedudukan.setVisibility(View.GONE);
+        llstatuskelola.setVisibility(View.GONE);
+        lllokasi.setVisibility(View.GONE);
+        lljenis.setVisibility(View.GONE);
         llnortup.setVisibility(View.GONE);
-        llnohp.setVisibility(View.GONE);
+//        llnohp.setVisibility(View.GONE);
 
-        isPariwisata.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        isUUP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(rbyes.isChecked() == true){
-                    llpandemi.setVisibility(View.VISIBLE);
-                }else{
-                    llpandemi.setVisibility(View.GONE);
-                    lljenis.setVisibility(View.GONE);
+                if (rbyes.isChecked()) {
+                    lljumlahisUUP.setVisibility(View.VISIBLE);
+                    llnoUrutisUUP.setVisibility(View.VISIBLE);
+                    llpemilik.setVisibility(View.VISIBLE);
+                    llkedudukan.setVisibility(View.VISIBLE);
+                } else if (rbno.isChecked()) {
+
+                    lljumlahisUUP.setVisibility(View.GONE);
+                    llnoUrutisUUP.setVisibility(View.GONE);
                     llpemilik.setVisibility(View.GONE);
+                    llkedudukan.setVisibility(View.GONE);
+                    llstatuskelola.setVisibility(View.GONE);
+                    lllokasi.setVisibility(View.GONE);
+                    lljenis.setVisibility(View.GONE);
                     llnortup.setVisibility(View.GONE);
-                    llnohp.setVisibility(View.GONE);
+                }
+                else {
+                    lljumlahisUUP.setVisibility(View.GONE);
+                    llnoUrutisUUP.setVisibility(View.GONE);
+                    llpemilik.setVisibility(View.GONE);
+                    llkedudukan.setVisibility(View.GONE);
+                    llstatuskelola.setVisibility(View.GONE);
+                    lllokasi.setVisibility(View.GONE);
+                    lljenis.setVisibility(View.GONE);
+                    llnortup.setVisibility(View.GONE);
                 }
             }
         });
-        isPandemi.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+        kedudukanUP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(rbyesPandemi.isChecked() == true){
-                    lljenis.setVisibility(View.VISIBLE);
-                    llpemilik.setVisibility(View.VISIBLE);
-                    llnortup.setVisibility(View.VISIBLE);
-                    llnohp.setVisibility(View.VISIBLE);
-                }else{
+                if(rbPemilik.isChecked() == true){
+                    llstatuskelola.setVisibility(View.VISIBLE);
+                    lllokasi.setVisibility(View.GONE);
                     lljenis.setVisibility(View.GONE);
-                    llpemilik.setVisibility(View.GONE);
                     llnortup.setVisibility(View.GONE);
-                    llnohp.setVisibility(View.GONE);
+                }else if (rbPengelola.isChecked() == true){
+                    llstatuskelola.setVisibility(View.GONE);
+                    lllokasi.setVisibility(View.VISIBLE);
+                    lljenis.setVisibility(View.GONE);
+                    llnortup.setVisibility(View.GONE);
+                }else {
+                    llstatuskelola.setVisibility(View.GONE);
+                    lllokasi.setVisibility(View.GONE);
+                    lljenis.setVisibility(View.GONE);
+                    llnortup.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        statusKelola.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(rbStatusyes.isChecked() == true){
+                    lllokasi.setVisibility(View.VISIBLE);
+                }else {
+                    lllokasi.setVisibility(View.GONE);
+                    lljenis.setVisibility(View.GONE);
+                    llnortup.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        lokasiUP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(rbLokasidalam.isChecked() == true){
+                    lljenis.setVisibility(View.VISIBLE);
+                    llnortup.setVisibility(View.VISIBLE);
+                }else {
+                    lljenis.setVisibility(View.GONE);
+                    llnortup.setVisibility(View.GONE);
                 }
             }
         });
@@ -452,15 +701,15 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             pertanyaanNoBs.requestFocus();
             no_bs.requestFocus();
             Log.d(TAG, "submitRT: no urut bs/bf salah");
-        }else if (no_urt.getText().length() < 3) {
+        }else if (no_urut_ruta.getText().length() < 3) {
             message = "No urut ruta harus 3 digit dan diisi";
-            pertanyaanNoURT.requestFocus();
-            no_urt.requestFocus();
+            pertanyaanNoRuta.requestFocus();
+            no_urut_ruta.requestFocus();
             Log.d(TAG, "submitRT: no urut ruta salah");
-        } else if (namaUUP.getText().length() < 1) {
+        } else if (namaKRT.getText().length() < 1) {
             message = "Nama Kepala Rumah Tangga harus diisi";
-            pertanyaanNamaUUP.requestFocus();
-            namaUUP.requestFocus();
+            pertanyaanNamaKRT.requestFocus();
+            namaKRT.requestFocus();
             Log.d(TAG, "submitRT: nama kepala rt salah");
         } else if (alamat.getText().length() < 1) {
             message = "Alamat harus diisi";
@@ -477,150 +726,223 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             pertanyaanAlamat.requestFocus();
             alamat.requestFocus();
             Log.d(TAG, "submitRT: RT/RW salah");
-        } else if (isPariwisata.getCheckedRadioButtonId() == -1) {
-            message = "Apakah unit usaha pariwisata? harus diisi";
-            pertanyaanIsPariwisata.requestFocus();
-            Log.d(TAG, "submitRT: isPariwisata salah");
-        } else if (isPariwisata.getCheckedRadioButtonId() == rbyes.getId()) {
-            if(isPandemi.getCheckedRadioButtonId() == rbyesPandemi.getId()) {
-                if (jenisUUP.getCheckedRadioButtonId() == -1) {
-                    message = "Jenis unit usaha pariwisata harus diisi";
-                    pertanyaanJenisUUP.requestFocus();
-                    Log.d(TAG, "submitRT: jenisUUP salah");
-                } else if (namaPemilik.getText().length() < 1) {
-                    message = "Pemilik unit usaha pariwisata harus diisi";
-                    pertanyaanNamaPemilik.requestFocus();
-                    namaPemilik.requestFocus();
-                    Log.d(TAG, "submitRT: nama pemilik salah");
-                } else if (no_urut.getText().length() < 1) {
-                    message = "No Urut Ruta Usaha Pariwisata harus diisi";
-                    pertanyaanNoUrut.requestFocus();
-                    no_urut.requestFocus();
-                    Log.d(TAG, "submitRT: no_ruta salah");
-                } else if (no_hp.getText().length() < 1) {
-                    message = "No HP harus diisi";
-                    pertanyaanNoHp.requestFocus();
-                    no_hp.requestFocus();
-                    Log.d(TAG, "submitRT: no hp salah");
-                } else if (!Pattern.compile("^(62)8[1-9][0-9]{6,9}$").matcher(no_hp.getText().toString()).find()) {
-                    message = "No HP tidak sesuai dengan format, cek kembali"; //CEK
-                    pertanyaanNoHp.requestFocus();
-                    no_hp.requestFocus();
-                    Log.d(TAG, "submitRT: no hp salah");
-                }else {
+        } else if (isUUP.getCheckedRadioButtonId() == -1) {
+            message = "Pertanyaan 7 harus diisi";
+            pertanyaanisUUP.requestFocus();
+            Log.d(TAG, "submitRT: Pertanyaan 7 salah");
+        } else if (rbyes.isChecked() == true) {
+            if (jumlahisUUP.getText().length() < 2) {
+                message ="Jumlah ART harus diisi";
+                pertanyaanJumlahIsUUP.requestFocus();
+                Log.d(TAG, "submitRT: Jumlah ART salah");
+            } else if (no_urut_isUUP.getText().length() < 2) {
+                message ="No urut ART harus diisi";
+                pertanyaanNoUrutIsUUP.requestFocus();
+                Log.d(TAG, "submitRT: No urut ART salah");
+            } else if (namaPemilik.getText().length() < 1) {
+                message = "Nama Pemilik harus diisi";
+                pertanyaanNamaPemilik.requestFocus();
+                namaPemilik.requestFocus();
+                Log.d(TAG, "submitRT: nama pemilik salah");
+            } else if (kedudukanUP.getCheckedRadioButtonId() == -1) {
+                message = "Pertanyaan 8 harus diisi";
+                pertanyaanKedudukanUP.requestFocus();
+                Log.d(TAG, "submitRT: Pertanyaan 8 salah");
+            } else if (rbPemilik.isChecked() == true) {
+                if (statusKelola.getCheckedRadioButtonId() == -1) {
+                    message = "Pertanyaan 9 harus diisi";
+                    pertanyaanStatusUP.requestFocus();
+                    Log.d(TAG, "submitRT: Pertanyaan 9 salah");
+                } else if (rbStatusyes.isChecked() == true) {
+                    if (lokasiUP.getCheckedRadioButtonId() == -1) {
+                        message = "Pertanyaan 10 harus diisi";
+                        pertanyaanLokasiUP.requestFocus();
+                        Log.d(TAG, "submitRT: Pertanyaan 10 salah");
+                    } else if (rbLokasidalam.isChecked() == true) {
+                        if (jenisUUP.getCheckedRadioButtonId() == -1) {
+                            message = "Pertanyaan 12 harus diisi";
+                            pertanyaanJenisUUP.requestFocus();
+                            Log.d(TAG, "submitRT: Pertanyaan 11 salah");
+                        } else if (no_urut_up.getText().length() < 1) {
+                            message = "No urut UP harus diisi";
+                            pertanyaanNoUUP.requestFocus();
+                            no_urut_up.requestFocus();
+                            Log.d(TAG, "submitRT: no urut up salah");
+                        } else if (no_urut_up.getText().length() < 3 && no_urut_up.getText().length() > 3) {
+                            message = "No urut UP harus 3 digit";
+                            pertanyaanNoUUP.requestFocus();
+                            no_urut_up.requestFocus();
+                            Log.d(TAG, "submitRT: no urut up salah");
+                        } else {
+                            isFormClear = true;
+                            Log.d(TAG, "submitRT: Form clear");
+                        }
+                    } else {
+                        isFormClear = true;
+                        Log.d(TAG, "submitRT: Form clear");
+                    }
+                } else {
                     isFormClear = true;
-                    Log.d(TAG, "submitRT: form clear");
+                    Log.d(TAG, "submitRT: Form clear");
                 }
-            }else {
+            } else if (rbPengelola.isChecked() == true) {
+                if (lokasiUP.getCheckedRadioButtonId() == -1) {
+                    message = "Pertanyaan 10 harus diisi";
+                    pertanyaanLokasiUP.requestFocus();
+                    Log.d(TAG, "submitRT: Pertanyaan 10 salah");
+                } else if (rbLokasidalam.isChecked() == true) {
+                    if (namaPemilik.getText().length() < 1) {
+                        message = "Nama Pemilik harus diisi";
+                        pertanyaanNamaPemilik.requestFocus();
+                        namaPemilik.requestFocus();
+                        Log.d(TAG, "submitRT: nama pemilik salah");
+                    } else if (jenisUUP.getCheckedRadioButtonId() == -1) {
+                        message = "Pertanyaan 12 harus diisi";
+                        pertanyaanJenisUUP.requestFocus();
+                        Log.d(TAG, "submitRT: Pertanyaan 11 salah");
+                    } else if (no_urut_up.getText().length() < 1) {
+                        message = "No urut UP harus diisi";
+                        pertanyaanNoUUP.requestFocus();
+                        no_urut_up.requestFocus();
+                        Log.d(TAG, "submitRT: no urut up salah");
+                    } else if (no_urut_up.getText().length() < 3 && no_urut_up.getText().length() > 3) {
+                        message = "No urut UP harus 3 digit";
+                        pertanyaanNoUUP.requestFocus();
+                        no_urut_up.requestFocus();
+                        Log.d(TAG, "submitRT: no urut up salah");
+                    } else {
+                        isFormClear = true;
+                        Log.d(TAG, "submitRT: Form clear");
+                    }
+                } else {
+                    isFormClear = true;
+                    Log.d(TAG, "submitRT: Form clear");
+                }
+            } else {
                 isFormClear = true;
-                Log.d(TAG, "submitRT: form clear");
+                Log.d(TAG, "submitRT: Form clear");
             }
         } else {
             isFormClear = true;
             Log.d(TAG, "submitRT: form clear");
         }
 
-        Log.d(TAG, "submitRT: no urut ruta " + no_urut.getText().toString() + " ,posisi " + posisi);
+        Log.d(TAG, "submitRT: no urut ruta " + no_urut_up.getText().toString() + " ,posisi " + posisi);
 
         //TODO FUNGSI Noruta Usaha Pariwisata UNIK
-        ArrayList<UnitUsahaPariwisata> listRutaUP = db.getListUnitUsahaPariwisata(kodeBs);
-        for (int i = 0; i<listRutaUP.size() ; i++){
-            if(no_urut.getText().toString().equals(listRutaUP.get(i).getNoUrutRuta()) && posisi != 0){
-                if(no_urut.getText().toString().equals("000")){
-                    isFormClear = true;
-                }else{
-                    message = "No Urut Ruta Usaha Pariwisata harus harus unik";
-                    pertanyaanNoUrut.requestFocus();
-                    no_urut.requestFocus();
-                    isFormClear = false;
-                    Log.d(TAG, "submitRT: No Urut Ruta Usaha Pariwisata salah");
-                }
-            }
-            Log.d(TAG, "submitRT: UNIK!");
-        }
+//        ArrayList<UnitUsahaPariwisata> listRutaUP = db.getListUnitUsahaPariwisata(kodeBs);
+//        for (int i = 0; i<listRutaUP.size() ; i++){
+//            if(no_urut_up.getText().toString().equals(listRutaUP.get(i).getNoUrutRuta()) && posisi != 0){
+//                if(no_urut_up.getText().toString().equals("000")){
+//                    isFormClear = true;
+//                }else{
+//                    message = "No Urut Ruta Usaha Pariwisata harus unik";
+//                    pertanyaanNoUUP.requestFocus();
+//                    no_urut_up.requestFocus();
+//                    isFormClear = false;
+//                    Log.d(TAG, "submitRT: No Urut Ruta Usaha Pariwisata salah");
+//                }
+//            }
+//            Log.d(TAG, "submitRT: UNIK!");
+//        }
 
-        //TODO FUNGSI Noruta UNIK
-        ArrayList<UnitUsahaPariwisata> listRuta = db.getListUnitUsahaPariwisata(kodeBs);
-        for (int i = 0; i<listRuta.size() ; i++){
-            if(no_urt.getText().toString().equals(listRuta.get(i).getNoUrutRuta()) && posisi != 0){
-                if(no_urt.getText().toString().equals("000")){
-                    isFormClear = true;
-                }else{
-                    message = "No Urut Ruta harus harus unik";
-                    pertanyaanNoURT.requestFocus();
-                    no_urt.requestFocus();
-                    isFormClear = false;
-                    Log.d(TAG, "submitRT: No Urut Ruta salah");
-                }
-            }
-            Log.d(TAG, "submitRT: UNIK!");
-        }
+//        //TODO FUNGSI Noruta UNIK
+//        ArrayList<UnitUsahaPariwisata> listRuta = db.getListUnitUsahaPariwisata(kodeBs);
+//        for (int i = 0; i<listRuta.size() ; i++){
+//            if(no_urt.getText().toString().equals(listRuta.get(i).getNoUrutRuta()) && posisi != 0){
+//                if(no_urt.getText().toString().equals("000")){
+//                    isFormClear = true;
+//                }else{
+//                    message = "No Urut Ruta harus harus unik";
+//                    pertanyaanNoURT.requestFocus();
+//                    no_urt.requestFocus();
+//                    isFormClear = false;
+//                    Log.d(TAG, "submitRT: No Urut Ruta salah");
+//                }
+//            }
+//            Log.d(TAG, "submitRT: UNIK!");
+//        }
 
         if (isFormClear) {
             unitUsahaPariwisata.setKodeBs(kodeBs);
             unitUsahaPariwisata.setNoSegmen(no_segmen.getText().toString());
             unitUsahaPariwisata.setBf(no_bf.getText().toString().toUpperCase());
             unitUsahaPariwisata.setBs(no_bs.getText().toString());
-            unitUsahaPariwisata.setNoUrutRuta(no_urt.getText().toString());
-            unitUsahaPariwisata.setNoUrutUUP(no_urut.getText().toString());
-            unitUsahaPariwisata.setNamaUUP(namaUUP.getText().toString());
+            unitUsahaPariwisata.setNoUrutRuta(no_urut_ruta.getText().toString());
+            unitUsahaPariwisata.setNoUrutUUP(no_urut_up.getText().toString());
+            unitUsahaPariwisata.setNamaKRT(namaKRT.getText().toString());
             unitUsahaPariwisata.setAlamat(alamat.getText().toString());
-            if(isPariwisata.getCheckedRadioButtonId() == R.id.kategori_uup_yes) {
-                unitUsahaPariwisata.setIsPariwisata("1");
-                if(isPandemi.getCheckedRadioButtonId() == R.id.kategori_pandemi_yes) {
-                    unitUsahaPariwisata.setIsPandemi("1");
-                    unitUsahaPariwisata.setNamaPemilikUUP(namaPemilik.getText().toString());
-                    if(jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_1) unitUsahaPariwisata.setJenisUUP("1");
-                    else if(jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_2) unitUsahaPariwisata.setJenisUUP("2");
-                    else if(jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_3) unitUsahaPariwisata.setJenisUUP("3");
-                    else if(jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_4) unitUsahaPariwisata.setJenisUUP("4");
-                    else unitUsahaPariwisata.setJenisUUP("");
-                    unitUsahaPariwisata.setNoHp(no_hp.getText().toString());
+            if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_yes) {
+                unitUsahaPariwisata.setJumlahisUUP(jumlahisUUP.getText().toString());
+                unitUsahaPariwisata.setNoUrutPemilikUUP(no_urut_isUUP.getText().toString());
+                unitUsahaPariwisata.setNamaPemilikUUP(namaPemilik.getText().toString());
+                if(kedudukanUP.getCheckedRadioButtonId() == R.id.kategori_kedudukan_pemilik) {
+                    unitUsahaPariwisata.setKedudukanUP("1");
+                    if(statusKelola.getCheckedRadioButtonId() == R.id.kategori_statuskelola_yes) {
+                        unitUsahaPariwisata.setStatusKelola("1");
+                        if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_dalam) {
+                            unitUsahaPariwisata.setLokasiUP("1");
+                        } else if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_luar) {
+                            unitUsahaPariwisata.setLokasiUP("0");
+                        }
+                    } else if(statusKelola.getCheckedRadioButtonId() == R.id.kategori_statuskelola_no) {
+                        unitUsahaPariwisata.setStatusKelola("0");
+                        unitUsahaPariwisata.setLokasiUP("-");
+                    }
+                } else if(kedudukanUP.getCheckedRadioButtonId() == R.id.kategori_kedudukan_pengelola) {
+                    unitUsahaPariwisata.setKedudukanUP("2");
+                    unitUsahaPariwisata.setStatusKelola("-");
+                    if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_dalam) {
+                        unitUsahaPariwisata.setLokasiUP("1");
+                    } else if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_luar) {
+                        unitUsahaPariwisata.setLokasiUP("0");
+                    }
                 }
-                else if(isPandemi.getCheckedRadioButtonId() == R.id.kategori_pandemi_no) {
-                    unitUsahaPariwisata.setIsPandemi("0");
-                    unitUsahaPariwisata.setNamaPemilikUUP("");
-                    unitUsahaPariwisata.setJenisUUP("");
-                    unitUsahaPariwisata.setNoHp("");
-                } else unitUsahaPariwisata.setIsPandemi("");
+            } else if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_no) {
+                jumlahisUUP.setText("00");
+                unitUsahaPariwisata.setJumlahisUUP(jumlahisUUP.getText().toString());
+                unitUsahaPariwisata.setNoUrutPemilikUUP("-");
+                unitUsahaPariwisata.setNamaPemilikUUP("-");
+                unitUsahaPariwisata.setKedudukanUP("-");
+                unitUsahaPariwisata.setStatusKelola("-");
+                unitUsahaPariwisata.setLokasiUP("-");
             }
-            else if(isPariwisata.getCheckedRadioButtonId() == R.id.kategori_uup_no) {
-                unitUsahaPariwisata.setIsPariwisata("0");
-                unitUsahaPariwisata.setIsPandemi("");
-                if(isPandemi.getCheckedRadioButtonId() == R.id.kategori_pandemi_yes) {
-                    unitUsahaPariwisata.setIsPandemi("");
-                    unitUsahaPariwisata.setNamaPemilikUUP("");
-                    unitUsahaPariwisata.setJenisUUP("");
-                    unitUsahaPariwisata.setNoHp("");
-                } else {
-                    unitUsahaPariwisata.setIsPandemi("");
-                    unitUsahaPariwisata.setNamaPemilikUUP("");
-                    unitUsahaPariwisata.setJenisUUP("");
-                    unitUsahaPariwisata.setNoHp("");
-                }
-            } else unitUsahaPariwisata.setIsPariwisata("");
+            if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_1) {
+                unitUsahaPariwisata.setJenisUUP("1");
+            } else if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_2) {
+                unitUsahaPariwisata.setJenisUUP("2");
+            } else if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_3) {
+                unitUsahaPariwisata.setJenisUUP("3");
+            } else {
+                unitUsahaPariwisata.setJenisUUP("-");
+            }
             SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy kk:mm:ss");
             unitUsahaPariwisata.setTime(sdf.format(new Date()));
 
-            int jumlahruta = 1 + db.getJumlahUUP(kodeBs);
+//            int jumlahruta = 1 + db.getJumlahUUP(kodeBs);
 
-            no_urt.setText("001");
-            no_urut.setText("001");
-            if (kodeUUP != null && posisi == 0) {
-                if(no_urt.getText().toString().equals("000")){
-                    unitUsahaPariwisata.setNoUrutRuta("000");
-//                    RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-//                    rumahTanggaRiset4.setNoUrutRuta(no_urt.getText().toString());
-                }
-            } else{
-//                rumahTangga.setStatus(RumahTangga.STATUS_INSERT);
-                if(no_urt.getText().toString().equals("000")){
-                    unitUsahaPariwisata.setNoUrutRuta("000");
-                }else{
-                    unitUsahaPariwisata.setNoUrutRuta(ubahNomor(jumlahruta));
-                }
-            }
-            Log.i(TAG, "submitRT: norut " + unitUsahaPariwisata.getNoUrutRuta());
+//            no_urut_ruta.setText("001");
+//            if(rbno.isChecked()) {
+//                jumlahisUUP.setText("00");
+//            }
+//            no_urut_ruta.setText("001");
+//            no_urut_up.setText("001");
+//            if (kodeUUP != null && posisi == 0) {
+//                if(no_urt.getText().toString().equals("000")){
+//                    unitUsahaPariwisata.setNoUrutRuta("000");
+////                    RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+////                    rumahTanggaRiset4.setNoUrutRuta(no_urt.getText().toString());
+//                }
+//            } else{
+////                rumahTangga.setStatus(RumahTangga.STATUS_INSERT);
+//                if(no_urt.getText().toString().equals("000")){
+//                    unitUsahaPariwisata.setNoUrutRuta("000");
+//                }
+//                else{
+//                    unitUsahaPariwisata.setNoUrutRuta(ubahNomor(jumlahruta));
+//                }
+//            }
+//            Log.i(TAG, "submitRT: norut " + unitUsahaPariwisata.getNoUrutRuta());
 
 
 
@@ -643,10 +965,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                             unitUsahaPariwisata.setLatitude(ruta.getLatitude());
                             unitUsahaPariwisata.setLongitude(ruta.getLongitude());
                             unitUsahaPariwisata.setAkurasi(ruta.getAkurasi());
-                            if (db.clearkanNoUUP(kodeBs)) {
-                                Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil diperbaharui", Toast.LENGTH_SHORT).show();
-                                ActivitySync.backupLocal(getApplicationContext());
-                            }
+                            Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil diperbaharui", Toast.LENGTH_SHORT).show();
+                            ActivitySync.backupLocal(getApplicationContext());
+//                            if (db.clearkanNoUUP(kodeBs)) {
+//
+//                            }
                             finish();
                         } else {
                             Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga gagal diperbaharui", Toast.LENGTH_SHORT).show();
@@ -672,10 +995,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 unitUsahaPariwisata.setAkurasi(rt.getAkurasi());
                 if (db.updateUUP(unitUsahaPariwisata, kodeBs, kodeUUP)) {
 //                    RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-                    if (db.clearkanNoUUP(kodeBs)) {
-                        Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil diperbaharui", Toast.LENGTH_SHORT).show();
-                        ActivitySync.backupLocal(getApplicationContext());
-                    }
+                    Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil diperbaharui", Toast.LENGTH_SHORT).show();
+                    ActivitySync.backupLocal(getApplicationContext());
+//                    if (db.clearkanNoUUP(kodeBs)) {
+
+//                    }
                     finish();
                 } else {
                     Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga gagal diperbaharui", Toast.LENGTH_SHORT).show();
@@ -693,13 +1017,15 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 }
 
                 if (db.insertUUP(unitUsahaPariwisata)) {
-                    if (db.clearkanNoUUP(kodeBs)) {
-                        Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil dimasukan", Toast.LENGTH_SHORT).show();
-                        ActivitySync.backupLocal(getApplicationContext());
-                        finish();
-                    } else {
-                        Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga gagal dimasukan", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil dimasukan", Toast.LENGTH_SHORT).show();
+                    ActivitySync.backupLocal(getApplicationContext());
+                    finish();
+//                    if (db.clearkanNoUUP(kodeBs)) {
+//
+//
+//                    } else {
+//                        Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga gagal dimasukan", Toast.LENGTH_SHORT).show();
+//                    }
                 }else {
                     Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga gagal dimasukan", Toast.LENGTH_SHORT).show();
                 }
@@ -709,6 +1035,50 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             Toast.makeText(IsiRumahTanggaActivity.this, message, Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void setPlusMinus1(EditText form, int x, int art) {
+        int myNum = 0;
+        if (form.equals(no_segmen)) {
+            try {
+                myNum = Integer.parseInt(form.getText().toString().substring(1));
+            } catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+        } else if (form.getText().toString().equals("")) {
+            myNum = 0;
+        }
+
+        try {
+            int i = 1;
+            while (true) {
+                myNum = Integer.parseInt(form.getText().toString().substring(0, i++));
+            }
+        } catch (Exception e) {
+
+        }
+
+        if (x == 0) {
+            myNum = myNum + 1;
+        } else {
+            if (myNum == 0) {
+                myNum = 0;
+            } else {
+                myNum = myNum - 1;
+            }
+        }
+        int length = String.valueOf(myNum).length();
+        if (art == 0) {
+            switch (length) {
+                case 1:
+                    form.setText("0" + String.valueOf(myNum));
+                    break;
+                case 2:
+                    form.setText(String.valueOf(myNum));
+            }
+        } else {
+            form.setText(String.valueOf(myNum));
+        }
     }
 
     public void setPlusMinus(EditText form, int x, int art) {
@@ -815,51 +1185,67 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         no_segmen.setText(uup.getNoSegmen());
         no_bf.setText(uup.getBf());
         no_bs.setText(uup.getBs());
-        no_urt.setText(uup.getNoUrutRuta());
-        no_urut.setText(uup.getNoUrutUUP());
-        namaUUP.setText(uup.getNamaUUP());
+        no_urut_ruta.setText(uup.getNoUrutRuta());
+        namaKRT.setText(uup.getNamaKRT());
         alamat.setText(uup.getAlamat());
 
         RadioButton a1,a2;
-        if(uup.getIsPariwisata().equals("1")) {
-            a1 = isPariwisata.findViewById(R.id.kategori_uup_yes);
+        if(uup.getJumlahisUUP().equals("00")){
+            a1 = (RadioButton) findViewById(R.id.kategori_isUUP_no);
             a1.setChecked(true);
-        }
-        else if(uup.getIsPariwisata().equals("0")){
-            a2 = isPariwisata.findViewById(R.id.kategori_uup_no);
+        }else{
+            a2 = (RadioButton) findViewById(R.id.kategori_isUUP_yes);
             a2.setChecked(true);
+            jumlahisUUP.setText(uup.getJumlahisUUP());
+            no_urut_isUUP.setText(uup.getNoUrutPemilikUUP());
+            namaPemilik.setText(uup.getNamaPemilikUUP());
         }
 
         RadioButton b1,b2;
-        if(uup.getIsPandemi().equals("1")) {
-            b1 = isPandemi.findViewById(R.id.kategori_pandemi_yes);
+        if(uup.getKedudukanUP().equals("1")) {
+            b1 = kedudukanUP.findViewById(R.id.kategori_kedudukan_pemilik);
             b1.setChecked(true);
         }
-        else if(uup.getIsPandemi().equals("0")){
-            b2 = isPandemi.findViewById(R.id.kategori_pandemi_no);
+        else if(uup.getKedudukanUP().equals("2")){
+            b2 = kedudukanUP.findViewById(R.id.kategori_kedudukan_pengelola);
             b2.setChecked(true);
         }
 
-        namaPemilik.setText(uup.getNamaPemilikUUP());
-        no_hp.setText(uup.getNoHp());
-        RadioButton c1,c2,c3,c4;
-
-        if(uup.getJenisUUP().equals("1")) {
-            c1 = jenisUUP.findViewById(R.id.kategori_uup_1);
+        RadioButton c1,c2;
+        if(uup.getStatusKelola().equals("1")) {
+            c1 = statusKelola.findViewById(R.id.kategori_statuskelola_yes);
             c1.setChecked(true);
         }
-        else if(uup.getJenisUUP().equals("2")){
-            c2 = jenisUUP.findViewById(R.id.kategori_uup_2);
+        else if(uup.getStatusKelola().equals("0")){
+            c2 = statusKelola.findViewById(R.id.kategori_statuskelola_no);
             c2.setChecked(true);
         }
+
+        RadioButton d1,d2;
+        if(uup.getLokasiUP().equals("1")) {
+            d1 = lokasiUP.findViewById(R.id.kategori_lokasiusaha_dalam);
+            d1.setChecked(true);
+        }
+        else if(uup.getLokasiUP().equals("0")){
+            d2 = lokasiUP.findViewById(R.id.kategori_lokasiusaha_luar);
+            d2.setChecked(true);
+        }
+//        no_hp.setText(uup.getNoHp());
+        RadioButton e1,e2,e3;
+        if(uup.getJenisUUP().equals("1")) {
+            e1 = jenisUUP.findViewById(R.id.kategori_uup_1);
+            e1.setChecked(true);
+        }
+        else if(uup.getJenisUUP().equals("2")){
+            e2 = jenisUUP.findViewById(R.id.kategori_uup_2);
+            e2.setChecked(true);
+        }
         else if(uup.getJenisUUP().equals("3")){
-            c3 = jenisUUP.findViewById(R.id.kategori_uup_3);
-            c3.setChecked(true);
+            e3 = jenisUUP.findViewById(R.id.kategori_uup_3);
+            e3.setChecked(true);
         }
-        else if(uup.getJenisUUP().equals("4")){
-            c4 = jenisUUP.findViewById(R.id.kategori_uup_4);
-            c4.setChecked(true);
-        }
+
+        no_urut_up.setText(uup.getNoUrutUUP());
 
     }
 
@@ -899,11 +1285,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //            }
 
             if (no_urutRuta + 1 < 10) {
-                no_urt.setText(("00" + (no_urutRuta + 1)));
+                no_urut_ruta.setText(("00" + (no_urutRuta + 1)));
             } else if (no_urutRuta + 1 < 100) { //TADI noBf
-                no_urt.setText(("0" + (no_urutRuta + 1)));
+                no_urut_ruta.setText(("0" + (no_urutRuta + 1)));
             } else {
-                no_urt.setText(String.valueOf((no_urutRuta + 1)));
+                no_urut_ruta.setText(String.valueOf((no_urutRuta + 1)));
             }
 
             int no_urutUP = 0;
@@ -911,23 +1297,42 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 no_urutUP = Integer.parseInt(lastRuta.getNoUrutUUP());
             } catch (Exception e) {
             }
-            String apakahPariwisata = lastRuta.getIsPariwisata();
-            String apakahPandemi = lastRuta.getIsPandemi();
-            if(apakahPariwisata.equals("1")){
-                if(apakahPandemi.equals("1")){
-                    if (no_urutUP + 1 < 10) {
-                        no_urut.setText(("00" + (no_urutUP + 1)));
-                    } else if (no_urutUP + 1 < 100) { //TADI noBf
-                        no_urut.setText(("0" + (no_urutUP + 1)));
+            String last_apakahUUP = lastRuta.getJumlahisUUP();
+            String last_kedudukanUP = lastRuta.getKedudukanUP();
+            String last_statusKelola = lastRuta.getStatusKelola();
+            String last_lokasiUP = lastRuta.getLokasiUP();
+
+            if(last_apakahUUP.equals("00")){
+                no_urut_up.setText(lastRuta.getNoUrutUUP());
+            }else {
+                if (last_kedudukanUP.equals("1")) {
+                    if(last_statusKelola.equals("1") && last_lokasiUP.equals("1")){
+                        if (no_urutUP + 1 < 10) {
+                            no_urut_up.setText(("00" + (no_urutUP + 1)));
+                        } else if (no_urutUP + 1 < 100) {
+                            no_urut_up.setText(("0" + (no_urutUP + 1)));
+                        } else {
+                            no_urut_up.setText(String.valueOf((no_urutUP + 1)));
+                        }
                     } else {
-                        no_urut.setText(String.valueOf((no_urutUP + 1)));
+                        no_urut_up.setText(lastRuta.getNoUrutUUP());
+                    }
+                } else if(last_kedudukanUP.equals("2")) {
+                    if (last_lokasiUP.equals("1")) {
+                        if (no_urutUP + 1 < 10) {
+                            no_urut_up.setText(("00" + (no_urutUP + 1)));
+                        } else if (no_urutUP + 1 < 100) {
+                            no_urut_up.setText(("0" + (no_urutUP + 1)));
+                        } else {
+                            no_urut_up.setText(String.valueOf((no_urutUP + 1)));
+                        }
+                    } else {
+                        no_urut_up.setText(lastRuta.getNoUrutUUP());
                     }
                 } else {
-                    no_urut.setText(lastRuta.getNoUrutUUP());
+                    no_urut_up.setText(lastRuta.getNoUrutUUP());
                 }
-            } else {
-                no_urut.setText(lastRuta.getNoUrutUUP());
-            }
+                }
 
 //            int no_urutUP = 0;
 //            try {
@@ -962,16 +1367,86 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         }
     }
 
+    //PREFILL SALIN ISIAN RUTA
     public void prefillSameBs(String kodeBs, String kodeUUP) {
         UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        UnitUsahaPariwisata lastRuta = db.getLastRuta(kodeBs);
+
+        no_segmen.setText(ruta.getNoSegmen());
 
         no_bf.setText(ruta.getBf());
 
         no_bs.setText(ruta.getBs());
 
-        no_segmen.setText(ruta.getNoSegmen());
+        no_urut_ruta.setText(ruta.getNoUrutRuta());
+
+        namaKRT.setText(ruta.getNamaKRT());
 
         alamat.setText(ruta.getAlamat());
+
+        RadioButton isUUP_ya = (RadioButton) findViewById(R.id.kategori_isUUP_yes);
+        isUUP_ya.setChecked(true);
+
+        jumlahisUUP.setText(ruta.getJumlahisUUP());
+
+        int no_urutPemilikUUP = 0;
+        int jumlahisUUP = 0;
+        try {
+            jumlahisUUP = Integer.parseInt(lastRuta.getJumlahisUUP());
+            no_urutPemilikUUP = Integer.parseInt(lastRuta.getNoUrutPemilikUUP());
+        } catch (Exception e) {
+        }
+
+        if (no_urutPemilikUUP < jumlahisUUP) {
+            if (no_urutPemilikUUP + 1 < 10) {
+                no_urut_isUUP.setText(("0" + (no_urutPemilikUUP + 1)));
+            }
+        } else {
+            no_urut_isUUP.setText("Telah Terisi Semua");
+        }
+
+        // AUTO INCREMENT NO URUT UUP
+        int no_urutUP = 0;
+        try {
+            no_urutUP = Integer.parseInt(lastRuta.getNoUrutUUP());
+        } catch (Exception e) {
+        }
+        String last_apakahUUP = lastRuta.getJumlahisUUP();
+        String last_kedudukanUP = lastRuta.getKedudukanUP();
+        String last_statusKelola = lastRuta.getStatusKelola();
+        String last_lokasiUP = lastRuta.getLokasiUP();
+
+        if(last_apakahUUP.equals("00")){
+            no_urut_up.setText(lastRuta.getNoUrutUUP());
+        }else {
+            if (last_kedudukanUP.equals("1")) {
+                if(last_statusKelola.equals("1") && last_lokasiUP.equals("1")){
+                    if (no_urutUP + 1 < 10) {
+                        no_urut_up.setText(("00" + (no_urutUP + 1)));
+                    } else if (no_urutUP + 1 < 100) {
+                        no_urut_up.setText(("0" + (no_urutUP + 1)));
+                    } else {
+                        no_urut_up.setText(String.valueOf((no_urutUP + 1)));
+                    }
+                } else {
+                    no_urut_up.setText(lastRuta.getNoUrutUUP());
+                }
+            } else if(last_kedudukanUP.equals("2")) {
+                if (last_lokasiUP.equals("1")) {
+                    if (no_urutUP + 1 < 10) {
+                        no_urut_up.setText(("00" + (no_urutUP + 1)));
+                    } else if (no_urutUP + 1 < 100) {
+                        no_urut_up.setText(("0" + (no_urutUP + 1)));
+                    } else {
+                        no_urut_up.setText(String.valueOf((no_urutUP + 1)));
+                    }
+                } else {
+                    no_urut_up.setText(lastRuta.getNoUrutUUP());
+                }
+            } else {
+                no_urut_up.setText(lastRuta.getNoUrutUUP());
+            }
+        }
     }
 
     public void prefillNearBf(String kodeBs, String kodeUUP) {

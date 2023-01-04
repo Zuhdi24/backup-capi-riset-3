@@ -95,7 +95,7 @@
     </string-array>
 
     <string-array name="listServer_values" translatable="false">
-        <item>http://103.102.153.64:8080/ODKAggregate</item>
+        <item>http://103.102.152.229:8080/ODKAggregate</item>
         <item>http://103.102.152.229:8080/ODKAggregate/</item>
     </string-array>
 

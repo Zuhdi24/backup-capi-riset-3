@@ -26,9 +26,9 @@ public class Sampling {
         DatabaseSampling db = DatabaseSampling.getInstance();
 
         ArrayList<UnitUsahaPariwisata> frame = new ArrayList<>();
-        if (db.clearkanNoUrutUUPForSampling( kodeBs )) {
-            frame = db.getListUUPForSampel( kodeBs );
-        }
+//        if (db.clearkanNoUrutUUPForSampling( kodeBs )) {
+            frame = db.getListUUPForSampelLISTING( kodeBs );
+//        }
         ArrayList<SampelRuta> sampelTerpilih;
         sampelTerpilih = new ArrayList<>();
 
@@ -58,12 +58,12 @@ public class Sampling {
                         return true;
                     } else {
                         Log.d( TAG, "ambilSampel: False" );
-                        db.clearkanNoUUP( kodeBs );
+//                        db.clearkanNoUUP( kodeBs );
                         Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
                         return false;
                     }
                 } else {
-                    db.clearkanNoUUP( kodeBs );
+//                    db.clearkanNoUUP( kodeBs );
                     Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
                     return false;
                 }
@@ -99,12 +99,12 @@ public class Sampling {
                     return true;
                 } else {
                     Log.d( TAG, "ambilSampel: False" );
-                    db.clearkanNoUUP( kodeBs );
+//                    db.clearkanNoUUP( kodeBs );
                     Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
                     return false;
                 }
             } else {
-                db.clearkanNoUUP( kodeBs );
+//                db.clearkanNoUUP( kodeBs );
                 Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
                 return false;
             }

@@ -26,7 +26,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 
     private static DatabaseSampling sInstance;
     private static final int DATABASE_VERSION = 22;
-    private static final String DATABASE_NAME = "pkl61.db";
+    private static final String DATABASE_NAME = "pkl62.db";
     private static final String TAG = "DATABASE";
 
     public static final String TABLE_BS = "bloksensus";
@@ -54,21 +54,24 @@ public class DatabaseSampling extends SQLiteOpenHelper {
     public static final String NAMA_DESA = "nama_desa";
 
     //Usaha Pariwisata
-    public static final String NO_SEGMEN = "no_segmen";
+    public static final String NO_SEGMEN = "noSegmen";
     public static final String BF = "bf";
     public static final String BS = "bs";
-    public static final String NO_URT = "no_urt";
-    public static final String NO_UUP = "no_uup";
-    public static final String NAMA_UUP = "nama_uup";
+    public static final String NO_RUTA = "noUrutRuta";
+    public static final String NO_UUP = "noUrutUUP";
+    public static final String NAMA_KRT = "namaKRT";
     public static final String ALAMAT = "alamat";
-    public static final String NAMA_PEMILIK = "nama_pemilik";
+    public static final String NAMA_PEMILIK = "namaPemilikUUP";
     public static final String LATITUDE = "latitude";
     public static final String LONGITUDE = "longitude";
     public static final String AKURASI = "akurasi";
-    public static final String IS_PARIWISATA = "is_pariwisata";
-    public static final String IS_PANDEMI = "is_pandemi";
-    public static final String JENIS_UUP = "jenis_uup";
-    public static final String NO_HP = "no_hp";
+    public static final String JUMLAHIS_UUP = "jumlahisUUP";
+    public static final String NO_ISUUP = "noUrutPemilikUUP";
+    public static final String KEDUDUKAN_UP = "kedudukanUP";
+    public static final String STATUS_KELOLA = "statusKelola";
+    public static final String LOKASI_UP = "lokasiUP";
+    public static final String JENIS_UUP = "jenisUUP";
+//    public static final String NO_HP = "no_hp";
     public static final String TIME = "time";
 
     private static final String CREATE_TABLE_BS = "CREATE TABLE " + TABLE_BS + " (" +
@@ -92,21 +95,23 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             NO_SEGMEN + " text, " +
             BF + " text, " +
             BS + " text, " +
-            NO_URT + " text, " +
-            NO_UUP + " text, " +
-            NAMA_UUP + " text, " +
+            NO_RUTA + " text, " +
+            NAMA_KRT + " text, " +
             ALAMAT + " text, " +
+            JUMLAHIS_UUP + " text, " +
+            NO_ISUUP + " text, " +
             NAMA_PEMILIK + " text, " +
-            IS_PARIWISATA + " text, " +
-            IS_PANDEMI + " text, " +
+            KEDUDUKAN_UP + " text, " +
+            STATUS_KELOLA + " text, " +
+            LOKASI_UP + " text, " +
             JENIS_UUP + " text, " +
-            NO_HP + " text, " +
+            NO_UUP + " text, " +
+//            NO_HP + " text, " +
             LATITUDE + " text, " +
             LONGITUDE + " text, " +
             AKURASI + " text, " +
             STATUS + " text, " +
             TIME + " text)";
-
 
     private static final String CREATE_TABLE_RT_SAMPLING = "CREATE TABLE " + TABLE_UUP_SAMPLING + " (" +
             KODE_BS + " text, " +
@@ -337,15 +342,18 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(NO_SEGMEN, uup.getNoSegmen());
             v.put(BF, uup.getBf());
             v.put(BS, uup.getBs());
-            v.put(NO_URT, uup.getNoUrutRuta());
-            v.put(NO_UUP, uup.getNoUrutUUP());
-            v.put(NAMA_UUP, uup.getNamaUUP());
-            v.put(NAMA_PEMILIK, uup.getNamaPemilikUUP());
+            v.put(NO_RUTA, uup.getNoUrutRuta());
+            v.put(NAMA_KRT, uup.getNamaKRT());
             v.put(ALAMAT, uup.getAlamat());
-            v.put(IS_PARIWISATA, uup.getIsPariwisata());
-            v.put(IS_PANDEMI, uup.getIsPandemi());
+            v.put(JUMLAHIS_UUP, uup.getJumlahisUUP());
+            v.put(NO_ISUUP, uup.getNoUrutPemilikUUP());
+            v.put(NAMA_PEMILIK, uup.getNamaPemilikUUP());
+            v.put(KEDUDUKAN_UP, uup.getKedudukanUP());
+            v.put(STATUS_KELOLA, uup.getStatusKelola());
+            v.put(LOKASI_UP, uup.getLokasiUP());
             v.put(JENIS_UUP, uup.getJenisUUP());
-            v.put(NO_HP, uup.getNoHp());
+            v.put(NO_UUP, uup.getNoUrutUUP());
+//            v.put(NO_HP, uup.getNoHp());
             v.put(LATITUDE, uup.getLatitude());
             v.put(LONGITUDE, uup.getLongitude());
             v.put(AKURASI, uup.getAkurasi());
@@ -377,15 +385,18 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(NO_SEGMEN, uup.getNoSegmen());
             v.put(BF, uup.getBf());
             v.put(BS, uup.getBs());
-            v.put(NO_URT, uup.getNoUrutRuta());
-            v.put(NO_UUP, uup.getNoUrutUUP());
-            v.put(NAMA_UUP, uup.getNamaUUP());
-            v.put(NAMA_PEMILIK, uup.getNamaPemilikUUP());
+            v.put(NO_RUTA, uup.getNoUrutRuta());
+            v.put(NAMA_KRT, uup.getNamaKRT());
             v.put(ALAMAT, uup.getAlamat());
-            v.put(IS_PARIWISATA, uup.getIsPariwisata());
-            v.put(IS_PANDEMI, uup.getIsPandemi());
+            v.put(JUMLAHIS_UUP, uup.getJumlahisUUP());
+            v.put(NO_ISUUP, uup.getNoUrutPemilikUUP());
+            v.put(NAMA_PEMILIK, uup.getNamaPemilikUUP());
+            v.put(KEDUDUKAN_UP, uup.getKedudukanUP());
+            v.put(STATUS_KELOLA, uup.getStatusKelola());
+            v.put(LOKASI_UP, uup.getLokasiUP());
             v.put(JENIS_UUP, uup.getJenisUUP());
-            v.put(NO_HP, uup.getNoHp());
+            v.put(NO_UUP, uup.getNoUrutUUP());
+//            v.put(NO_HP, uup.getNoHp());
             v.put(LATITUDE, uup.getLatitude());
             v.put(LONGITUDE, uup.getLongitude());
             v.put(AKURASI, uup.getAkurasi());
@@ -438,7 +449,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                            cursor.getString(19), cursor.getString(20));
                     listUnitUsahaPariwisata.add(unitUsahaPariwisata);
                 } while (cursor.moveToNext());
             }
@@ -487,7 +499,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                     cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                     cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                    cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                    cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                    cursor.getString(19), cursor.getString(20));
             cursor.close();
             return unitUsahaPariwisata;
         } catch (Exception e) {
@@ -508,7 +521,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                 unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                         cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                         cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                        cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                        cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                        cursor.getString(19), cursor.getString(20));
             }
             cursor.close();
             return unitUsahaPariwisata;
@@ -544,15 +558,18 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(NO_SEGMEN, uup.getNoSegmen());
             v.put(BF, uup.getBf());
             v.put(BS, uup.getBs());
-            v.put(NO_URT, uup.getNoUrutRuta());
-            v.put(NO_UUP, uup.getNoUrutUUP());
-            v.put(NAMA_UUP, uup.getNamaUUP());
-            v.put(NAMA_PEMILIK, uup.getNamaPemilikUUP());
+            v.put(NO_RUTA, uup.getNoUrutRuta());
+            v.put(NAMA_KRT, uup.getNamaKRT());
             v.put(ALAMAT, uup.getAlamat());
-            v.put(IS_PARIWISATA, uup.getIsPariwisata());
-            v.put(IS_PANDEMI, uup.getIsPandemi());
+            v.put(JUMLAHIS_UUP, uup.getJumlahisUUP());
+            v.put(NO_ISUUP, uup.getNoUrutPemilikUUP());
+            v.put(NAMA_PEMILIK, uup.getNamaPemilikUUP());
+            v.put(KEDUDUKAN_UP, uup.getKedudukanUP());
+            v.put(STATUS_KELOLA, uup.getStatusKelola());
+            v.put(LOKASI_UP, uup.getLokasiUP());
             v.put(JENIS_UUP, uup.getJenisUUP());
-            v.put(NO_HP, uup.getNoHp());
+            v.put(NO_UUP, uup.getNoUrutUUP());
+//            v.put(NO_HP, uup.getNoHp());
             v.put(LATITUDE, uup.getLatitude());
             v.put(LONGITUDE, uup.getLongitude());
             v.put(AKURASI, uup.getAkurasi());
@@ -585,7 +602,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                            cursor.getString(19), cursor.getString(20));
                     listUnitUsahaPariwisata.add(unitUsahaPariwisata);
                 } while (cursor.moveToNext());
             }
@@ -628,7 +646,37 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
                             cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
                             cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                            cursor.getString(19), cursor.getString(20));
+                    listUnitUsahaPariwisata.add(unitUsahaPariwisata);
+                    Log.d(TAG, "getListRumahTanggaForSampel: " + unitUsahaPariwisata.getNamaPemilikUUP() + " " + unitUsahaPariwisata.getNoUrutUUP());
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("Rumah tangga ", "masalah di " + e);
+        }
+        return listUnitUsahaPariwisata;
+    }
+
+    public ArrayList<UnitUsahaPariwisata> getListUUPForSampelLISTING(String kodeBs) {
+        String sql = "SELECT *" + " FROM " + TABLE_UUP + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + JUMLAHIS_UUP + " != '00"
+                + "' AND ((" + KEDUDUKAN_UP + " = '1" + "' AND " + STATUS_KELOLA + " = '1" + "' AND " + LOKASI_UP + " = '1')" + " OR ("
+                + KEDUDUKAN_UP + " = '2" + "' AND " + LOKASI_UP + " = '1')) AND " + STATUS + " <> '" + UnitUsahaPariwisata.STATUS_DELETE
+                + "' AND " + NO_UUP + " <> '000" +"' ORDER BY " + TIME + " ASC, " + NO_UUP + " ASC";
+        ArrayList<UnitUsahaPariwisata> listUnitUsahaPariwisata = new ArrayList<>();
+        try {
+            SQLiteDatabase database = getInstance().getReadableDatabase();
+            Cursor cursor = database.rawQuery(sql, null);
+            if (cursor.moveToFirst()) {
+                UnitUsahaPariwisata unitUsahaPariwisata;
+                do {
+                    unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
+                            cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
+                            cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                            cursor.getString(19), cursor.getString(20));
                     listUnitUsahaPariwisata.add(unitUsahaPariwisata);
                     Log.d(TAG, "getListRumahTanggaForSampel: " + unitUsahaPariwisata.getNamaPemilikUUP() + " " + unitUsahaPariwisata.getNoUrutUUP());
                 } while (cursor.moveToNext());
@@ -703,7 +751,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             if (uup.getKodeUUP() == null) {
                 v.put(KODE_UUP, "aaa");
             }
-            v.put(NO_URT, noUrut);
+            v.put(NO_RUTA, noUrut);
             if (uup.getStatus().equals(UnitUsahaPariwisata.STATUS_UPLOADED)) {
                 v.put(STATUS, UnitUsahaPariwisata.STATUS_UPDATE);
             }
@@ -718,7 +766,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 
     public int getJumlahUUP(String kodeBs) {
         String sql = "SELECT count(" + KODE_UUP + ") as jumlah_rt_update FROM " + TABLE_UUP + " WHERE " + KODE_BS + " = '" + kodeBs +
-                "' AND " + STATUS + " <> '" + UnitUsahaPariwisata.STATUS_DELETE + "' AND " + NO_URT + " <> 0";
+                "' AND " + STATUS + " <> '" + UnitUsahaPariwisata.STATUS_DELETE + "' AND " + NO_RUTA + " <> 0";
         try {
             SQLiteDatabase database = getInstance().getReadableDatabase();
             Cursor cursor = database.rawQuery(sql, null);
@@ -1068,7 +1116,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                            cursor.getString(19), cursor.getString(20));
                     listUnitUsahaPariwisata.add(unitUsahaPariwisata);
                 } while (cursor.moveToNext());
             }
@@ -1256,7 +1305,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     unitUsahaPariwisata = new UnitUsahaPariwisata(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                            cursor.getString(19), cursor.getString(20));
 
                     listUnitUsahaPariwisata.add(unitUsahaPariwisata);
                 } while (cursor.moveToNext());
