@@ -7,19 +7,19 @@ package org.odk.collect.android.pkl.object;
 public class SampelRuta {
 
     private String kodeBs;
-    private String kodeUUP;
+    private String kodeRuta;
 
-    public String getKodeUUP() {
-        return kodeUUP;
+    public String getKodeRuta() {
+        return kodeRuta;
     }
 
-    public void setKodeUUP(String kodeUUP) {
-        this.kodeUUP = kodeUUP;
+    public void setKodeRuta(String kodeRuta) {
+        this.kodeRuta = kodeRuta;
     }
 
-    public SampelRuta(String kodeBs, String kodeUUP) {
+    public SampelRuta(String kodeBs, String kodeRuta) {
         this.setKodeBs(kodeBs);
-        this.setKodeUUP(kodeUUP);
+        this.setKodeRuta(kodeRuta);
     }
 
     public SampelRuta() {

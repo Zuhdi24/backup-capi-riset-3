@@ -12,7 +12,7 @@ import com.google.gson.reflect.TypeToken;
 
 import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.object.BlokSensus;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.object.SampelRuta;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class RestoreTask extends AsyncTask<String, Void, String> {
     public String restoreAll(String json, String mode) {
 
         if (mode.equals(RUTA)) {
-            ArrayList<UnitUsahaPariwisata> listRuta = gson.fromJson(json, new TypeToken<List<UnitUsahaPariwisata>>() {
+            ArrayList<RumahTangga> listRuta = gson.fromJson(json, new TypeToken<List<RumahTangga>>() {
             }.getType());
             Log.d("cobaUpload", gson.toJson(listRuta));
             DatabaseSampling db = DatabaseSampling.getInstance();
@@ -116,7 +116,7 @@ public class RestoreTask extends AsyncTask<String, Void, String> {
         if (mode.equals(RUTA)) {
             Log.d( "cobaUpload ruta", "sini restore Ruta");
             Log.e("restore", json);
-            ArrayList<UnitUsahaPariwisata> listRuta = gson.fromJson(json, new TypeToken<List<UnitUsahaPariwisata>>(){}.getType());
+            ArrayList<RumahTangga> listRuta = gson.fromJson(json, new TypeToken<List<RumahTangga>>(){}.getType());
 
 
             DatabaseSampling db = DatabaseSampling.getInstance();

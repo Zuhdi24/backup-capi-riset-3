@@ -11,7 +11,7 @@ import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.object.BlokSensus;
 import org.odk.collect.android.pkl.object.FileBackup;
 import org.odk.collect.android.pkl.object.ObjekUpload;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.object.SampelRuta;
 
 import java.io.BufferedReader;
@@ -119,7 +119,7 @@ public class BackupHelper {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         DatabaseSampling db = DatabaseSampling.getInstance();
         ArrayList<BlokSensus> listBs = db.getListBlokSensus();
-        ArrayList<UnitUsahaPariwisata> listRuta = db.getAllRumahTangga();
+        ArrayList<RumahTangga> listRuta = db.getAllRumahTangga();
         ArrayList<SampelRuta> listSampel = db.getAllSampelRuta();
         return gson.toJson(new ObjekUpload(nim, deviceId, listBs, listRuta, listSampel));
     }
@@ -128,7 +128,7 @@ public class BackupHelper {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         DatabaseSampling db = DatabaseSampling.getInstance();
         if (mode == RUTA) {
-            ArrayList<UnitUsahaPariwisata> listRuta = db.getAllRumahTangga();
+            ArrayList<RumahTangga> listRuta = db.getAllRumahTangga();
             return gson.toJson(listRuta);
         } else if (mode == SAMPEL) {
             ArrayList<SampelRuta> listRuta = db.getAllSampelRuta();

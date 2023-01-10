@@ -33,7 +33,7 @@ import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.network.VolleySingleton;
 import org.odk.collect.android.pkl.object.BlokSensus;
 import org.odk.collect.android.pkl.object.JumlahRutaBS;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.object.SampelRuta;
 import org.odk.collect.android.pkl.object.UUIDContainer;
 import org.odk.collect.android.pkl.preference.CapiKey;
@@ -101,7 +101,7 @@ public class SynchronizeTask extends AsyncTask<String, String, String> {
         preference = PreferenceManager.getDefaultSharedPreferences(activity);
         //TODO COBA
         serviceBaseUrl = preference.getString("host", "https://capi62.stis.ac.id/web-service-62/public");
-        serviceUrl = serviceBaseUrl + "/listingr4";
+        serviceUrl = serviceBaseUrl + "/listingr3";
         drp = new DefaultRetryPolicy(8000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         db = DatabaseSampling.getInstance();
     }
@@ -227,7 +227,7 @@ public class SynchronizeTask extends AsyncTask<String, String, String> {
                 Map<String, String> params = new HashMap<String, String>();
                 ArrayList<UUIDContainer> listUUID = new ArrayList<>();
                 for (SampelRuta sr : finalListSample) {
-                    listUUID.add(new UUIDContainer(sr.getKodeUUP()));
+                    listUUID.add(new UUIDContainer(sr.getKodeRuta()));
                 }
                 params.put("k", SEND_SAMPLE_BS);
                 params.put("kodeBs", kodeBs);
@@ -324,7 +324,7 @@ public class SynchronizeTask extends AsyncTask<String, String, String> {
 
     public boolean syncRuta(final String kodeBs) {
         RequestFuture<String> requestFuture = RequestFuture.newFuture();
-        final ArrayList<UnitUsahaPariwisata> listRutaToUpload = db.getListRutaToUpload(kodeBs);
+        final ArrayList<RumahTangga> listRutaToUpload = db.getListRutaToUpload(kodeBs);
 
         StringRequest request =
                 new StringRequest(

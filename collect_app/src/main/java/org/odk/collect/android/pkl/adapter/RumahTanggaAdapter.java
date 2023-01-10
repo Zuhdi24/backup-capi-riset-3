@@ -35,7 +35,7 @@ import org.odk.collect.android.pkl.activity.ActivityListBlokSensus;
 import org.odk.collect.android.pkl.activity.ActivitySync;
 import org.odk.collect.android.pkl.activity.IsiRumahTanggaActivity;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.preference.CapiKey;
 import org.odk.collect.android.pkl.preference.CapiPreference;
 import org.odk.collect.android.pkl.preference.StaticFinal;
@@ -52,8 +52,8 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
     private Activity activity;
     private Context mContext;
     private LayoutInflater inflater;
-    private ArrayList<UnitUsahaPariwisata> ruta;
-    private ArrayList<UnitUsahaPariwisata> allRuta;
+    private ArrayList<RumahTangga> ruta;
+    private ArrayList<RumahTangga> allRuta;
     String searchKey = "";
     DatabaseSampling dbSampling = DatabaseSampling.getInstance();
     CapiPreference pref = CapiPreference.getInstance();
@@ -61,10 +61,10 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
     String nim = (String) pref.get(CapiKey.KEY_NIM);
 
 
-    public RumahTanggaAdapter(Activity activity, ArrayList<UnitUsahaPariwisata> ruta) {
+    public RumahTanggaAdapter(Activity activity, ArrayList<RumahTangga> ruta) {
         this.activity = activity;
         this.ruta = ruta;
-        allRuta = new ArrayList<UnitUsahaPariwisata>();
+        allRuta = new ArrayList<RumahTangga>();
         allRuta.addAll(ruta);
     }
 
@@ -106,7 +106,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
         TextView FlagBstttd = (TextView) convertView.findViewById(R.id.bstttd);
 
 
-        final UnitUsahaPariwisata item = ruta.get(position);
+        final RumahTangga item = ruta.get(position);
 
         nomorbs.setText(item.getBs());
         nomorbf.setText(item.getBf());
@@ -387,7 +387,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
             info.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    UnitUsahaPariwisata ruta = item;
+                    RumahTangga ruta = item;
                     option(ruta);
                     return true;
                 }
@@ -396,7 +396,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
 
-    private void option(final UnitUsahaPariwisata ruta) {
+    private void option(final RumahTangga ruta) {
         View convertView;
         if (inflater == null)
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -452,23 +452,23 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
         }
     }
 
-    public void toIsiListing(UnitUsahaPariwisata unitUsahaPariwisata, int posisi) {
+    public void toIsiListing(RumahTangga rumahTangga, int posisi) {
 //        Log.d( "nashir1", dbSampling.getBlokSensusByKode(kodeBs).getKodeBs());
 
             Intent toIsianListing = new Intent(activity,
                     IsiRumahTanggaActivity.class);
-            UnitUsahaPariwisata lastInsert = dbSampling.getLastUUP();
+            RumahTangga lastInsert = dbSampling.getLastUUP();
 
-            if (unitUsahaPariwisata == null) {
+            if (rumahTangga == null) {
 //                toIsianListing.putExtra( "status", status );
-                toIsianListing.putExtra("kodeBs", unitUsahaPariwisata.getKodeBs());
+                toIsianListing.putExtra("kodeBs", rumahTangga.getKodeBs());
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
 
             } else {
-                toIsianListing.putExtra("kodeBs", unitUsahaPariwisata.getKodeBs());
-                toIsianListing.putExtra("kodeUUP", unitUsahaPariwisata.getKodeUUP());
-                toIsianListing.putExtra("nama KRT", unitUsahaPariwisata.getNamaKRT());
+                toIsianListing.putExtra("kodeBs", rumahTangga.getKodeBs());
+                toIsianListing.putExtra("kodeUUP", rumahTangga.getKodeUUP());
+                toIsianListing.putExtra("nama KRT", rumahTangga.getNamaKRT());
                 toIsianListing.putExtra("posisi", posisi);
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
@@ -478,7 +478,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
 
     }
 
-    public void passwordHapusRutaKortim(final UnitUsahaPariwisata ruta) {
+    public void passwordHapusRutaKortim(final RumahTangga ruta) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Konfirmasi");
         builder.setMessage("Hapus Rumah Tangga membutuhkan persetujuan Kortim. \nMasukan password master yang diperoleh dari Kortim.");
@@ -548,14 +548,14 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
             protected FilterResults performFiltering(CharSequence constraint) {
                 constraint.toString().toLowerCase();
                 FilterResults result = new FilterResults();
-                ArrayList<UnitUsahaPariwisata> filteredRuta = new ArrayList<>();
+                ArrayList<RumahTangga> filteredRuta = new ArrayList<>();
 
                 if (constraint == "") {
                     filteredRuta.addAll(allRuta);
                     searchKey = "";
                 } else {
                     searchKey = constraint.toString();
-                    for (UnitUsahaPariwisata rt : allRuta) {
+                    for (RumahTangga rt : allRuta) {
                         String nama = rt.getNamaKRT().toLowerCase();
                         String noRuta = String.valueOf(rt.getNoUrutRuta()).toLowerCase();
                         String noBf = rt.getBf().toLowerCase();
@@ -599,7 +599,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 ruta.clear();
-                ruta.addAll((ArrayList<UnitUsahaPariwisata>) results.values);
+                ruta.addAll((ArrayList<RumahTangga>) results.values);
                 searchKey = constraint.toString();
                 notifyDataSetChanged();
             }

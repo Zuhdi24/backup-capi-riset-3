@@ -8,7 +8,7 @@ import java.util.Date;
  */
 
 public class ObjekUpload {
-    public ObjekUpload(String uploader, String deviceId, ArrayList<BlokSensus> dataBs, ArrayList<UnitUsahaPariwisata> dataRt, ArrayList<SampelRuta> dataSt) {
+    public ObjekUpload(String uploader, String deviceId, ArrayList<BlokSensus> dataBs, ArrayList<RumahTangga> dataRt, ArrayList<SampelRuta> dataSt) {
         this.uploader = uploader;
         this.deviceId = deviceId;
         time = new Date(System.currentTimeMillis());
@@ -21,14 +21,14 @@ public class ObjekUpload {
     Date time;
     String deviceId;
     ArrayList<BlokSensus> dataBs;
-    ArrayList<UnitUsahaPariwisata> dataRt;
+    ArrayList<RumahTangga> dataRt;
     ArrayList<SampelRuta> dataSt;
 
     public ArrayList<BlokSensus> getDataBs() {
         return dataBs;
     }
 
-    public ArrayList<UnitUsahaPariwisata> getDataRt() {
+    public ArrayList<RumahTangga> getDataRt() {
         return dataRt;
     }
 

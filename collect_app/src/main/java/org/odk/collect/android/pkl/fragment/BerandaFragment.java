@@ -443,7 +443,7 @@ public class BerandaFragment extends Fragment {
     }
 
     private void getAllRefresh() {
-        VolleySingleton.getInstance(getActivity()).addToRequestQueue(new StringRequest(Request.Method.POST, serviceBaseUrl + "/listingr4",
+        VolleySingleton.getInstance(getActivity()).addToRequestQueue(new StringRequest(Request.Method.POST, serviceBaseUrl + "/listingr3",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

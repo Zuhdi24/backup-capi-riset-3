@@ -7,7 +7,7 @@
 	the specific language governing permissions and limitations under the License. -->
 <resources>
     <!-- strings that should not be translated -->
-    <string translatable="false" name="app_name">CAPI PKL62 Riset 4</string>
+    <string translatable="false" name="app_name">CAPI PKL62 Riset 3</string>
     <string translatable="false" name="protocol_odk_default">odk_default</string>
     <string translatable="false" name="protocol_google_sheets">google_sheets</string>
     <string translatable="false" name="default_form_processing_logic">-1</string>

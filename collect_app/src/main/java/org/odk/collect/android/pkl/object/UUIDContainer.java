@@ -5,17 +5,17 @@ package org.odk.collect.android.pkl.object;
  */
 
 public class UUIDContainer {
-    private String kodeUUP;
+    private String kodeRuta;
 
-    public UUIDContainer(String kodeUUP) {
-        this.kodeUUP = kodeUUP;
+    public UUIDContainer(String kodeRuta) {
+        this.kodeRuta = kodeRuta;
     }
 
     public String getKodeRuta() {
-        return kodeUUP;
+        return kodeRuta;
     }
 
     public void setKodeRuta(String kodeUUP) {
-        this.kodeUUP = kodeUUP;
+        this.kodeRuta = kodeUUP;
     }
 }

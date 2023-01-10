@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.object.BlokSensus;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.object.SampelRuta;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class Sampling {
     public static boolean ambilSampel(int nSampel, String kodeBs, Context context) {
         DatabaseSampling db = DatabaseSampling.getInstance();
 
-        ArrayList<UnitUsahaPariwisata> frame = new ArrayList<>();
+        ArrayList<RumahTangga> frame = new ArrayList<>();
 //        if (db.clearkanNoUrutUUPForSampling( kodeBs )) {
             frame = db.getListUUPForSampelLISTING( kodeBs );
 //        }
@@ -46,7 +46,7 @@ public class Sampling {
 //            } else {
                 for (int i = 0; i < nPopulasi; i++) {
                     Log.d( "dahwan", String.valueOf( i/nPopulasi ) );
-                    UnitUsahaPariwisata ruta = frame.get( i );
+                    RumahTangga ruta = frame.get( i );
                     sampelTerpilih.add( new SampelRuta( ruta.getKodeBs(), ruta.getKodeUUP() ) );
 
                 }
@@ -86,7 +86,7 @@ public class Sampling {
                 Log.i( TAG, " = = = ["+i+"] = = = " );
                 Log.i( TAG, "index ke-" + index );
 
-                UnitUsahaPariwisata ruta = frame.get( index - 1 );
+                RumahTangga ruta = frame.get( index - 1 );
                 Log.i( TAG, "--Nomor Urut Ruta (Listing): " + ruta.getNoUrutUUP() );
                 Log.i( TAG, "--Nama KRT: " + ruta.getNamaPemilikUUP() );
 

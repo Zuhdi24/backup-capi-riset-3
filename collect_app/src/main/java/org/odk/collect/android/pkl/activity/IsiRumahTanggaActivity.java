@@ -29,12 +29,11 @@ import android.widget.Toast;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.preference.StaticFinal;
 import org.odk.collect.android.pkl.util.LocationService;
 import org.odk.collect.android.pkl.util.TextColor;
 
-import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -169,7 +168,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         noSegmenTerakhir = findViewById(R.id.note_segmen);
         noBfTerakhir = findViewById(R.id.note_bf);
         noBsTerakhir = findViewById(R.id.note_bs);
-        UnitUsahaPariwisata previousInsert = getIntent().getParcelableExtra(StaticFinal.BUNDLE_INSERT);
+        RumahTangga previousInsert = getIntent().getParcelableExtra(StaticFinal.BUNDLE_INSERT);
         setNoteContent(previousInsert);
 
 
@@ -675,7 +674,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     public void submitRT() {
         boolean isFormClear = false;
         String message = "";
-        UnitUsahaPariwisata unitUsahaPariwisata = new UnitUsahaPariwisata();
+        RumahTangga rumahTangga = new RumahTangga();
 
         lokasi = ls.getBestLoc();
 
@@ -864,60 +863,60 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //        }
 
         if (isFormClear) {
-            unitUsahaPariwisata.setKodeBs(kodeBs);
-            unitUsahaPariwisata.setNoSegmen(no_segmen.getText().toString());
-            unitUsahaPariwisata.setBf(no_bf.getText().toString().toUpperCase());
-            unitUsahaPariwisata.setBs(no_bs.getText().toString());
-            unitUsahaPariwisata.setNoUrutRuta(no_urut_ruta.getText().toString());
-            unitUsahaPariwisata.setNoUrutUUP(no_urut_up.getText().toString());
-            unitUsahaPariwisata.setNamaKRT(namaKRT.getText().toString());
-            unitUsahaPariwisata.setAlamat(alamat.getText().toString());
+            rumahTangga.setKodeBs(kodeBs);
+            rumahTangga.setNoSegmen(no_segmen.getText().toString());
+            rumahTangga.setBf(no_bf.getText().toString().toUpperCase());
+            rumahTangga.setBs(no_bs.getText().toString());
+            rumahTangga.setNoUrutRuta(no_urut_ruta.getText().toString());
+            rumahTangga.setNoUrutUUP(no_urut_up.getText().toString());
+            rumahTangga.setNamaKRT(namaKRT.getText().toString());
+            rumahTangga.setAlamat(alamat.getText().toString());
             if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_yes) {
-                unitUsahaPariwisata.setJumlahisUUP(jumlahisUUP.getText().toString());
-                unitUsahaPariwisata.setNoUrutPemilikUUP(no_urut_isUUP.getText().toString());
-                unitUsahaPariwisata.setNamaPemilikUUP(namaPemilik.getText().toString());
+                rumahTangga.setJumlahisUUP(jumlahisUUP.getText().toString());
+                rumahTangga.setNoUrutPemilikUUP(no_urut_isUUP.getText().toString());
+                rumahTangga.setNamaPemilikUUP(namaPemilik.getText().toString());
                 if(kedudukanUP.getCheckedRadioButtonId() == R.id.kategori_kedudukan_pemilik) {
-                    unitUsahaPariwisata.setKedudukanUP("1");
+                    rumahTangga.setKedudukanUP("1");
                     if(statusKelola.getCheckedRadioButtonId() == R.id.kategori_statuskelola_yes) {
-                        unitUsahaPariwisata.setStatusKelola("1");
+                        rumahTangga.setStatusKelola("1");
                         if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_dalam) {
-                            unitUsahaPariwisata.setLokasiUP("1");
+                            rumahTangga.setLokasiUP("1");
                         } else if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_luar) {
-                            unitUsahaPariwisata.setLokasiUP("0");
+                            rumahTangga.setLokasiUP("0");
                         }
                     } else if(statusKelola.getCheckedRadioButtonId() == R.id.kategori_statuskelola_no) {
-                        unitUsahaPariwisata.setStatusKelola("0");
-                        unitUsahaPariwisata.setLokasiUP("-");
+                        rumahTangga.setStatusKelola("0");
+                        rumahTangga.setLokasiUP("-");
                     }
                 } else if(kedudukanUP.getCheckedRadioButtonId() == R.id.kategori_kedudukan_pengelola) {
-                    unitUsahaPariwisata.setKedudukanUP("2");
-                    unitUsahaPariwisata.setStatusKelola("-");
+                    rumahTangga.setKedudukanUP("2");
+                    rumahTangga.setStatusKelola("-");
                     if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_dalam) {
-                        unitUsahaPariwisata.setLokasiUP("1");
+                        rumahTangga.setLokasiUP("1");
                     } else if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_luar) {
-                        unitUsahaPariwisata.setLokasiUP("0");
+                        rumahTangga.setLokasiUP("0");
                     }
                 }
             } else if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_no) {
                 jumlahisUUP.setText("00");
-                unitUsahaPariwisata.setJumlahisUUP(jumlahisUUP.getText().toString());
-                unitUsahaPariwisata.setNoUrutPemilikUUP("-");
-                unitUsahaPariwisata.setNamaPemilikUUP("-");
-                unitUsahaPariwisata.setKedudukanUP("-");
-                unitUsahaPariwisata.setStatusKelola("-");
-                unitUsahaPariwisata.setLokasiUP("-");
+                rumahTangga.setJumlahisUUP(jumlahisUUP.getText().toString());
+                rumahTangga.setNoUrutPemilikUUP("-");
+                rumahTangga.setNamaPemilikUUP("-");
+                rumahTangga.setKedudukanUP("-");
+                rumahTangga.setStatusKelola("-");
+                rumahTangga.setLokasiUP("-");
             }
             if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_1) {
-                unitUsahaPariwisata.setJenisUUP("1");
+                rumahTangga.setJenisUUP("1");
             } else if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_2) {
-                unitUsahaPariwisata.setJenisUUP("2");
+                rumahTangga.setJenisUUP("2");
             } else if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_3) {
-                unitUsahaPariwisata.setJenisUUP("3");
+                rumahTangga.setJenisUUP("3");
             } else {
-                unitUsahaPariwisata.setJenisUUP("-");
+                rumahTangga.setJenisUUP("-");
             }
             SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy kk:mm:ss");
-            unitUsahaPariwisata.setTime(sdf.format(new Date()));
+            rumahTangga.setTime(sdf.format(new Date()));
 
 //            int jumlahruta = 1 + db.getJumlahUUP(kodeBs);
 
@@ -949,22 +948,22 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             //TODO CEK kodeUUP setelah input
             if ((kodeUUP != null) && posisi == 0) {
                 final LocationManager manager = (LocationManager) IsiRumahTanggaActivity.this.getSystemService(Context.LOCATION_SERVICE );
-                UnitUsahaPariwisata rt = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+                RumahTangga rt = db.getRumahTanggaByKode(kodeBs, kodeUUP);
                 Log.d(TAG, "updateruta");
                 if(rt.getLatitude()==null || rt.getLatitude().equals("") ||
                         rt.getLongitude()==null || rt.getLongitude().equals("") ||
                         rt.getAkurasi()==null  || rt.getAkurasi().equals("") ){ //TODO GET LOKASI SEKALI AJA
                     Log.d(TAG, "submitRT: update lokasi");
                     if (manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
-                        unitUsahaPariwisata.setStatus(rt.getStatus());
-                        unitUsahaPariwisata.setLatitude(String.valueOf(lokasi.getLatitude()));
-                        unitUsahaPariwisata.setLongitude(String.valueOf(lokasi.getLongitude()));
-                        unitUsahaPariwisata.setAkurasi(String.valueOf(lokasi.getAccuracy()));
-                        if (db.updateUUP(unitUsahaPariwisata, kodeBs, kodeUUP)) {
-                            UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-                            unitUsahaPariwisata.setLatitude(ruta.getLatitude());
-                            unitUsahaPariwisata.setLongitude(ruta.getLongitude());
-                            unitUsahaPariwisata.setAkurasi(ruta.getAkurasi());
+                        rumahTangga.setStatus(rt.getStatus());
+                        rumahTangga.setLatitude(String.valueOf(lokasi.getLatitude()));
+                        rumahTangga.setLongitude(String.valueOf(lokasi.getLongitude()));
+                        rumahTangga.setAkurasi(String.valueOf(lokasi.getAccuracy()));
+                        if (db.updateUUP(rumahTangga, kodeBs, kodeUUP)) {
+                            RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+                            rumahTangga.setLatitude(ruta.getLatitude());
+                            rumahTangga.setLongitude(ruta.getLongitude());
+                            rumahTangga.setAkurasi(ruta.getAkurasi());
                             Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil diperbaharui", Toast.LENGTH_SHORT).show();
                             ActivitySync.backupLocal(getApplicationContext());
 //                            if (db.clearkanNoUUP(kodeBs)) {
@@ -989,11 +988,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
                 }
 
-                unitUsahaPariwisata.setStatus(rt.getStatus());
-                unitUsahaPariwisata.setLatitude(rt.getLatitude());
-                unitUsahaPariwisata.setLongitude(rt.getLongitude());
-                unitUsahaPariwisata.setAkurasi(rt.getAkurasi());
-                if (db.updateUUP(unitUsahaPariwisata, kodeBs, kodeUUP)) {
+                rumahTangga.setStatus(rt.getStatus());
+                rumahTangga.setLatitude(rt.getLatitude());
+                rumahTangga.setLongitude(rt.getLongitude());
+                rumahTangga.setAkurasi(rt.getAkurasi());
+                if (db.updateUUP(rumahTangga, kodeBs, kodeUUP)) {
 //                    RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
                     Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil diperbaharui", Toast.LENGTH_SHORT).show();
                     ActivitySync.backupLocal(getApplicationContext());
@@ -1007,16 +1006,16 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
             } else {
                 if (lokasi != null) {
-                    unitUsahaPariwisata.setLatitude(String.valueOf(lokasi.getLatitude()));
-                    unitUsahaPariwisata.setLongitude(String.valueOf(lokasi.getLongitude()));
-                    unitUsahaPariwisata.setAkurasi(String.valueOf(lokasi.getAccuracy()));
+                    rumahTangga.setLatitude(String.valueOf(lokasi.getLatitude()));
+                    rumahTangga.setLongitude(String.valueOf(lokasi.getLongitude()));
+                    rumahTangga.setAkurasi(String.valueOf(lokasi.getAccuracy()));
                 } else {
-                    unitUsahaPariwisata.setLatitude("");
-                    unitUsahaPariwisata.setLongitude("");
-                    unitUsahaPariwisata.setAkurasi("");
+                    rumahTangga.setLatitude("");
+                    rumahTangga.setLongitude("");
+                    rumahTangga.setAkurasi("");
                 }
 
-                if (db.insertUUP(unitUsahaPariwisata)) {
+                if (db.insertUUP(rumahTangga)) {
                     Toast.makeText(IsiRumahTanggaActivity.this, "Rumah Tangga berhasil dimasukan", Toast.LENGTH_SHORT).show();
                     ActivitySync.backupLocal(getApplicationContext());
                     finish();
@@ -1180,7 +1179,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     }
 
     public void prefillFormEdit(String kodeBs, String kodeUUP) {
-        UnitUsahaPariwisata uup = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        RumahTangga uup = db.getRumahTanggaByKode(kodeBs, kodeUUP);
 //        Log.e("NOMOR SEGMEN", ruta.getNoSegmen());
         no_segmen.setText(uup.getNoSegmen());
         no_bf.setText(uup.getBf());
@@ -1256,7 +1255,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         if (jumlahRuta > 0) {
 //            int noBf = Integer.parseInt(lastRuta.getBf());
 //            int noBs = Integer.parseInt(lastRuta.getBs());
-            UnitUsahaPariwisata lastRuta = db.getLastRuta(kodeBs);
+            RumahTangga lastRuta = db.getLastRuta(kodeBs);
             String noBf = lastRuta.getBf();
             String noBs = lastRuta.getBs();
             int no_urutRuta = 0;
@@ -1369,8 +1368,8 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
     //PREFILL SALIN ISIAN RUTA
     public void prefillSameBs(String kodeBs, String kodeUUP) {
-        UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-        UnitUsahaPariwisata lastRuta = db.getLastRuta(kodeBs);
+        RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        RumahTangga lastRuta = db.getLastRuta(kodeBs);
 
         no_segmen.setText(ruta.getNoSegmen());
 
@@ -1450,8 +1449,8 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     }
 
     public void prefillNearBf(String kodeBs, String kodeUUP) {
-        UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-        UnitUsahaPariwisata lastRuta = db.getLastRuta(kodeBs);
+        RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        RumahTangga lastRuta = db.getLastRuta(kodeBs);
         int noBs = Integer.parseInt(lastRuta.getBs());
 
         no_bf.setText(incBf());
@@ -1473,8 +1472,8 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     }
 
     public void prefillSameBf(String kodeBs, String kodeUUP) {
-        UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-        UnitUsahaPariwisata lastRuta = db.getLastRuta(kodeBs);
+        RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        RumahTangga lastRuta = db.getLastRuta(kodeBs);
 //        int noBf = Integer.parseInt(ruta.getBf());
         int noBs = Integer.parseInt(lastRuta.getBs());
 
@@ -1495,7 +1494,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     }
 
     public void prefillMenuForm(String kodeBs, String kodeUUP, int posisi) {
-        UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
 
         if (posisi == 1) {
             Log.d(TAG, "prefillMenuForm: " + ruta.getBf());
@@ -1524,7 +1523,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
     public String incBf() {
         DatabaseSampling db = DatabaseSampling.getInstance();
-        UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
         String noBf = ruta.getBf();
 
         while (db.isNoBfExist(kodeBs, noBf)) {
@@ -1540,7 +1539,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
     public String incBs() {
         DatabaseSampling db = DatabaseSampling.getInstance();
-        UnitUsahaPariwisata ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
+        RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
         String noBs = ruta.getBs();
 
         while (db.isNoBfExist(kodeBs, noBs)) {
@@ -1639,13 +1638,13 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 .show();
     }
 
-    private void setNoteContent(UnitUsahaPariwisata unitUsahaPariwisata) {
-        if (unitUsahaPariwisata == null) {
+    private void setNoteContent(RumahTangga rumahTangga) {
+        if (rumahTangga == null) {
             noteView.setVisibility(View.GONE);
         } else {
-            String noSegmen = TextColor.change(this, unitUsahaPariwisata.getNoSegmen(), R.color.colorPrimary);
-            String noBf = TextColor.change(this, unitUsahaPariwisata.getBf(), R.color.colorPrimary);
-            String noBs = TextColor.change(this, unitUsahaPariwisata.getBs(), R.color.colorPrimary);
+            String noSegmen = TextColor.change(this, rumahTangga.getNoSegmen(), R.color.colorPrimary);
+            String noBf = TextColor.change(this, rumahTangga.getBf(), R.color.colorPrimary);
+            String noBs = TextColor.change(this, rumahTangga.getBs(), R.color.colorPrimary);
             noSegmenTerakhir.setText(Html.fromHtml(String.format("%s: %s", "No Segmen", noSegmen)));
             noBfTerakhir.setText(Html.fromHtml(String.format("%s: %s", "No BF", noBf)));
             noBsTerakhir.setText(Html.fromHtml(String.format("%s: %s", "No BS", noBs)));

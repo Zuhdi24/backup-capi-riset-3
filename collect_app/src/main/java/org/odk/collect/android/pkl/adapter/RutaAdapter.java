@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -30,14 +30,14 @@ import java.util.Locale;
 public class RutaAdapter extends BaseAdapter implements Filterable {
     private Activity activity;
     private LayoutInflater inflater;
-    private ArrayList<UnitUsahaPariwisata> ruta;
-    private ArrayList<UnitUsahaPariwisata> allRuta;
+    private ArrayList<RumahTangga> ruta;
+    private ArrayList<RumahTangga> allRuta;
     private Button generateKues;
     DatabaseSampling dbSampling;
     String kodeBs;
     String searchKey = "";
 
-    public RutaAdapter(Activity activity, ArrayList<UnitUsahaPariwisata> ruta) {
+    public RutaAdapter(Activity activity, ArrayList<RumahTangga> ruta) {
         this.activity = activity;
         this.ruta = ruta;
         allRuta = ruta;
@@ -49,7 +49,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
     }
 
     @Override
-    public UnitUsahaPariwisata getItem(int location) {
+    public RumahTangga getItem(int location) {
         return ruta.get(location);
     }
 
@@ -80,7 +80,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         TextView kegiatanUtama = (TextView) convertView.findViewById(R.id.ruta_pertanian);
         Button petunjukArah = (Button) convertView.findViewById(R.id.petunjuk_arah_button);
 //        TextView Detail_Bs = (TextView) convertView.findViewById(R.id.detail_bs);
-        UnitUsahaPariwisata item = ruta.get(position);
+        RumahTangga item = ruta.get(position);
         petunjukArah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,7 +160,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
             Alamat.setText(spanText, TextView.BufferType.SPANNABLE);
         }
 
-        final UnitUsahaPariwisata rt = ruta.get(position);
+        final RumahTangga rt = ruta.get(position);
         return convertView;
     }
 
@@ -171,14 +171,14 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
             protected FilterResults performFiltering(CharSequence constraint) {
                 constraint.toString().toLowerCase();
                 FilterResults result = new FilterResults();
-                ArrayList<UnitUsahaPariwisata> filteredRuta = new ArrayList<>();
+                ArrayList<RumahTangga> filteredRuta = new ArrayList<>();
 
                 if (constraint == "") {
                     filteredRuta.addAll(allRuta);
                     searchKey = "";
                 } else {
                     searchKey = constraint.toString();
-                    for (UnitUsahaPariwisata rt : allRuta) {
+                    for (RumahTangga rt : allRuta) {
                         String nama = rt.getNamaKRT().toLowerCase();
                         String noRuta = String.valueOf(rt.getNoUrutRuta()).toLowerCase();
                         String noBf = rt.getBf().toLowerCase();
@@ -225,7 +225,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
 //                ruta.clear();
-                ruta = (ArrayList<UnitUsahaPariwisata>) results.values;
+                ruta = (ArrayList<RumahTangga>) results.values;
                 searchKey = constraint.toString();
                 notifyDataSetChanged();
             }

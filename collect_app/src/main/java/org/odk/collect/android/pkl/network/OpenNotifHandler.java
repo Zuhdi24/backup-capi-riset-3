@@ -17,7 +17,7 @@ import org.odk.collect.android.pkl.activity.KortimListActivity;
 import org.odk.collect.android.pkl.activity.NotificationActivity;
 import org.odk.collect.android.pkl.activity.PclListActivity;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.preference.CapiKey;
 import org.odk.collect.android.pkl.preference.CapiPreference;
 import org.odk.collect.android.pkl.preference.StaticFinal;
@@ -95,7 +95,7 @@ public class OpenNotifHandler implements OneSignal.NotificationOpenedHandler {
                             context.startActivity(i);
                         } else {
                             kodeBs = data.getString(StaticFinal.ONEKEY_KODEBS);
-                            status = UnitUsahaPariwisata.STATUS_UPLOADED;
+                            status = RumahTangga.STATUS_UPLOADED;
                             mode = ActivityListRumahTangga.MODE_SAMPEL;
 
                             Intent i = new Intent(context, ActivityListRumahTangga.class);

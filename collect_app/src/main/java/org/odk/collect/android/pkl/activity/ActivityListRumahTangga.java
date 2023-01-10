@@ -49,7 +49,7 @@ import org.odk.collect.android.pkl.adapter.RutaAdapter;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.object.BlokSensus;
 import org.odk.collect.android.pkl.object.DialogListKuesModel;
-import org.odk.collect.android.pkl.object.UnitUsahaPariwisata;
+import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.object.RumahTanggaTerpilih;
 import org.odk.collect.android.pkl.object.SampelRuta;
 import org.odk.collect.android.pkl.preference.CapiKey;
@@ -82,7 +82,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
 
     Parcelable state;
     ListView listV;
-    ArrayList<UnitUsahaPariwisata> listruta;
+    ArrayList<RumahTangga> listruta;
     RutaAdapter rutaAdapter2;
     RumahTanggaAdapter rutaAdapter;
     String listMode;
@@ -354,7 +354,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
                 listV.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                        UnitUsahaPariwisata ruta = listruta.get(position);
+                        RumahTangga ruta = listruta.get(position);
                         option(ruta);
                         return true;
                     }
@@ -467,12 +467,12 @@ public class ActivityListRumahTangga extends AppCompatActivity
                             BlokSensus bs = dbSampling.getBlokSensusByKode(kodeBs);
                             ArrayList<SampelRuta> sampelRuta = dbSampling.getAllSampelRuta();
                             for (SampelRuta sampel : sampelRuta) {
-                                Log.e("WASKITHO", kodeBs + "*" + sampel.getKodeUUP());
+                                Log.e("WASKITHO", kodeBs + "*" + sampel.getKodeRuta());
                             }
-                            UnitUsahaPariwisata rta = rutaAdapter2.getItem(position);
+                            RumahTangga rta = rutaAdapter2.getItem(position);
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss");
                             String timeStamp = dateFormat.format(new Date());
-                            String fileName = "R4-32-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutUUP() + "-" + rta.getNamaPemilikUUP().toUpperCase().replaceAll(" ", "-");
+                            String fileName = "R3-32-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
                             if (strName.contains("KM5")) {
                                 fileName = fileName + "-KM5";
                             } else if (strName.contains("M5")) {
@@ -579,41 +579,41 @@ public class ActivityListRumahTangga extends AppCompatActivity
         }
         switch (i) {
             case 0:
-                Collections.sort(listruta, new Comparator<UnitUsahaPariwisata>() {
+                Collections.sort(listruta, new Comparator<RumahTangga>() {
                     @Override
-                    public int compare(UnitUsahaPariwisata o1, UnitUsahaPariwisata o2) {
+                    public int compare(RumahTangga o1, RumahTangga o2) {
                         return Integer.valueOf(o1.getNoUrutRuta()).compareTo(Integer.valueOf(o2.getNoUrutRuta()));
                     }
                 });
                 break;
             case 1:
-                Collections.sort(listruta, new Comparator<UnitUsahaPariwisata>() {
+                Collections.sort(listruta, new Comparator<RumahTangga>() {
                     @Override
-                    public int compare(UnitUsahaPariwisata o1, UnitUsahaPariwisata o2) {
+                    public int compare(RumahTangga o1, RumahTangga o2) {
                         return Integer.valueOf(o2.getNoUrutRuta()).compareTo(Integer.valueOf(o1.getNoUrutRuta()));
                     }
                 });
                 break;
             case 2:
-                Collections.sort(listruta, new Comparator<UnitUsahaPariwisata>() {
+                Collections.sort(listruta, new Comparator<RumahTangga>() {
                     @Override
-                    public int compare(UnitUsahaPariwisata o1, UnitUsahaPariwisata o2) {
+                    public int compare(RumahTangga o1, RumahTangga o2) {
                         return o1.getBf().compareTo(o2.getBf());
                     }
                 });
                 break;
             case 3:
-                Collections.sort(listruta, new Comparator<UnitUsahaPariwisata>() {
+                Collections.sort(listruta, new Comparator<RumahTangga>() {
                     @Override
-                    public int compare(UnitUsahaPariwisata o1, UnitUsahaPariwisata o2) {
+                    public int compare(RumahTangga o1, RumahTangga o2) {
                         return Integer.valueOf(o1.getBs().compareTo(o2.getBs()));
                     }
                 });
                 break;
             case 4:
-                Collections.sort(listruta, new Comparator<UnitUsahaPariwisata>() {
+                Collections.sort(listruta, new Comparator<RumahTangga>() {
                     @Override
-                    public int compare(UnitUsahaPariwisata o1, UnitUsahaPariwisata o2) {
+                    public int compare(RumahTangga o1, RumahTangga o2) {
                         return o1.getNamaKRT().compareTo(o2.getNamaKRT());
                     }
                 });
@@ -655,7 +655,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
         v.setVisibility(View.GONE);
     }
 
-    private void option(final UnitUsahaPariwisata ruta) {
+    private void option(final RumahTangga ruta) {
         View convertView;
         if (inflater == null)
             inflater = (LayoutInflater) ActivityListRumahTangga.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -697,7 +697,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
                 .show();
     }
 
-    public void passwordHapusRutaKortim(final UnitUsahaPariwisata ruta) {
+    public void passwordHapusRutaKortim(final RumahTangga ruta) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListRumahTangga.this);
         builder.setTitle("Konfirmasi");
         builder.setMessage("Hapus Rumah Tangga membutuhkan persetujuan Kortim. \nMasukan password master yang diperoleh dari Kortim.");
@@ -1033,16 +1033,16 @@ public class ActivityListRumahTangga extends AppCompatActivity
         dialog.show();
     }
 
-    private void toIsiListing(UnitUsahaPariwisata unitUsahaPariwisata, int posisi) {
+    private void toIsiListing(RumahTangga rumahTangga, int posisi) {
 
         if (dbSampling.getBlokSensusByKode(kodeBs).getKodeBs().startsWith("02", 2)) {
 
             Intent toIsianListing = new Intent(ActivityListRumahTangga.this,
                     IsiRumahTanggaActivity.class);
 
-            UnitUsahaPariwisata lastInsert = dbSampling.getLastUUP();
+            RumahTangga lastInsert = dbSampling.getLastUUP();
 
-            if (unitUsahaPariwisata == null) {
+            if (rumahTangga == null) {
                 toIsianListing.putExtra("status", status);
                 toIsianListing.putExtra("kodeBs", kodeBs);
                 toIsianListing.putExtra("posisi", posisi);
@@ -1051,8 +1051,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
 
             } else {
                 toIsianListing.putExtra("kodeBs", kodeBs);
-                toIsianListing.putExtra("kodeUUP", unitUsahaPariwisata.getKodeUUP());
-                toIsianListing.putExtra("nama KRT", unitUsahaPariwisata.getNamaPemilikUUP());
+                toIsianListing.putExtra("kodeUUP", rumahTangga.getKodeUUP());
+                toIsianListing.putExtra("nama KRT", rumahTangga.getNamaPemilikUUP());
                 toIsianListing.putExtra("posisi", posisi);
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
@@ -1064,9 +1064,9 @@ public class ActivityListRumahTangga extends AppCompatActivity
         } else {
             Intent toIsianListing = new Intent(ActivityListRumahTangga.this,
                     IsiRumahTanggaActivity.class);
-            UnitUsahaPariwisata lastInsert = dbSampling.getLastUUP();
+            RumahTangga lastInsert = dbSampling.getLastUUP();
 
-            if (unitUsahaPariwisata == null) {
+            if (rumahTangga == null) {
                 toIsianListing.putExtra("status", status);
                 toIsianListing.putExtra("kodeBs", kodeBs);
                 if (lastInsert != null)
@@ -1074,8 +1074,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
 
             } else {
                 toIsianListing.putExtra("kodeBs", kodeBs);
-                toIsianListing.putExtra("kodeUUP", unitUsahaPariwisata.getKodeUUP());
-                toIsianListing.putExtra("nama KRT", unitUsahaPariwisata.getNamaPemilikUUP());
+                toIsianListing.putExtra("kodeUUP", rumahTangga.getKodeUUP());
+                toIsianListing.putExtra("nama KRT", rumahTangga.getNamaPemilikUUP());
                 toIsianListing.putExtra("posisi", posisi);
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
