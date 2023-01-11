@@ -47,7 +47,7 @@ public class Sampling {
                 for (int i = 0; i < nPopulasi; i++) {
                     Log.d( "dahwan", String.valueOf( i/nPopulasi ) );
                     RumahTangga ruta = frame.get( i );
-                    sampelTerpilih.add( new SampelRuta( ruta.getKodeBs(), ruta.getKodeUUP() ) );
+                    sampelTerpilih.add( new SampelRuta( ruta.getKodeBs(), ruta.getKodeRuta() ) );
 
                 }
 
@@ -87,10 +87,10 @@ public class Sampling {
                 Log.i( TAG, "index ke-" + index );
 
                 RumahTangga ruta = frame.get( index - 1 );
-                Log.i( TAG, "--Nomor Urut Ruta (Listing): " + ruta.getNoUrutUUP() );
-                Log.i( TAG, "--Nama KRT: " + ruta.getNamaPemilikUUP() );
+                Log.i( TAG, "--Nomor Urut Ruta (Listing): " + ruta.getNoUrutRuta() );
+                Log.i( TAG, "--Nama KRT: " + ruta.getNamaKRT() );
 
-                sampelTerpilih.add( new SampelRuta( ruta.getKodeBs(), ruta.getKodeUUP() ) );
+                sampelTerpilih.add( new SampelRuta( ruta.getKodeBs(), ruta.getKodeRuta()) );
             }
             if (db.deleteSampel( kodeBs )) {
                 if (db.insertSampel( sampelTerpilih )) {

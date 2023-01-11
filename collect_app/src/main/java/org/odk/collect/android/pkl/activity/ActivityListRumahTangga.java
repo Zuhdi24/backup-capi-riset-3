@@ -489,8 +489,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
                                     bs.getKecamatan(), bs.getNamaKecamatan(),
                                     bs.getDesa(), bs.getNamaDesa(),
                                     bs.getStratifikasi(), bs.getNoBs(), rta.getNoUrutRuta(),
-                                    rta.getAlamat(), rta.getNamaPemilikUUP(),
-                                    bs.getKodeBs(), rta.getBs(), rta.getNoUrutUUP(), rta.getJenisUUP()
+                                    rta.getAlamat(), rta.getNamaKRT(),
+                                    bs.getKodeBs(), rta.getBs(), rta.getNoUrutRuta(), rta.getNamaKRT()
                             );
 
                             AlertDialog.Builder builderInner = new AlertDialog.Builder(ActivityListRumahTangga.this);
@@ -662,7 +662,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
         convertView = inflater.inflate(R.layout.judul_ruta, null);
         TextView judulRuta = convertView.findViewById(R.id.judulRT);
 
-        judulRuta.setText("Aksi Untuk Ruta " + ruta.getNamaPemilikUUP());
+        judulRuta.setText("Aksi Untuk Ruta " + ruta.getNamaKRT());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCustomTitle(convertView)
@@ -1051,8 +1051,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
 
             } else {
                 toIsianListing.putExtra("kodeBs", kodeBs);
-                toIsianListing.putExtra("kodeUUP", rumahTangga.getKodeUUP());
-                toIsianListing.putExtra("nama KRT", rumahTangga.getNamaPemilikUUP());
+                toIsianListing.putExtra("kodeUUP", rumahTangga.getKodeRuta());
+                toIsianListing.putExtra("nama KRT", rumahTangga.getNamaKRT());
                 toIsianListing.putExtra("posisi", posisi);
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
@@ -1074,8 +1074,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
 
             } else {
                 toIsianListing.putExtra("kodeBs", kodeBs);
-                toIsianListing.putExtra("kodeUUP", rumahTangga.getKodeUUP());
-                toIsianListing.putExtra("nama KRT", rumahTangga.getNamaPemilikUUP());
+                toIsianListing.putExtra("kodeUUP", rumahTangga.getKodeRuta());
+                toIsianListing.putExtra("nama KRT", rumahTangga.getNamaKRT());
                 toIsianListing.putExtra("posisi", posisi);
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);

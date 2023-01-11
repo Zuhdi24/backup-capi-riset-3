@@ -126,7 +126,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
                 Detail_Bs.setText("Bangunan Sensus Bukan Tempat Tinggal");
                 break;
         }*/
-        NoSegmen.setText(item.getNoSegmen());
+        NoSegmen.setText(item.getNoSLS());
         NoUrut.setText("" + item.getNoUrutRuta());
 //        NoUrutUP.setText("" + item.getNoUrutUUP());
         NoBf.setText(item.getBf());
@@ -135,18 +135,18 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         if (("").equals(item.getNamaKRT())) {
             NamaPemilik.setText("-");
         } else {
-            NamaPemilik.setText(item.getNamaPemilikUUP());
+            NamaPemilik.setText(item.getNamaKRT());
         }
 
-        if (item.getJenisUUP().equals("1")){
-            kegiatanUtama.setText("Jasa Perjalanan Wisata");
-        } else if (item.getJenisUUP().equals("2")) {
-            kegiatanUtama.setText("Jasa Makanan dan Minuman");
-        } else if (item.getJenisUUP().equals("3")) {
-            kegiatanUtama.setText("Penyedia Akomodasi");
-        } else {
-            kegiatanUtama.setText("-");
-        }
+//        if (item.().equals("1")){
+//            kegiatanUtama.setText("Jasa Perjalanan Wisata");
+//        } else if (item.getJenisUUP().equals("2")) {
+//            kegiatanUtama.setText("Jasa Makanan dan Minuman");
+//        } else if (item.getJenisUUP().equals("3")) {
+//            kegiatanUtama.setText("Penyedia Akomodasi");
+//        } else {
+//            kegiatanUtama.setText("-");
+//        }
 
         String alamat = item.getAlamat().toLowerCase(Locale.getDefault());
         if (alamat.contains(searchKey) && searchKey.length() != 0) {
