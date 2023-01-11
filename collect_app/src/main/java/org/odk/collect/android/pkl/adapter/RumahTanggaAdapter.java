@@ -279,8 +279,9 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 TextView alamat = (TextView) dialog.findViewById(R.id.alamat);
                 alamat.setText(item.getAlamat());
 
-                TextView jumlah_isUUP = (TextView) dialog.findViewById(R.id.jumlah_isUUP);
-                jumlah_isUUP.setText(item.getJumlahEligible());
+//                TextView jumlah_isUUP = (TextView) dialog.findViewById(R.id.jumlah_isUUP);
+//                jumlah_isUUP.setText(item.getJumlahEligible());
+
 
                 TextView no_urut_isUUP = (TextView) dialog.findViewById(R.id.no_urut_isUUP);
                 no_urut_isUUP.setText(item.getNoUrutRuta());

@@ -28,8 +28,8 @@ public class RumahTangga implements Parcelable {
     private String jumlahART10;
     private String noHp;
     private String kodeEligible;
-    private String jumlahEligible;
-    private String listNamaEligible;
+//    private String jumlahEligible;
+//    private String listNamaEligible;
     private String latitude;
     private String longitude;
     private String akurasi;
@@ -50,7 +50,7 @@ public class RumahTangga implements Parcelable {
 //    private boolean isMelayani2;
 
 
-    public RumahTangga(String kodeRuta, String kodeBs, String noSLS, String bf, String bs, String noUrutRuta, String namaKRT, String alamat, String jumlahART, String jumlahART10, String noHp, String kodeEligible, String jumlahEligible, String listNamaEligible, String latitude, String longitude, String akurasi, String status, String time) {
+    public RumahTangga(String kodeRuta, String kodeBs, String noSLS, String bf, String bs, String noUrutRuta, String namaKRT, String alamat, String jumlahART, String jumlahART10, String noHp, String kodeEligible, String latitude, String longitude, String akurasi, String status, String time) {
         this.kodeRuta = kodeRuta;
         this.kodeBs = kodeBs;
         this.noSLS = noSLS;
@@ -63,8 +63,8 @@ public class RumahTangga implements Parcelable {
         this.jumlahART10 = jumlahART10;
         this.noHp = noHp;
         this.kodeEligible = kodeEligible;
-        this.jumlahEligible = jumlahEligible;
-        this.listNamaEligible = listNamaEligible;
+//        this.jumlahEligible = jumlahEligible;
+//        this.listNamaEligible = listNamaEligible;
         this.latitude = latitude;
         this.longitude = longitude;
         this.akurasi = akurasi;
@@ -168,21 +168,21 @@ public class RumahTangga implements Parcelable {
         this.kodeEligible = kodeEligible;
     }
 
-    public String getJumlahEligible() {
-        return jumlahEligible;
-    }
+//    public String getJumlahEligible() {
+//        return jumlahEligible;
+//    }
 
-    public void setJumlahEligible(String jumlahEligible) {
-        this.jumlahEligible = jumlahEligible;
-    }
+//    public void setJumlahEligible(String jumlahEligible) {
+//        this.jumlahEligible = jumlahEligible;
+//    }
 
-    public String getListNamaEligible() {
-        return listNamaEligible;
-    }
+//    public String getListNamaEligible() {
+//        return listNamaEligible;
+//    }
 
-    public void setListNamaEligible(String listNamaEligible) {
-        this.listNamaEligible = listNamaEligible;
-    }
+//    public void setListNamaEligible(String listNamaEligible) {
+//        this.listNamaEligible = listNamaEligible;
+//    }
 
     public String getLatitude() {
         return latitude;

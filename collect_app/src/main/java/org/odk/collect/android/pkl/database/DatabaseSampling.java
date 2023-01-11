@@ -26,7 +26,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 
     private static DatabaseSampling sInstance;
     private static final int DATABASE_VERSION = 22;
-    private static final String DATABASE_NAME = "pkl62.db";
+    private static final String DATABASE_NAME = "pkl61.db";
     private static final String TAG = "DATABASE";
 
     public static final String TABLE_BS = "bloksensus";
@@ -53,7 +53,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
     public static final String NAMA_DESA = "nama_desa";
 
     //Usaha Pariwisata
-    public static final String NO_SLS = "noSls";
+    public static final String NO_SLS = "noSls";  // ini no segen
     public static final String BF = "bf";
     public static final String BS = "bs";
     public static final String NO_RUTA = "noUrutRuta";
@@ -99,8 +99,9 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             JUMLAH_ART + " text, " +
             JUMLAH_ART10 + " text, " +
             NO_HP + " text, " +
-            JUMLAH_ELIGIBLE + " text, " +
-            LIST_ELIGIBLE + " text, " +
+            KODE_ELIGIBLE + " text, " +
+//            JUMLAH_ELIGIBLE + " text, " +
+//            LIST_ELIGIBLE + " text, " +
             LATITUDE + " text, " +
             LONGITUDE + " text, " +
             AKURASI + " text, " +
@@ -343,8 +344,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(JUMLAH_ART10, uup.getJumlahART10());
             v.put(NO_HP, uup.getNoHp());
             v.put(KODE_ELIGIBLE, uup.getKodeEligible());
-            v.put(JUMLAH_ELIGIBLE, uup.getJumlahEligible());
-            v.put(LIST_ELIGIBLE, uup.getListNamaEligible());
+//            v.put(JUMLAH_ELIGIBLE, uup.getJumlahEligible());
+//            v.put(LIST_ELIGIBLE, uup.getListNamaEligible());
             v.put(LATITUDE, uup.getLatitude());
             v.put(LONGITUDE, uup.getLongitude());
             v.put(AKURASI, uup.getAkurasi());
@@ -383,8 +384,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(JUMLAH_ART10, uup.getJumlahART10());
             v.put(NO_HP, uup.getNoHp());
             v.put(KODE_ELIGIBLE, uup.getKodeEligible());
-            v.put(JUMLAH_ELIGIBLE, uup.getJumlahEligible());
-            v.put(LIST_ELIGIBLE, uup.getListNamaEligible());
+//            v.put(JUMLAH_ELIGIBLE, uup.getJumlahEligible());
+//            v.put(LIST_ELIGIBLE, uup.getListNamaEligible());
             v.put(LATITUDE, uup.getLatitude());
             v.put(LONGITUDE, uup.getLongitude());
             v.put(AKURASI, uup.getAkurasi());
@@ -437,7 +438,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16));
                     listRumahTangga.add(rumahTangga);
                 } while (cursor.moveToNext());
             }
@@ -486,7 +487,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                     cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                     cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                    cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                    cursor.getString(14), cursor.getString(15), cursor.getString(16));
             cursor.close();
             return rumahTangga;
         } catch (Exception e) {
@@ -507,7 +508,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                 rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                         cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                         cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                        cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                        cursor.getString(14), cursor.getString(15), cursor.getString(16));
             }
             cursor.close();
             return rumahTangga;
@@ -550,8 +551,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(JUMLAH_ART10, uup.getJumlahART10());
             v.put(NO_HP, uup.getNoHp());
             v.put(KODE_ELIGIBLE, uup.getKodeEligible());
-            v.put(JUMLAH_ELIGIBLE, uup.getJumlahEligible());
-            v.put(LIST_ELIGIBLE, uup.getListNamaEligible());
+//            v.put(JUMLAH_ELIGIBLE, uup.getJumlahEligible());
+//            v.put(LIST_ELIGIBLE, uup.getListNamaEligible());
             v.put(LATITUDE, uup.getLatitude());
             v.put(LONGITUDE, uup.getLongitude());
             v.put(AKURASI, uup.getAkurasi());
@@ -584,7 +585,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16));
                     listRumahTangga.add(rumahTangga);
                 } while (cursor.moveToNext());
             }
@@ -627,7 +628,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
                             cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
                             cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16));
                     listRumahTangga.add(rumahTangga);
 //                    Log.d(TAG, "getListRumahTanggaForSampel: " + rumahTangga.getNamaPemilikUUP() + " " + rumahTangga.getNoUrutUUP());
                 } while (cursor.moveToNext());
@@ -640,6 +641,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listRumahTangga;
     }
 
+    // TODO
     public ArrayList<RumahTangga> getListUUPForSampelLISTING(String kodeBs) {
         String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + JUMLAH_ELIGIBLE + " != '00"
                 + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE
@@ -654,7 +656,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
                             cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
                             cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16));
                     listRumahTangga.add(rumahTangga);
 //                    Log.d(TAG, "getListRumahTanggaForSampel: " + rumahTangga.getNamaPemilikUUP() + " " + rumahTangga.getNoUrutUUP());
                 } while (cursor.moveToNext());
@@ -1094,7 +1096,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16));
                     listRumahTangga.add(rumahTangga);
                 } while (cursor.moveToNext());
             }
@@ -1282,7 +1284,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
                             cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                             cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18));
+                            cursor.getString(14), cursor.getString(15), cursor.getString(16));
 
                     listRumahTangga.add(rumahTangga);
                 } while (cursor.moveToNext());
