@@ -1317,7 +1317,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             no_bs.setText(noBs);
 
             //RT/RW
-            alamat.setText(lastRuta.getAlamat());
+//            alamat.setText(lastRuta.getAlamat());
 //
 //            //No Urut UUP
 //            no_urut.setText(lastRuta.getNoUrutUUP());
