@@ -421,20 +421,20 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                                 break;
                             case 2:
                                 //TODO TARO INTENT CALL NUMBER
-//                                final Boolean hasNomor;
-//                                final String nomor = ruta.getNoHp();
+                                final Boolean hasNomor;
+                                final String nomor = ruta.getNoHp();
 //                                final String nomor = "0";
-//                                if (nomor.equalsIgnoreCase("")) {
-//                                    hasNomor = false;
-//                                } else {
-//                                    hasNomor = true;
-//                                }
-//
-//                                if (hasNomor) {
-//                                    callContact(nomor);
-//                                } else {
-//                                    Toast.makeText(activity, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
-//                                }
+                                if (nomor.equalsIgnoreCase("")) {
+                                    hasNomor = false;
+                                } else {
+                                    hasNomor = true;
+                                }
+
+                                if (hasNomor) {
+                                    callContact(nomor);
+                                } else {
+                                    Toast.makeText(activity, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
+                                }
 
                                 break;
                             case 3:

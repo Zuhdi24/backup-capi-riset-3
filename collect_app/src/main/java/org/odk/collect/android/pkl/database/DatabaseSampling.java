@@ -909,7 +909,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getInstance().getReadableDatabase();
         try {
-            if (ruta.getStatus().equals(RumahTangga.STATUS_UPLOADED) || ruta.getStatus().equals(RumahTangga.STATUS_UPDATE)) {
+            if (ruta.getStatus().equals(RumahTangga.STATUS_UPLOADED) || ruta.getStatus().equals(RumahTangga.STATUS_INSERT)) {
                 updateUnitUsahaPariwisata(ruta.getKodeBs(), ruta.getKodeRuta(), RumahTangga.STATUS_DELETE);
             } else {
                 db.delete(TABLE_RT, KODE_RUTA + " = '" + ruta.getKodeRuta() + "'", null);

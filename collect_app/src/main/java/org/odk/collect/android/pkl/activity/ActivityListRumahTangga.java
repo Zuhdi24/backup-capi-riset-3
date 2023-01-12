@@ -602,15 +602,15 @@ public class ActivityListRumahTangga extends AppCompatActivity
                     }
                 });
                 break;
+//            case 3:
+//                Collections.sort(listruta, new Comparator<RumahTangga>() {
+//                    @Override
+//                    public int compare(RumahTangga o1, RumahTangga o2) {
+//                        return Integer.valueOf(o1.getBs().compareTo(o2.getBs()));
+//                    }
+//                });
+//                break;
             case 3:
-                Collections.sort(listruta, new Comparator<RumahTangga>() {
-                    @Override
-                    public int compare(RumahTangga o1, RumahTangga o2) {
-                        return Integer.valueOf(o1.getBs().compareTo(o2.getBs()));
-                    }
-                });
-                break;
-            case 4:
                 Collections.sort(listruta, new Comparator<RumahTangga>() {
                     @Override
                     public int compare(RumahTangga o1, RumahTangga o2) {

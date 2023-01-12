@@ -209,11 +209,11 @@ public class RumahTangga implements Parcelable {
     }
 
     public String getStatus() {
-        return status;
+        return STATUS_INSERT;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = STATUS_INSERT;
     }
 
     public String getTime() {

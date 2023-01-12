@@ -752,8 +752,18 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             pertanyaanJumlahART.requestFocus();
             jumlahART.requestFocus();
             Log.d(TAG, "submitRT: Jumlah ART salah");
+        } else if (jumlahART.getText().toString().matches("[0-9]+") == false) {
+            message = "Jumlah Anggota Rumah Tangga harus berupa angka";
+            pertanyaanJumlahART.requestFocus();
+            jumlahART.requestFocus();
+            Log.d(TAG, "submitRT: Jumlah ART salah");
         } else if (jumlahART10.getText().length() < 1) {
             message = "Jumlah Anggota Rumah Tangga harus diisi";
+            pertanyaanJumlahART10.requestFocus();
+            jumlahART10.requestFocus();
+            Log.d(TAG, "submitRT: Jumlah ART 10 tahun salah");
+        } else if (jumlahART10.getText().toString().matches("[0-9]+") == false) {
+            message = "Jumlah Anggota Rumah Tangga harus berupa angka";
             pertanyaanJumlahART10.requestFocus();
             jumlahART10.requestFocus();
             Log.d(TAG, "submitRT: Jumlah ART 10 tahun salah");
@@ -763,7 +773,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             noHp.requestFocus();
             Log.d(TAG, "submitRT: No HP salah");
         } else if (noHp.getText().toString().indexOf("62") != 0) {
-            message = "No HP harus diawali dengan 62";
+            message = "No. HP harus diawali dengan 62";
             pertanyaanNoHp.requestFocus();
             noHp.requestFocus();
             Log.d(TAG, "submitRT: No HP salah");
@@ -1330,16 +1340,15 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         RumahTangga lastRuta = db.getLastRuta(kodeBs);
 
         no_segmen.setText(ruta.getNoSLS());
-
         no_bf.setText(ruta.getBf());
-
         no_bs.setText(ruta.getBs());
-
         no_urut_ruta.setText(ruta.getNoUrutRuta());
-
         namaKRT.setText(ruta.getNamaKRT());
-
         alamat.setText(ruta.getAlamat());
+        jumlahART.setText(ruta.getJumlahART());
+        jumlahART10.setText(ruta.getJumlahART10());
+        noHp.setText(ruta.getNoHp());
+        kodeEligible.setText(ruta.getKodeEligible());
 
 //        RadioButton isUUP_ya = (RadioButton) findViewById(R.id.kategori_isUUP_yes);
 //        isUUP_ya.setChecked(true);

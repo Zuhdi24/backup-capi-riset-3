@@ -477,7 +477,7 @@
                     android:layout_alignParentBottom="true"
                     android:backgroundTint="@color/colorAccent"
                     android:ems="10"
-                    android:inputType="text|textCapCharacters"
+                    android:inputType="number"
                     android:padding="10dp"
                     android:textColor="#383838" />
             </LinearLayout>
@@ -507,7 +507,7 @@
                     android:layout_alignParentBottom="true"
                     android:backgroundTint="@color/colorAccent"
                     android:ems="10"
-                    android:inputType="text|textCapCharacters"
+                    android:inputType="number"
                     android:padding="10dp"
                     android:textColor="#383838" />
             </LinearLayout>
@@ -567,6 +567,12 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kode Eligible Rumah Tangga berdasarkan Kuesioner Listing ART" />
+
                 <EditText
                     android:id="@+id/kode_eligible"
                     android:layout_width="match_parent"
@@ -574,7 +580,7 @@
                     android:layout_alignParentBottom="true"
                     android:backgroundTint="@color/colorAccent"
                     android:ems="10"
-                    android:inputType="text|textCapCharacters"
+                    android:inputType="number"
                     android:padding="10dp"
                     android:textColor="#383838" />
 

@@ -84,9 +84,9 @@
         <item>No. Urut (Asc)</item>
         <item>No. Urut (Desc)</item>
         <item>No. Bangunan Fisik</item>
-        <item>Jenis Bangunan</item>
+<!--        <item>Jenis Bangunan</item>-->
         <item>Nama Kepala Ruta</item>
-        <item>Jenis Ruta</item>
+<!--        <item>Jenis Ruta</item>-->
     </string-array>
 
     <string-array name="listServer" translatable="false">
