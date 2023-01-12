@@ -86,7 +86,7 @@ public class AggregatePreferencesActivity extends PreferenceActivity {
                         }
 
                         if (UrlUtils.isValidUrl(url)) {
-                            preference.setSummary(newValue.toString());
+//                            preference.setSummary(newValue.toString());
                             return true;
                         } else {
                             Toast.makeText(getApplicationContext(),

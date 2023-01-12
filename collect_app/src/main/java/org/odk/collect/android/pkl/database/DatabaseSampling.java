@@ -63,13 +63,9 @@ public class DatabaseSampling extends SQLiteOpenHelper {
     public static final String JUMLAH_ART10 = "jumlahART10";
     public static final String NO_HP = "noHp";
     public static final String KODE_ELIGIBLE = "kodeEligible";
-    public static final String JUMLAH_ELIGIBLE = "jumlahEligible";
-    public static final String LIST_ELIGIBLE = "listEligible";
     public static final String LATITUDE = "latitude";
     public static final String LONGITUDE = "longitude";
     public static final String AKURASI = "akurasi";
-    public static final String LOKASI_UP = "lokasiUP";
-    public static final String JENIS_UUP = "jenisUUP";
     public static final String TIME = "time";
 
     private static final String CREATE_TABLE_BS = "CREATE TABLE " + TABLE_BS + " (" +
@@ -100,8 +96,6 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             JUMLAH_ART10 + " text, " +
             NO_HP + " text, " +
             KODE_ELIGIBLE + " text, " +
-//            JUMLAH_ELIGIBLE + " text, " +
-//            LIST_ELIGIBLE + " text, " +
             LATITUDE + " text, " +
             LONGITUDE + " text, " +
             AKURASI + " text, " +
@@ -384,8 +378,6 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(JUMLAH_ART10, uup.getJumlahART10());
             v.put(NO_HP, uup.getNoHp());
             v.put(KODE_ELIGIBLE, uup.getKodeEligible());
-//            v.put(JUMLAH_ELIGIBLE, uup.getJumlahEligible());
-//            v.put(LIST_ELIGIBLE, uup.getListNamaEligible());
             v.put(LATITUDE, uup.getLatitude());
             v.put(LONGITUDE, uup.getLongitude());
             v.put(AKURASI, uup.getAkurasi());
@@ -641,9 +633,9 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listRumahTangga;
     }
 
-    // TODO
+    // TODO YGY
     public ArrayList<RumahTangga> getListUUPForSampelLISTING(String kodeBs) {
-        String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + JUMLAH_ELIGIBLE + " != '00"
+        String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + KODE_ELIGIBLE + " != '0"
                 + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE
                 + "' AND " + NO_RUTA + " <> '000" +"' ORDER BY " + TIME + " ASC, " + NO_RUTA + " ASC";
         ArrayList<RumahTangga> listRumahTangga = new ArrayList<>();
@@ -781,8 +773,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 //    }
 
     public String getJumlahUUPByType(String kodeBs, int type) {
-        String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_uup FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE +
-                "' AND " + JENIS_UUP + " = " + type ;
+        String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_uup FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE;
         try {
             SQLiteDatabase database = getInstance().getReadableDatabase();
             Cursor cursor = database.rawQuery(sql, null);

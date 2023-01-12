@@ -693,8 +693,8 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
         preference = CapiPreference.getInstance();
         String jabatan = String.valueOf(preference.get(CapiKey.KEY_ID_JABATAN));
 
-        if(jabatan.equals("1")) return ("pcl61");
-        else return ("pcl61");
+        if(jabatan.equals("1")) return ("pcl62");
+        else return ("pcl62");
 
     }
 

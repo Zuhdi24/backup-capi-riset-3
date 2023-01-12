@@ -441,7 +441,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
                                     c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
                                     c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_SUBTEXT)));
 //                            dlkms.addLast(dlkm);
-                            if (dlkm.getDisplayName().contains("R4") || dlkm.getDisplayName().contains("Riset4")) {
+                            if (dlkm.getDisplayName().contains("R3") || dlkm.getDisplayName().contains("Riset3")) {
                                 dlkms.addLast(dlkm);
                                 Log.d("NAMA FORM", dlkm.getDisplayName());
                             } else {

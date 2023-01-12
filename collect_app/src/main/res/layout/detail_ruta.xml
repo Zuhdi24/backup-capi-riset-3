@@ -14,7 +14,7 @@
         android:background="@drawable/shape_header"
         android:gravity="center"
         android:padding="15dp"
-        android:text="DETAIL UNIT USAHA PARIWISATA"
+        android:text="DETAIL RUMAH TANGGA"
         android:textColor="@android:color/white"
         android:textSize="18dp"
         android:textStyle="bold" />
@@ -183,7 +183,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lin_jumlah_isUUP"
+                android:id="@+id/lin_jumlahart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -192,11 +192,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="Jumlah ART Usia Kerja yang Memiliki/ Mengelola Usaha Pariwisata"
+                    android:text="Jumlah ART (Termasuk KRT) Keseluruhan"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/jumlah_isUUP"
+                    android:id="@+id/jumlah_art"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp" />
@@ -210,7 +210,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lin_no_urut_isUUP"
+                android:id="@+id/lin_jumlahart10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -219,11 +219,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="No Urut ART Pemilik/ Pengelola Usaha Pariwisata"
+                    android:text="Jumlah ART (Termasuk KRT) yang Berusia 10 Tahun ke Atas"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/no_urut_isUUP"
+                    android:id="@+id/jumlah_art10"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp" />
@@ -237,7 +237,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/nama2"
+                android:id="@+id/nomorhp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -246,116 +246,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="Nama Pemilik Usaha Pariwisata"
+                    android:text="No. Telp/HP"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/namaPemilik"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="20dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_kedudukan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="Kedudukan dalam Usaha Pariwisata"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/kedudukan_up"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="20dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_status_kelola"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="Status Pengelolaan Usaha"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/status_kelola"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="20dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_lokasiUP"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="Lokasi Usaha Pariwisata yang Dimiliki/Dikelola"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/lokasiUP"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="20dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/detail_jenis_pariwisata"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="Jenis Usaha Pariwisata"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/jenis_pariwisata"
+                    android:id="@+id/no_hp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp" />
@@ -369,7 +264,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/no_UUP"
+                android:id="@+id/lin_kode_eligible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -378,14 +273,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="Nomor Urut Ruta Usaha Pariwisata"
+                    android:text="Kode Eligible"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/no_uup"
+                    android:id="@+id/kode_eligible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -393,33 +289,6 @@
                     android:layout_marginTop="3dp"
                     android:background="@color/colorPrimaryDark" />
             </LinearLayout>
-
-<!--            <LinearLayout-->
-<!--                android:id="@+id/nomorhp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:text="No. Telp/HP"-->
-<!--                    android:textStyle="bold" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/no_hp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:paddingLeft="20dp" />-->
-
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_marginTop="3dp"-->
-<!--                    android:background="@color/colorPrimaryDark" />-->
-<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/detail_waktu"

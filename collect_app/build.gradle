@@ -38,7 +38,7 @@ android {
         minSdkVersion(16)
         targetSdkVersion(25)
         versionCode(1043)
-        versionName('pkl62.R4.1.0')
+        versionName('pkl62.R3.1.0')
         testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
         multiDexEnabled true
         manifestPlaceholders = [onesignal_app_id               : "2e8c2954-1ba7-4f1c-821d-f6c8fec65445",

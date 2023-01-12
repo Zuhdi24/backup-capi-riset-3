@@ -585,10 +585,10 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //        });
 
         // SET VIEW ON RADIO BUTTON
-        LinearLayout lljumlahisUUP = (LinearLayout) findViewById(R.id.lin_jumlah_isUUP);
+//        LinearLayout lljumlahisUUP = (LinearLayout) findViewById(R.id.lin_jumlah_isUUP);
 //        LinearLayout llnoUrutisUUP = (LinearLayout) findViewById(R.id.lin_no_urut_art);
-        LinearLayout llkedudukan = (LinearLayout) findViewById(R.id.lin_kedudukan);
-        LinearLayout llstatuskelola = (LinearLayout) findViewById(R.id.lin_status_kelola);
+//        LinearLayout llkedudukan = (LinearLayout) findViewById(R.id.lin_kedudukan);
+//        LinearLayout llstatuskelola = (LinearLayout) findViewById(R.id.lin_status_kelola);
 //        LinearLayout lllokasi = (LinearLayout) findViewById(R.id.lin_lokasi_usaha);
 //        LinearLayout llpemilik = (LinearLayout) findViewById(R.id.lin_nama_pemilik);
 //        LinearLayout lljenis = (LinearLayout) findViewById(R.id.lin_rtup_tp);
@@ -747,16 +747,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             pertanyaanAlamat.requestFocus();
             alamat.requestFocus();
             Log.d(TAG, "submitRT: Alamat salah");
-        } else if (alamat.getText().length() > 200) {
-            message = "RT/RW tidak boleh lebih dari 200 karakter"; //CEK
-            pertanyaanAlamat.requestFocus();
-            alamat.requestFocus();
-            Log.d(TAG, "submitRT: RT/RW salah");
-        } else if (!Pattern.compile("^[0-9]{3}/[0-9]{3}$").matcher(alamat.getText().toString()).find()) {
-            message = "RT/RW tidak sesuai dengan format, cek kembali"; //CEK
-            pertanyaanAlamat.requestFocus();
-            alamat.requestFocus();
-            Log.d(TAG, "submitRT: RT/RW salah");
         } else if (jumlahART.getText().length() < 1) {
             message = "Jumlah Anggota Rumah Tangga harus diisi";
             pertanyaanJumlahART.requestFocus();
@@ -1154,6 +1144,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         jumlahART.setText(uup.getJumlahART());
         jumlahART10.setText(uup.getJumlahART10());
         noHp.setText(uup.getNoHp());
+        kodeEligible.setText(uup.getKodeEligible());
 
         RadioButton a1, a2;
 //        if(uup.getJumlahisUUP().equals("00")){

@@ -259,8 +259,6 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                TextView noUrutUUP = (TextView) dialog.findViewById(R.id.no_uup);
-
                 TextView noSegmen = (TextView) dialog.findViewById(R.id.noSegmen);
                 noSegmen.setText(String.valueOf(item.getNoSLS()));
 
@@ -279,21 +277,29 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 TextView alamat = (TextView) dialog.findViewById(R.id.alamat);
                 alamat.setText(item.getAlamat());
 
-//                TextView jumlah_isUUP = (TextView) dialog.findViewById(R.id.jumlah_isUUP);
-//                jumlah_isUUP.setText(item.getJumlahEligible());
+                TextView jumlahART = (TextView) dialog.findViewById(R.id.jumlah_art);
+                jumlahART.setText(String.valueOf(item.getJumlahART()));
 
+                TextView jumlahART10 = (TextView) dialog.findViewById(R.id.jumlah_art10);
+                jumlahART10.setText(String.valueOf(item.getJumlahART10()));
 
-                TextView no_urut_isUUP = (TextView) dialog.findViewById(R.id.no_urut_isUUP);
-                no_urut_isUUP.setText(item.getNoUrutRuta());
+                TextView noHp = (TextView) dialog.findViewById(R.id.no_hp);
+                noHp.setText(item.getNoHp());
 
-                TextView namaPemilik = (TextView) dialog.findViewById(R.id.namaPemilik);
-                if(item.getNamaKRT().equals("-")){
-                    namaPemilik.setText("-");
-                }else{
-                    namaPemilik.setText(item.getNamaKRT());
-                }
+                TextView kodeEligible = (TextView) dialog.findViewById(R.id.kode_eligible);
+                kodeEligible.setText(item.getKodeEligible());
 
-                TextView kedudukanUP = (TextView) dialog.findViewById(R.id.kedudukan_up);
+//                TextView no_urut_isUUP = (TextView) dialog.findViewById(R.id.no_urut_isUUP);
+//                no_urut_isUUP.setText(item.getNoUrutRuta());
+//
+//                TextView namaPemilik = (TextView) dialog.findViewById(R.id.namaPemilik);
+//                if(item.getNamaKRT().equals("-")){
+//                    namaPemilik.setText("-");
+//                }else{
+//                    namaPemilik.setText(item.getNamaKRT());
+//                }
+//
+//                TextView kedudukanUP = (TextView) dialog.findViewById(R.id.kedudukan_up);
 //                if (item.getKedudukanUP().equals("1")) {
 //                    kedudukanUP.setText("Pemilik");
 //                } else if (item.getKedudukanUP().equals("2")) {
@@ -303,7 +309,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
 //                    noUrutUUP.setText("-");
 //                }
 
-                TextView statusKelola = (TextView) dialog.findViewById(R.id.status_kelola);
+//                TextView statusKelola = (TextView) dialog.findViewById(R.id.status_kelola);
 //                if (item.getStatusKelola().equals("1")) {
 //                    statusKelola.setText("Ya, Bertanggung jawab");
 //                } else if (item.getStatusKelola().equals("0")) {
@@ -313,7 +319,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
 //                    noUrutUUP.setText("-");
 //                }
 
-                TextView lokasiUP = (TextView) dialog.findViewById(R.id.lokasiUP);
+//                TextView lokasiUP = (TextView) dialog.findViewById(R.id.lokasiUP);
 //                if (item.getLokasiUP().equals("1")) {
 //                    lokasiUP.setText("Dalam Kota Batu");
 //                    noUrutUUP.setText(item.getNoUrutUUP());
@@ -324,7 +330,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
 //                    noUrutUUP.setText("-");
 //                }
 
-                TextView jenisUP = (TextView) dialog.findViewById(R.id.jenis_pariwisata);
+//                TextView jenisUP = (TextView) dialog.findViewById(R.id.jenis_pariwisata);
 //                if (item.getJenisUUP().equals("1")) {
 //                    jenisUP.setText("Jasa Transportasi Wisata");
 //                } else if (item.getJenisUUP().equals("2")) {
