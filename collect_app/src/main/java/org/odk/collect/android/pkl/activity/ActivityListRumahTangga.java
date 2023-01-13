@@ -59,6 +59,7 @@ import org.odk.collect.android.pkl.preference.StaticFinal;
 import org.odk.collect.android.pkl.preference.SyncManager;
 import org.odk.collect.android.pkl.task.GenerateKuesioner;
 import org.odk.collect.android.pkl.task.SynchronizeTask;
+import org.odk.collect.android.pkl.util.LocationService;
 import org.odk.collect.android.pkl.util.MasterPassword;
 import org.odk.collect.android.pkl.util.Sampling;
 import org.odk.collect.android.provider.FormsProviderAPI;
@@ -81,6 +82,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
     private final String TAG = "LIST RUTA";
     private static final String SHOWCASE_ID = "info";
     private Location location;
+    private LocationService ls;
 
     Parcelable state;
     ListView listV;
@@ -427,97 +429,116 @@ public class ActivityListRumahTangga extends AppCompatActivity
             listV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                    //Pilih Kuesioner dulu
-                    AlertDialog.Builder builderSingle = new AlertDialog.Builder(ActivityListRumahTangga.this);
-                    builderSingle.setTitle("Pilih Kuesioner untuk Digenerate : ");
-
-                    String sortOrder = FormsProviderAPI.FormsColumns.DISPLAY_NAME + " ASC, " + FormsProviderAPI.FormsColumns.JR_VERSION + " DESC";
-                    Cursor c = managedQuery(FormsProviderAPI.FormsColumns.CONTENT_URI, null, null, null, sortOrder);
-
-                    LinkedList<DialogListKuesModel> dlkms = new LinkedList<>();
-
-                    if (c.moveToFirst()) {
-                        DialogListKuesModel dlkm;
-                        do {
-                            dlkm = new DialogListKuesModel(c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
-                                    c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
-                                    c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_SUBTEXT)));
-//                            dlkms.addLast(dlkm);
-                            if (dlkm.getDisplayName().contains("R3") || dlkm.getDisplayName().contains("Riset3")) {
-                                dlkms.addLast(dlkm);
-                                Log.d("NAMA FORM", dlkm.getDisplayName());
-                            } else {
-                                Log.e("", "masuk99 nim1, masuk else");
-                            }
-                        } while (c.moveToNext());
+                    //Cek GPS dulu
+                    if(!isGpsActive()){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListRumahTangga.this);
+                        builder.setTitle("Peringatan")
+                                .setMessage("Pastikan GPS anda berfungsi dengan benar")
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        activity.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .show();
                     }
-                    c.close();
+                    else{
+//                        dapatkan lokasi
+                        ls = LocationService.getLocationManager(ActivityListRumahTangga.this);
+                        location = ls.getBestLoc();
 
-                    final DialogListKuesAdapter arrayAdapter = new DialogListKuesAdapter(ActivityListRumahTangga.this, dlkms);
+                        //Pilih Kuesioner dulu
+                        AlertDialog.Builder builderSingle = new AlertDialog.Builder(ActivityListRumahTangga.this);
+                        builderSingle.setTitle("Pilih Kuesioner untuk Digenerate : ");
 
-                    builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
+                        String sortOrder = FormsProviderAPI.FormsColumns.DISPLAY_NAME + " ASC, " + FormsProviderAPI.FormsColumns.JR_VERSION + " DESC";
+                        Cursor c = managedQuery(FormsProviderAPI.FormsColumns.CONTENT_URI, null, null, null, sortOrder);
+
+                        LinkedList<DialogListKuesModel> dlkms = new LinkedList<>();
+
+                        if (c.moveToFirst()) {
+                            DialogListKuesModel dlkm;
+                            do {
+                                dlkm = new DialogListKuesModel(c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
+                                        c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
+                                        c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_SUBTEXT)));
+//                            dlkms.addLast(dlkm);
+                                if (dlkm.getDisplayName().contains("R3") || dlkm.getDisplayName().contains("Riset3")) {
+                                    dlkms.addLast(dlkm);
+                                    Log.d("NAMA FORM", dlkm.getDisplayName());
+                                } else {
+                                    Log.e("", "masuk99 nim1, masuk else");
+                                }
+                            } while (c.moveToNext());
                         }
-                    });
+                        c.close();
 
-                    builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            final String strName = ((DialogListKuesModel) arrayAdapter.getItem(which)).getDisplayName();
-                            BlokSensus bs = dbSampling.getBlokSensusByKode(kodeBs);
-                            ArrayList<SampelRuta> sampelRuta = dbSampling.getAllSampelRuta();
-                            for (SampelRuta sampel : sampelRuta) {
-                                Log.e("WASKITHO", kodeBs + "*" + sampel.getKodeRuta());
+                        final DialogListKuesAdapter arrayAdapter = new DialogListKuesAdapter(ActivityListRumahTangga.this, dlkms);
+
+                        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
                             }
-                            RumahTangga rta = rutaAdapter2.getItem(position);
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss");
-                            String timeStamp = dateFormat.format(new Date());
-                            String fileName = "R3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
-                            if (strName.contains("KM5")) {
-                                fileName = fileName + "-KM5";
-                            } else if (strName.contains("M5")) {
-                                fileName = fileName + "-M5";
-                            }
+                        });
 
-                            fileName = fileName + "_" + timeStamp;
-                            Log.e("FILENAME SANDY", strName);
-                            Log.d("yoow", fileName);
+                        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                final String strName = ((DialogListKuesModel) arrayAdapter.getItem(which)).getDisplayName();
+                                BlokSensus bs = dbSampling.getBlokSensusByKode(kodeBs);
+                                ArrayList<SampelRuta> sampelRuta = dbSampling.getAllSampelRuta();
+                                for (SampelRuta sampel : sampelRuta) {
+                                    Log.e("WASKITHO", kodeBs + "*" + sampel.getKodeRuta());
+                                }
+                                RumahTangga rta = rutaAdapter2.getItem(position);
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss");
+                                String timeStamp = dateFormat.format(new Date());
+                                String fileName = "R3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
+                                if (strName.contains("KM5")) {
+                                    fileName = fileName + "-KM5";
+                                } else if (strName.contains("M5")) {
+                                    fileName = fileName + "-M5";
+                                }
 
-                            final RumahTanggaTerpilih ask = new RumahTanggaTerpilih(
-                                    fileName,
+                                fileName = fileName + "_" + timeStamp;
+                                Log.e("FILENAME SANDY", strName);
+                                Log.d("yoow", fileName);
+
+                                final RumahTanggaTerpilih ask = new RumahTanggaTerpilih(
+                                        fileName,
 //                                    String.valueOf(location.getLatitude()),
 //                                    String.valueOf(location.getLongitude()),
 //                                    String.valueOf(location.getAccuracy()),
-                                    "1",
-                                    "2",
-                                    "3",
-                                    bs.getKodeBs(),
-                                    bs.getKabupaten(), bs.getKecamatan(),
-                                    bs.getDesa(), bs.getNoBs(),
-                                    bs.getNamaKabupaten(), bs.getNamaKecamatan(),
-                                    bs.getNamaDesa(), rta.getNoUrutRuta(), rta.getNamaKRT(), rta.getAlamat(),
-                                    rta.getJumlahART(), rta.getJumlahART10(), rta.getNoHp(), rta.getKodeEligible()
-                            );
+                                        String.valueOf(location.getLatitude()),
+                                        String.valueOf(location.getLongitude()),
+                                        String.valueOf(location.getAccuracy()),
+                                        bs.getKodeBs(),
+                                        bs.getKabupaten(), bs.getKecamatan(),
+                                        bs.getDesa(), bs.getNoBs(),
+                                        bs.getNamaKabupaten(), bs.getNamaKecamatan(),
+                                        bs.getNamaDesa(), rta.getNoUrutRuta(), rta.getNamaKRT(), rta.getAlamat(),
+                                        rta.getJumlahART(), rta.getJumlahART10(), rta.getNoHp(), rta.getKodeEligible()
+                                );
 
-                            AlertDialog.Builder builderInner = new AlertDialog.Builder(ActivityListRumahTangga.this);
-                            builderInner.setTitle("Detail");
-                            builderInner.setMessage("Kuesioner : " + strName +
-                                    "\nKode : " + fileName +
-                                    "\n\nKuesioner akan digenerate berdasarkan isian listing dan ditampilkan pada menu Ubah Kuesioner.");
-                            builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    GenerateKuesioner gen = new GenerateKuesioner(context, strName);
-                                    gen.GenerateKuesInstance(ask);
-                                    dialog.dismiss();
-                                }
-                            });
-                            builderInner.show();
-                        }
-                    });
-                    builderSingle.show();
+                                AlertDialog.Builder builderInner = new AlertDialog.Builder(ActivityListRumahTangga.this);
+                                builderInner.setTitle("Detail");
+                                builderInner.setMessage("Kuesioner : " + strName +
+                                        "\nKode : " + fileName +
+                                        "\n\nKuesioner akan digenerate berdasarkan isian listing dan ditampilkan pada menu Ubah Kuesioner.");
+                                builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        GenerateKuesioner gen = new GenerateKuesioner(context, strName);
+                                        gen.GenerateKuesInstance(ask);
+                                        dialog.dismiss();
+                                    }
+                                });
+                                builderInner.show();
+                            }
+                        });
+                        builderSingle.show();
+                    }
                 }
             });
 
