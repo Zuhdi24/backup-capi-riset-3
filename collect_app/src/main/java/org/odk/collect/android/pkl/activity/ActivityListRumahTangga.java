@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
@@ -79,6 +80,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
     public final static String MODE_SAMPEL = "sampel";
     private final String TAG = "LIST RUTA";
     private static final String SHOWCASE_ID = "info";
+    private Location location;
 
     Parcelable state;
     ListView listV;
@@ -472,7 +474,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
                             RumahTangga rta = rutaAdapter2.getItem(position);
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss");
                             String timeStamp = dateFormat.format(new Date());
-                            String fileName = "R3-32-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
+                            String fileName = "R3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
                             if (strName.contains("KM5")) {
                                 fileName = fileName + "-KM5";
                             } else if (strName.contains("M5")) {
@@ -485,12 +487,18 @@ public class ActivityListRumahTangga extends AppCompatActivity
 
                             final RumahTanggaTerpilih ask = new RumahTanggaTerpilih(
                                     fileName,
-                                    bs.getKabupaten(), bs.getNamaKabupaten(),
-                                    bs.getKecamatan(), bs.getNamaKecamatan(),
-                                    bs.getDesa(), bs.getNamaDesa(),
-                                    bs.getStratifikasi(), bs.getNoBs(), rta.getNoUrutRuta(),
-                                    rta.getAlamat(), rta.getNamaKRT(),
-                                    bs.getKodeBs(), rta.getBs(), rta.getNoUrutRuta(), rta.getNamaKRT()
+//                                    String.valueOf(location.getLatitude()),
+//                                    String.valueOf(location.getLongitude()),
+//                                    String.valueOf(location.getAccuracy()),
+                                    "1",
+                                    "2",
+                                    "3",
+                                    bs.getKodeBs(),
+                                    bs.getKabupaten(), bs.getKecamatan(),
+                                    bs.getDesa(), bs.getNoBs(),
+                                    bs.getNamaKabupaten(), bs.getNamaKecamatan(),
+                                    bs.getNamaDesa(), rta.getNoUrutRuta(), rta.getNamaKRT(), rta.getAlamat(),
+                                    rta.getJumlahART(), rta.getJumlahART10(), rta.getNoHp(), rta.getKodeEligible()
                             );
 
                             AlertDialog.Builder builderInner = new AlertDialog.Builder(ActivityListRumahTangga.this);

@@ -184,7 +184,7 @@ public class GenerateKuesioner implements FormLoaderListener, FormSavedListener 
 //            namaFile = namaFile+"-M5";
 //        }
         Log.d(ta, "formcontroller" + (fc == null));
-        Log.d(ta + "nama_krt", st.getNama_pemilik());
+//        Log.d(ta + "nama_krt", st.getNama_pemilik());
 
         String path = Collect.INSTANCES_PATH + File.separator;
 
@@ -199,32 +199,23 @@ public class GenerateKuesioner implements FormLoaderListener, FormSavedListener 
             }
         }
         try {
-            String klasifikasi = "";
-            if (st.getKlasifikasi().equals("1")) {
-                klasifikasi = "PERKOTAAN";
-            } else if (st.getKlasifikasi().equals("2")) {
-                klasifikasi = "PERDESAAN";
-            }
             preference = CapiPreference.getInstance();
-            fc.getreRrenceForElementName(VariableGenerate.nama_kabupaten, st.getNama_kabupaten());
-            fc.getreRrenceForElementName(VariableGenerate.kode_kabupaten, st.getKode_kabupaten().substring(st.getKode_kabupaten().length() - 2));
-            fc.getreRrenceForElementName(VariableGenerate.nama_kecamatan, st.getNama_kecamatan());
-            fc.getreRrenceForElementName(VariableGenerate.kode_kecamatan, st.getKode_kecamatan().substring(st.getKode_kecamatan().length() - 3));
-            fc.getreRrenceForElementName(VariableGenerate.nama_desa, st.getNamaDesa());
-            fc.getreRrenceForElementName(VariableGenerate.kode_desa, st.getKode_desa());
-//            fc.getreRrenceForElementName(VariableGenerate.klasifikasi, klasifikasi);
+            fc.getreRrenceForElementName(VariableGenerate.latitude, st.getLatitude());
+            fc.getreRrenceForElementName(VariableGenerate.longitude, st.getLongitude());
+            fc.getreRrenceForElementName(VariableGenerate.accuracy, st.getAccuracy());
+            fc.getreRrenceForElementName(VariableGenerate.nama_kabupaten, st.getNamaKabupaten().toUpperCase());
+            fc.getreRrenceForElementName(VariableGenerate.kode_kabupaten, st.getKodeKabupaten());
+            fc.getreRrenceForElementName(VariableGenerate.nama_kecamatan, st.getNamaKecamatan().toUpperCase());
+            fc.getreRrenceForElementName(VariableGenerate.kode_kecamatan, st.getKodeKecamatan());
+            fc.getreRrenceForElementName(VariableGenerate.nama_desa, st.getNamaDesa().toUpperCase());
+            fc.getreRrenceForElementName(VariableGenerate.kode_desa, st.getKodeDesa());
             fc.getreRrenceForElementName(VariableGenerate.no_bs, st.getNoBs());
-            fc.getreRrenceForElementName(VariableGenerate.no_urut_uup, st.getNo_urut_uup());
-            fc.getreRrenceForElementName(VariableGenerate.nama_pemilik, st.getNama_pemilik());
-            fc.getreRrenceForElementName(VariableGenerate.nama_pemilik2, st.getNama_pemilik());
-//            fc.getreRrenceForElementName(VariableGenerate.sls_r2, dbsampling.getBlokSensusByKode(st.getKodebs()).getSls());
-            fc.getreRrenceForElementName(VariableGenerate.RTRW, st.getRTRW());
-            fc.getreRrenceForElementName(VariableGenerate.jenisusaha, st.getJenisusaha());
-            fc.getreRrenceForElementName(VariableGenerate.namaPcl, String.valueOf(preference.get(CapiKey.KEY_NAMA)).toUpperCase(Locale.ROOT));
+            fc.getreRrenceForElementName(VariableGenerate.namaPcl, String.valueOf(preference.get(CapiKey.KEY_NAMA)).toUpperCase());
             fc.getreRrenceForElementName(VariableGenerate.nimPcl, String.valueOf(preference.get(CapiKey.KEY_NIM)));
-            fc.getreRrenceForElementName(VariableGenerate.namaKortim, String.valueOf(preference.get(CapiKey.KEY_NAMA_KORTIM)).toUpperCase(Locale.ROOT));
+            fc.getreRrenceForElementName(VariableGenerate.namaKortim, String.valueOf(preference.get(CapiKey.KEY_NAMA_KORTIM)).toUpperCase());
             fc.getreRrenceForElementName(VariableGenerate.nimKortim, String.valueOf(preference.get(CapiKey.KEY_NIM_KORTIM)));
-            fc.getreRrenceForElementName(VariableGenerate.kodetim, "3579" + String.valueOf(preference.get(CapiKey.KEY_NAMA_TIM)).substring(String.valueOf(preference.get(CapiKey.KEY_NAMA_TIM)).length() - 3));
+
+            // Isian dari Listing
 
             fc.setBeforeMetadata();
 
