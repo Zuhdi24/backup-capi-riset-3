@@ -27,7 +27,7 @@ public class Sampling {
 
         ArrayList<RumahTangga> frame = new ArrayList<>();
 //        if (db.clearkanNoUrutUUPForSampling( kodeBs )) {
-        frame = db.getListUUPForSampelLISTING(kodeBs);
+        frame = db.getListRutaForSampelListing(kodeBs);
 //        }
         ArrayList<SampelRuta> sampelTerpilih;
         sampelTerpilih = new ArrayList<>();

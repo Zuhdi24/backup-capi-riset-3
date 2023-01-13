@@ -639,8 +639,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
     }
 
     // TODO YGY
-    public ArrayList<RumahTangga> getListUUPForSampelLISTING(String kodeBs) {
-        String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND "
+    public ArrayList<RumahTangga> getListRutaForSampelListing(String kodeBs) {
+        String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs +"' AND "+ KODE_ELIGIBLE + "= '1' AND "
                 + STATUS + " <> '" + RumahTangga.STATUS_DELETE
                 + "' AND " + NO_RUTA + " <> '000" +"' ORDER BY " + TIME + " ASC, " + NO_RUTA + " ASC";
         ArrayList<RumahTangga> listRumahTangga = new ArrayList<>();
