@@ -27,16 +27,17 @@ public class Sampling {
 
         ArrayList<RumahTangga> frame = new ArrayList<>();
 //        if (db.clearkanNoUrutUUPForSampling( kodeBs )) {
-            frame = db.getListUUPForSampelLISTING( kodeBs );
+        frame = db.getListUUPForSampelLISTING(kodeBs);
 //        }
         ArrayList<SampelRuta> sampelTerpilih;
         sampelTerpilih = new ArrayList<>();
 
         int nPopulasi = frame.size();
-        Log.d( TAG, "ambilSampel: Frame total : " + frame.size() );
+        Log.d(TAG, "ambilSampel: Frame total : " + frame.size());
 
 
         if (nPopulasi < nSampel) {
+            Log.d(TAG, "nPopulasi = " + nPopulasi + ", nSampel = " + nSampel);
 //            if (db.getBlokSensusByKode( kodeBs ).getKodeBs().substring( 2, 4 ).equals( "05" )) {
 //
 //                Toast.makeText( context, "Jumlah Populasi = " + nPopulasi + ", Tidak Mencukupi untuk penarikan sampel", Toast.LENGTH_SHORT ).show();
@@ -44,68 +45,67 @@ public class Sampling {
 //                return false;
 //
 //            } else {
-                for (int i = 0; i < nPopulasi; i++) {
-                    Log.d( "dahwan", String.valueOf( i/nPopulasi ) );
-                    RumahTangga ruta = frame.get( i );
-                    sampelTerpilih.add( new SampelRuta( ruta.getKodeBs(), ruta.getKodeRuta() ) );
+            for (int i = 0; i < nPopulasi; i++) {
+                Log.d("dahwan", String.valueOf(i / nPopulasi));
+                RumahTangga ruta = frame.get(i);
+                sampelTerpilih.add(new SampelRuta(ruta.getKodeBs(), ruta.getKodeRuta()));
+            }
 
-                }
-
-                if (db.deleteSampel( kodeBs )) {
-                    if (db.insertSampel( sampelTerpilih )) {
-                        Log.d( TAG, "ambilSampel: True" );
-                        Toast.makeText( context, "Berhasil Memasukan ke Database", Toast.LENGTH_SHORT ).show();
-                        return true;
-                    } else {
-                        Log.d( TAG, "ambilSampel: False" );
-//                        db.clearkanNoUUP( kodeBs );
-                        Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
-                        return false;
-                    }
+            if (db.deleteSampel(kodeBs)) {
+                if (db.insertSampel(sampelTerpilih)) {
+                    Log.d(TAG, "ambilSampel: True");
+                    Toast.makeText(context, "Berhasil Memasukan ke Database", Toast.LENGTH_SHORT).show();
+                    return true;
                 } else {
-//                    db.clearkanNoUUP( kodeBs );
-                    Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
+                    Log.d(TAG, "ambilSampel: False");
+//                        db.clearkanNoUUP( kodeBs );
+                    Toast.makeText(context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT).show();
                     return false;
                 }
+            } else {
+//                    db.clearkanNoUUP( kodeBs );
+                Toast.makeText(context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT).show();
+                return false;
+            }
 
 
-        }else{
-
+        } else {
+            Log.d(TAG, "masuk npop > nsampel, nPopulasi = " + nPopulasi + ", nSampel = " + nSampel);
             double k = nPopulasi / (double) nSampel; //TODO Fungsi Systematic Random Sampling
-            Log.i( TAG, "k: " + k );
-            int angkaRandom = (new Random()).nextInt( frame.size() ) + 1;
-            Log.i( TAG, "AR: " + angkaRandom );
-            Log.i( TAG, " = = = = = = = = " );
+            Log.i(TAG, "k: " + k);
+            int angkaRandom = (new Random()).nextInt(frame.size()) + 1;
+            Log.i(TAG, "AR: " + angkaRandom);
+            Log.i(TAG, " = = = = = = = = ");
 
             for (int i = 1; i <= nSampel; i++) {
-                Log.i( TAG, "AR + ik =  " + (angkaRandom + (i - 1) * k) );
-                int index = (int) Math.floor( angkaRandom + (i - 1) * k );
+                Log.i(TAG, "AR + ik =  " + (angkaRandom + (i - 1) * k));
+                int index = (int) Math.floor(angkaRandom + (i - 1) * k);
                 if (index > nPopulasi) {
                     index = index - nPopulasi;
                 }
-                Log.i( TAG, " = = = ["+i+"] = = = " );
-                Log.i( TAG, "index ke-" + index );
+                Log.i(TAG, " = = = [" + i + "] = = = ");
+                Log.i(TAG, "index ke-" + index);
 
-                RumahTangga ruta = frame.get( index - 1 );
-                Log.i( TAG, "--Nomor Urut Ruta (Listing): " + ruta.getNoUrutRuta() );
-                Log.i( TAG, "--Nama KRT: " + ruta.getNamaKRT() );
+                RumahTangga ruta = frame.get(index - 1);
+                Log.i(TAG, "--Nomor Urut Ruta (Listing): " + ruta.getNoUrutRuta());
+                Log.i(TAG, "--Nama KRT: " + ruta.getNamaKRT());
 
-                sampelTerpilih.add( new SampelRuta( ruta.getKodeBs(), ruta.getKodeRuta()) );
+                sampelTerpilih.add(new SampelRuta(ruta.getKodeBs(), ruta.getKodeRuta()));
             }
-            if (db.deleteSampel( kodeBs )) {
-                if (db.insertSampel( sampelTerpilih )) {
-                    Log.d( TAG, "ambilSampel: True" );
-                    Toast.makeText( context, "Berhasil Memasukan ke Database", Toast.LENGTH_SHORT ).show();
+            if (db.deleteSampel(kodeBs)) {
+                if (db.insertSampel(sampelTerpilih)) {
+                    Log.d(TAG, "ambilSampel: True");
+                    Toast.makeText(context, "Berhasil Memasukan ke Database", Toast.LENGTH_SHORT).show();
                     return true;
                 } else {
-                    Log.d( TAG, "ambilSampel: False" );
+                    Log.d(TAG, "ambilSampel: False");
 //                    db.clearkanNoUUP( kodeBs );
-                    Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText(context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             } else {
 //                db.clearkanNoUUP( kodeBs );
-                Toast.makeText( context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT ).show();
+                Toast.makeText(context, "Gagal Memasukan ke Database", Toast.LENGTH_SHORT).show();
                 return false;
             }
 
@@ -130,23 +130,21 @@ public class Sampling {
 //        }
 
 
-
-
     }
 
     public static boolean hapusHasilSampling(String kodeBs, Context context) {
         try {
             DatabaseSampling db = DatabaseSampling.getInstance();
-            if (db.deleteSampel( kodeBs )) {
-                Log.d( TAG, "hapusHasilSampling: true" );
-                db.updateStatusBlokSensus( kodeBs, BlokSensus.FLAG_BS_READY );
+            if (db.deleteSampel(kodeBs)) {
+                Log.d(TAG, "hapusHasilSampling: true");
+                db.updateStatusBlokSensus(kodeBs, BlokSensus.FLAG_BS_READY);
                 return true;
             } else {
-                Log.d( TAG, "hapusHasilSampling: false" );
+                Log.d(TAG, "hapusHasilSampling: false");
                 return false;
             }
         } catch (Exception e) {
-            Log.d( TAG, "hapusHasilSampling: " + e.getMessage() );
+            Log.d(TAG, "hapusHasilSampling: " + e.getMessage());
             return false;
         }
     }

@@ -90,8 +90,8 @@ public class AdapterBlokSensus extends BaseAdapter {
             public void onClick(DialogInterface dialog, int which) {
                 if (MasterPassword.getPassword(nimKortim).equals(input.getText().toString())) {
                     try {
-                        if (dbSampling.getBlokSensusByKode(kodeBs).getKodeBs().substring(2, 4).equals("02")) {
-                            if (Sampling.ambilSampel(CapiKey.N_SAMPLE_D3, kodeBs, context)) {
+//                        if (dbSampling.getBlokSensusByKode(kodeBs).getKodeBs().substring(2, 4).equals("02")) {
+                            if (Sampling.ambilSampel(CapiKey.N_SAMPLE, kodeBs, context)) {
                                 if (dbSampling.updateStatusBlokSensus(kodeBs, BlokSensus.FLAG_BS_SAMPLED)) {
                                     Toast.makeText(context, "Sampling Berhasil", Toast.LENGTH_SHORT).show();
                                     new SynchronizeTask(context).execute(SynchronizeTask.MODE_SEND_SAMPLE, kodeBs);
@@ -103,20 +103,20 @@ public class AdapterBlokSensus extends BaseAdapter {
                             } else {
                                 Toast.makeText(context, "Sampling Gagal", Toast.LENGTH_SHORT).show();
                             }
-                        } else {
-                            if (Sampling.ambilSampel(CapiKey.N_SAMPLE_D4, kodeBs, context)) {
-                                if (dbSampling.updateStatusBlokSensus(kodeBs, BlokSensus.FLAG_BS_SAMPLED)) {
-                                    Toast.makeText(context, "Sampling Berhasil", Toast.LENGTH_SHORT).show();
-                                    new SynchronizeTask(context).execute(SynchronizeTask.MODE_SEND_SAMPLE, kodeBs);
-                                    //                                new SynchronizeTask(activity).kirimSampel(kodeBs);
-                                    ActivitySync.backupLocal(context);
-                                } else {
-                                    Toast.makeText(context, "Sampling ditarik, Status BS belum diubah", Toast.LENGTH_LONG).show();
-                                }
-                            } else {
-                                Toast.makeText(context, "Sampling Gagal", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+//                        } else {
+//                            if (Sampling.ambilSampel(CapiKey.N_SAMPLE_D4, kodeBs, context)) {
+//                                if (dbSampling.updateStatusBlokSensus(kodeBs, BlokSensus.FLAG_BS_SAMPLED)) {
+//                                    Toast.makeText(context, "Sampling Berhasil", Toast.LENGTH_SHORT).show();
+//                                    new SynchronizeTask(context).execute(SynchronizeTask.MODE_SEND_SAMPLE, kodeBs);
+//                                    //                                new SynchronizeTask(activity).kirimSampel(kodeBs);
+//                                    ActivitySync.backupLocal(context);
+//                                } else {
+//                                    Toast.makeText(context, "Sampling ditarik, Status BS belum diubah", Toast.LENGTH_LONG).show();
+//                                }
+//                            } else {
+//                                Toast.makeText(context, "Sampling Gagal", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
                     } catch (Exception e) {
                         Log.d("Sampling ", "Berhasil " + e);
                     }

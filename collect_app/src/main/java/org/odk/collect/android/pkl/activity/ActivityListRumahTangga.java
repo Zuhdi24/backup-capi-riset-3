@@ -841,7 +841,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
             public void onClick(DialogInterface dialog, int which) {
                 if (MasterPassword.getPassword(nimKortim).equals(input.getText().toString())) {
                     try {
-                        if (Sampling.ambilSampel(CapiKey.N_SAMPLE_D4, kodeBs, context)) {
+                        if (Sampling.ambilSampel(CapiKey.N_SAMPLE, kodeBs, context)) {
                             if (dbSampling.updateStatusBlokSensus(kodeBs, BlokSensus.FLAG_BS_SAMPLED)) {
                                 Toast.makeText(context, "Sampling Berhasil", Toast.LENGTH_SHORT).show();
                                 listMode = ActivityListRumahTangga.MODE_SAMPEL;
