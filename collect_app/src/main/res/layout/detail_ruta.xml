@@ -264,6 +264,33 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/nomorhp2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:text="No. Telp/HP Lainnya"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/no_hp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lin_kode_eligible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -273,7 +300,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="Kode Eligible"
+                    android:text="Status Eligible Rumah Tangga"
                     android:textStyle="bold" />
 
                 <TextView

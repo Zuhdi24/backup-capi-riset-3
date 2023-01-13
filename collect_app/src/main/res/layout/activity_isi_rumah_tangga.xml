@@ -526,7 +526,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="9. No. Telp/HP"
+                    android:text="9a. No. Telp/HP"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -543,14 +543,14 @@
                     android:layout_alignParentBottom="true"
                     android:backgroundTint="@color/colorAccent"
                     android:ems="10"
-                    android:inputType="text|textCapCharacters"
+                    android:inputType="number"
                     android:padding="10dp"
                     android:textColor="#383838" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lin_kode_eligible"
+                android:id="@+id/lin_nohp2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
@@ -559,22 +559,22 @@
                 android:textAppearance="?android:attr/textAppearanceMedium">
 
                 <TextView
-                    android:id="@+id/textview10"
+                    android:id="@+id/textview9b"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="10. Kode Eligible"
+                    android:text="9b. No. Telp/HP Lainnya (Opsional)"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/textView12b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kode Eligible Rumah Tangga berdasarkan Kuesioner Listing ART" />
+                    android:text="Format 628XXXXXXXXX" />
 
                 <EditText
-                    android:id="@+id/kode_eligible"
+                    android:id="@+id/nohp2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -585,6 +585,101 @@
                     android:textColor="#383838" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_kode_eligible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/textview10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="10. Apakah Termasuk Rumah Tangga yang Eligible?"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Diisi berdasarkan hasil pada kuesioner listing ART" />
+
+
+                <RelativeLayout
+                    android:id="@+id/check_kode_eligible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioGroup
+                        android:id="@+id/kategori_kode_eligible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textAppearance="?android:attr/textAppearanceMedium">
+
+
+                        <RadioButton
+                            android:id="@+id/kategori_kode_eligible_ya"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Ya" />
+
+                        <RadioButton
+                            android:id="@+id/kategori_kode_eligible_tidak"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Tidak" />
+
+                    </RadioGroup>
+                </RelativeLayout>
+            </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lin_kode_eligible"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:clickable="true"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="10dp"-->
+<!--                android:textAppearance="?android:attr/textAppearanceMedium">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textview10"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="10. Kode Eligible"-->
+<!--                    android:textAppearance="?android:attr/textAppearanceMedium"-->
+<!--                    android:textColor="@color/colorPrimaryDark" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView13"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Kode Eligible Rumah Tangga berdasarkan Kuesioner Listing ART" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/kode_eligible"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:backgroundTint="@color/colorAccent"-->
+<!--                    android:ems="10"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:textColor="#383838" />-->
+
+<!--            </LinearLayout>-->
 
             <RelativeLayout
                 android:id="@+id/RelativeLayout1"

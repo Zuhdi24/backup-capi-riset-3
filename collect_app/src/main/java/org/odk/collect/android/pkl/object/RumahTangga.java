@@ -27,6 +27,7 @@ public class RumahTangga implements Parcelable {
     private String jumlahART;
     private String jumlahART10;
     private String noHp;
+    private String noHp2;
     private String kodeEligible;
 //    private String jumlahEligible;
 //    private String listNamaEligible;
@@ -50,7 +51,7 @@ public class RumahTangga implements Parcelable {
 //    private boolean isMelayani2;
 
 
-    public RumahTangga(String kodeRuta, String kodeBs, String noSLS, String bf, String bs, String noUrutRuta, String namaKRT, String alamat, String jumlahART, String jumlahART10, String noHp, String kodeEligible, String latitude, String longitude, String akurasi, String status, String time) {
+    public RumahTangga(String kodeRuta, String kodeBs, String noSLS, String bf, String bs, String noUrutRuta, String namaKRT, String alamat, String jumlahART, String jumlahART10, String noHp, String noHp2, String kodeEligible, String latitude, String longitude, String akurasi, String status, String time) {
         this.kodeRuta = kodeRuta;
         this.kodeBs = kodeBs;
         this.noSLS = noSLS;
@@ -62,6 +63,7 @@ public class RumahTangga implements Parcelable {
         this.jumlahART = jumlahART;
         this.jumlahART10 = jumlahART10;
         this.noHp = noHp;
+        this.noHp2 = noHp2;
         this.kodeEligible = kodeEligible;
 //        this.jumlahEligible = jumlahEligible;
 //        this.listNamaEligible = listNamaEligible;
@@ -158,6 +160,14 @@ public class RumahTangga implements Parcelable {
 
     public void setNoHp(String noHp) {
         this.noHp = noHp;
+    }
+
+    public String getNoHp2() {
+        return noHp2;
+    }
+
+    public void setNoHp2(String noHp2) {
+        this.noHp2 = noHp2;
     }
 
     public String getKodeEligible() {

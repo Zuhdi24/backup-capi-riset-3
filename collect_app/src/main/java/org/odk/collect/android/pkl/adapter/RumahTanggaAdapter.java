@@ -286,8 +286,20 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 TextView noHp = (TextView) dialog.findViewById(R.id.no_hp);
                 noHp.setText(item.getNoHp());
 
+                TextView noHp2 = (TextView) dialog.findViewById(R.id.no_hp2);
+                // Check if null
+                if (item.getNoHp2() != null) {
+                    noHp2.setText(item.getNoHp2());
+                } else {
+                    noHp2.setText("-");
+                }
+
                 TextView kodeEligible = (TextView) dialog.findViewById(R.id.kode_eligible);
-                kodeEligible.setText(item.getKodeEligible());
+                if (item.getKodeEligible().equals("1")) {
+                    kodeEligible.setText("Ya");
+                } else {
+                    kodeEligible.setText("Tidak");
+                }
 
 //                TextView no_urut_isUUP = (TextView) dialog.findViewById(R.id.no_urut_isUUP);
 //                no_urut_isUUP.setText(item.getNoUrutRuta());

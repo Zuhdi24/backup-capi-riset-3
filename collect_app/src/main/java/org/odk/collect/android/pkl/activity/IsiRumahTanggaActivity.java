@@ -48,13 +48,13 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     int posisi = 0, plus = 0, minus = 1;
     LocationService ls;
 
-//    EditText no_segmen, no_bf, no_bs, no_urut_ruta, no_urut_up, namaKRT, alamat, namaPemilik, jumlahisUUP, no_urut_isUUP;
-
-    EditText no_segmen, no_bf, no_bs, no_urut_ruta, namaKRT, alamat, jumlahART, jumlahART10, noHp, kodeEligible;
+    EditText no_segmen, no_bf, no_bs, no_urut_ruta, namaKRT, alamat, jumlahART, jumlahART10, noHp, noHp2;
 
     RadioGroup isUUP, kedudukanUP, statusKelola, lokasiUP, jenisUUP;
     RadioButton rbyes, rbno, rbPemilik, rbPengelola, rbStatusyes, rbStatusno, rbLokasiluar, rbLokasidalam, rb1jenisUUP,
             rb2jenisUUP, rb3jenisUUP;
+    RadioGroup kodeEligible;
+    RadioButton rbEligibleYa, rbEligibleTidak;
     Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_rutaplus, no_rutaminus,
             no_uupplus, no_uupminus, jumlahisUUPplus, jumlahisUUPminus, no_urut_artplus, no_urut_artminus;
 
@@ -62,7 +62,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //            pertanyaanisUUP, pertanyaanAlamat, pertanyaanJumlahIsUUP, pertanyaanNoUrutIsUUP, pertanyaanKedudukanUP, pertanyaanStatusUP,
 //            pertanyaanLokasiUP, pertanyaanNamaPemilik, pertanyaanJenisUUP;
     TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNamaKRT, pertanyaanAlamat,
-            pertanyaanJumlahART, pertanyaanJumlahART10, pertanyaanNoHp, pertanyaanKodeEligible;
+            pertanyaanJumlahART, pertanyaanJumlahART10, pertanyaanNoHp, pertanyaanNoHp2, pertanyaanKodeEligible;
     View noteView;
     //    LinearLayout lin_rtup_tp, lin_nortup_tp, lin_ciri_fisik;
     TextView noSegmenTerakhir, noBfTerakhir, noBsTerakhir;
@@ -117,7 +117,10 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         jumlahART = findViewById(R.id.jumlah_art);
         jumlahART10 = findViewById(R.id.jumlah_art10);
         noHp = findViewById(R.id.nohp);
-        kodeEligible = findViewById(R.id.kode_eligible);
+        noHp2 = findViewById(R.id.nohp2);
+        kodeEligible = findViewById(R.id.kategori_kode_eligible);
+        rbEligibleYa = findViewById(R.id.kategori_kode_eligible_ya);
+        rbEligibleTidak = findViewById(R.id.kategori_kode_eligible_tidak);
 
 //        no_segmen = findViewById(R.id.no_urut_segmen);
 //        no_bf = findViewById(R.id.no_urut_bf);
@@ -172,6 +175,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         pertanyaanJumlahART = findViewById(R.id.textview7);
         pertanyaanJumlahART10 = findViewById(R.id.textview8);
         pertanyaanNoHp = findViewById(R.id.textview9);
+        pertanyaanNoHp2 = findViewById(R.id.textview9b);
         pertanyaanKodeEligible = findViewById(R.id.textview10);
 
 //        pertanyaanNoSegmen = findViewById(R.id.textview1);
@@ -777,11 +781,19 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             pertanyaanNoHp.requestFocus();
             noHp.requestFocus();
             Log.d(TAG, "submitRT: No HP salah");
-        } else if (kodeEligible.getText().length() < 1) {
-            message = "Kode eligible harus diisi";
+        } else if (noHp2.getText().length() > 0) {
+            if (noHp2.getText().toString().indexOf("62") != 0) {
+                message = "No. HP harus diawali dengan 62";
+                pertanyaanNoHp2.requestFocus();
+                noHp2.requestFocus();
+                Log.d(TAG, "submitRT: No HP salah");
+            } else {
+                isFormClear = true;
+            }
+        } else if (kodeEligible.getCheckedRadioButtonId() == -1) {
+            message = "Pilih salah satu status eligible";
             pertanyaanKodeEligible.requestFocus();
-            kodeEligible.requestFocus();
-            Log.d(TAG, "submitRT: Kode eligible salah");
+            Log.d(TAG, "submitRT: kode eligible salah");
         } else {
             isFormClear = true;
             Log.d(TAG, "submitRT: form clear");
@@ -834,7 +846,13 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             rumahTangga.setJumlahART(jumlahART.getText().toString());
             rumahTangga.setJumlahART10(jumlahART10.getText().toString());
             rumahTangga.setNoHp(noHp.getText().toString());
-            rumahTangga.setKodeEligible(kodeEligible.getText().toString());
+            rumahTangga.setNoHp2(noHp2.getText().toString());
+
+            if (kodeEligible.getCheckedRadioButtonId() == R.id.kategori_kode_eligible_ya) {
+                rumahTangga.setKodeEligible("1");
+            } else {
+                rumahTangga.setKodeEligible("0");
+            }
 //            if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_yes) {
 //            rumahTangga.setJumlahEligible("1");
 //            rumahTangga.setListNamaEligible("Dani danu");
@@ -1154,9 +1172,26 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         jumlahART.setText(uup.getJumlahART());
         jumlahART10.setText(uup.getJumlahART10());
         noHp.setText(uup.getNoHp());
-        kodeEligible.setText(uup.getKodeEligible());
+        noHp2.setText(uup.getNoHp2());
+
+//        // Check if null
+//        if (uup.getNoHp2() != null) {
+//            noHp2.setText(uup.getNoHp2());
+//        } else {
+//            noHp2.setText("");
+//        }
 
         RadioButton a1, a2;
+        if (uup.getKodeEligible().equals("1")) {
+            a1 = (RadioButton) findViewById(R.id.kategori_kode_eligible_ya);
+            a1.setChecked(true);
+        } else {
+            a2 = (RadioButton) findViewById(R.id.kategori_kode_eligible_tidak);
+            a2.setChecked(true);
+        }
+
+
+
 //        if(uup.getJumlahisUUP().equals("00")){
 //            a1 = (RadioButton) findViewById(R.id.kategori_isUUP_no);
 //            a1.setChecked(true);
@@ -1348,7 +1383,23 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         jumlahART.setText(ruta.getJumlahART());
         jumlahART10.setText(ruta.getJumlahART10());
         noHp.setText(ruta.getNoHp());
-        kodeEligible.setText(ruta.getKodeEligible());
+        noHp2.setText(ruta.getNoHp2());
+
+//        // Check if null
+//        if (ruta.getNoHp2() != null) {
+//            noHp2.setText(ruta.getNoHp2());
+//        } else {
+//            noHp2.setText("");
+//        }
+
+        RadioButton a1, a2;
+        if (ruta.getKodeEligible().equals("1")) {
+            a1 = (RadioButton) findViewById(R.id.kategori_kode_eligible_ya);
+            a1.setChecked(true);
+        } else if (ruta.getKodeEligible().equals("2")) {
+            a2 = (RadioButton) findViewById(R.id.kategori_kode_eligible_tidak);
+            a2.setChecked(true);
+        }
 
 //        RadioButton isUUP_ya = (RadioButton) findViewById(R.id.kategori_isUUP_yes);
 //        isUUP_ya.setChecked(true);
