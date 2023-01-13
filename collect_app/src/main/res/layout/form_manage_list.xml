@@ -40,7 +40,6 @@ the License.
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimaryDark"
                 android:padding="9dp"
                 android:text="@string/toggle_selected"
                 android:textSize="16sp"

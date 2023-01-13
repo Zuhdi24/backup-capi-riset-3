@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:gravity="left"
-                    android:text="Nama PCL"
+                    android:text="Nama PPL"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp"
                     android:textStyle="bold" />

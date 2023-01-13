@@ -31,7 +31,7 @@
     <string name="capture_video">Simpan video</string>
     <string name="change_language">Ubah Bahasa</string>
     <string name="change_password">Kata sandi</string>
-    <string name="change_host">Pilih Host PCL/KORTIM</string>
+    <string name="change_host">Pilih Host PPL/PML</string>
     <string name="host">Alamat Host</string>
     <string name="change_protocol_settings_default">Pengaturan Platform</string>
     <string name="change_username">ODK Username</string>
@@ -447,7 +447,7 @@
     <string translatable="false" name="l07">Tap FINALISASI BS(10)</string>
     <string translatable="false" name="l08">Checklist pernyataan(11). Tap tombol LAKUKAN FINALISASI(12)</string>
     <string translatable="false" name="l09">Kemudian AMBIL SAMPEL(13)</string>
-    <string translatable="false" name="l10">Saat meminta PASSWORD MASTER(14), pastikan waktu sistem di perangkat sudah menunjukkan waktu WIB untuk PCL maupun KOOR. Kemudian OK(15)</string>
+    <string translatable="false" name="l10">Saat meminta PASSWORD MASTER(14), pastikan waktu sistem di perangkat sudah menunjukkan waktu WIB untuk PPL maupun PML. Kemudian OK(15)</string>
     <string translatable="false" name="l11">Tap LIHAT SAMPEL(16)</string>
     <string translatable="false" name="l12">Sampel yang ada akan muncul dan anda dapat mengikuti PETUNJUK ARAH(17) yang telah diberikan</string>
     <string translatable="false" name="l13">Pilih kuesioner yang sesuai dengan tugas Anda(18)</string>

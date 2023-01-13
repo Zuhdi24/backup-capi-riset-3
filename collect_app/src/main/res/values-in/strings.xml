@@ -20,7 +20,7 @@
     <string name="capture_video">Simpan video</string>
     <string name="change_language">Ubah bahasa</string>
     <string name="change_password">Kata sandi</string>
-    <string name="change_host">Pilih Host PCL/KORTIM</string>
+    <string name="change_host">Pilih Host PPL/PML</string>
     <string name="change_protocol_settings_default">Pengaturan Platform</string>
     <string name="change_username">ODK Username</string>
     <string name="clearanswer_confirm">Hapus jawaban atas \"%s\"?</string>
@@ -89,7 +89,7 @@
     <string name="parse_legacy_formlist_failed">Tidak terdapat berkas kuesioner di server yang cocok dengan Aggregate 0.9.x. : %s </string>
     <string name="parse_openrosa_formlist_failed">Tidak terdapat berkas kuesioner di server yang cocok dengan OpenRosa version 1.0 standard: %s</string>
     <string name="password">Kata sandi</string>
-    <string name="host">PCL Host</string>
+    <string name="host">PPL Host</string>
     <string name="play_audio">Mainkan suara</string>
     <string name="play_video">Mainkan video</string>
     <string name="please_wait">Silakan tunggu.</string>

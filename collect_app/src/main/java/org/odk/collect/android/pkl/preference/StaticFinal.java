@@ -67,8 +67,8 @@ public class StaticFinal {
     public static final String JSON_PASS_KOOR = "passKoor";
     public static final String JSON_NAMA_KOOR = "namaKoor";
     public static final String JSON_NOMOR_KOOR = "teleponKoor";
-    public static final String JSON_KORTIM = "Kortim";
-    public static final String JSON_PENCACAH = "Pencacah";
+    public static final String JSON_KORTIM = "PML";
+    public static final String JSON_PENCACAH = "PPL";
     public static final String JSON_NO_KORTIM = "000";
 
     //value

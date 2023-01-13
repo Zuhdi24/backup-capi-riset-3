@@ -153,7 +153,7 @@
                             android:background="@color/colorPrimaryDark"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:text="KORTIM"
+                            android:text="PML"
                             android:textAlignment="center"
                             android:textColor="#EFFFFF"
                             android:textSize="15sp"

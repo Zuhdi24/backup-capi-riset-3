@@ -33,7 +33,6 @@ the License.
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorPrimaryDark"
             android:text="PILIH SEMUA"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -44,7 +43,6 @@ the License.
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorPrimaryDark"
             android:text="@string/refresh"
             android:textSize="16sp"
             android:textStyle="bold" />
