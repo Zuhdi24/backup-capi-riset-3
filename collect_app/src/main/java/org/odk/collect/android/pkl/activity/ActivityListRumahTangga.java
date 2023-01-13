@@ -44,6 +44,8 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.odk.collect.android.R;
+import org.odk.collect.android.activities.FormChooserList;
+import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.pkl.adapter.DialogListKuesAdapter;
 import org.odk.collect.android.pkl.adapter.RumahTanggaAdapter;
 import org.odk.collect.android.pkl.adapter.RutaAdapter;
@@ -339,6 +341,77 @@ public class ActivityListRumahTangga extends AppCompatActivity
                     @Override
                     public void onClick(View v) {
                         if (isGpsActive()) {
+
+//                                //Pilih Kuesioner dulu
+//                                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ActivityListRumahTangga.this);
+//                                builderSingle.setTitle("Pilih Kuesioner untuk Digenerate : ");
+//
+//                                String sortOrder = FormsProviderAPI.FormsColumns.DISPLAY_NAME + " ASC, " + FormsProviderAPI.FormsColumns.JR_VERSION + " DESC";
+//                                Cursor c = managedQuery(FormsProviderAPI.FormsColumns.CONTENT_URI, null, null, null, sortOrder);
+//
+//                                LinkedList<DialogListKuesModel> dlkms = new LinkedList<>();
+//
+//                                if (c.moveToFirst()) {
+//                                    DialogListKuesModel dlkm;
+//                                    do {
+//                                        dlkm = new DialogListKuesModel(c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
+//                                                c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_NAME)),
+//                                                c.getString(c.getColumnIndex(FormsProviderAPI.FormsColumns.DISPLAY_SUBTEXT)));
+//                                        if ((dlkm.getDisplayName().contains("Riset3") )&&(dlkm.getDisplayName().contains("Listing"))) {
+//                                            dlkms.addLast(dlkm);
+//                                            Log.d("NAMA FORM", dlkm.getDisplayName());
+//                                        } else {
+//                                            Log.e("", "masuk99 nim1, masuk else");
+//                                        }
+//                                    } while (c.moveToNext());
+//                                }
+//                                c.close();
+//
+//                                final DialogListKuesAdapter arrayAdapter = new DialogListKuesAdapter(ActivityListRumahTangga.this, dlkms);
+//
+//                                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        dialog.dismiss();
+//                                    }
+//                                });
+//
+//                                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        final String strName = ((DialogListKuesModel) arrayAdapter.getItem(which)).getDisplayName();
+//                                        BlokSensus bs = dbSampling.getBlokSensusByKode(kodeBs);
+//                                        ArrayList<SampelRuta> sampelRuta = dbSampling.getAllSampelRuta();
+//                                        for (SampelRuta sampel : sampelRuta) {
+//                                            Log.e("WASKITHO", kodeBs + "*" + sampel.getKodeRuta());
+//                                        }
+//                                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss");
+//                                        String timeStamp = dateFormat.format(new Date());
+//                                        String fileName = "ListingR3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs();
+//
+//                                        fileName = fileName + "_" + timeStamp;
+//                                        Log.e("FILENAME SANDY", strName);
+//                                        Log.d("yoow", fileName);
+//
+////                                        AlertDialog.Builder builderInner = new AlertDialog.Builder(ActivityListRumahTangga.this);
+////                                        builderInner.setTitle("Detail");
+////                                        builderInner.setMessage("Kuesioner : " + strName +
+////                                                "\nKode : " + fileName +
+////                                                "\n\nKuesioner akan digenerate berdasarkan isian listing dan ditampilkan pada menu Ubah Kuesioner.");
+////                                        builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+////                                            @Override
+////                                            public void onClick(DialogInterface dialog, int which) {
+//                                                GenerateKuesioner gen = new GenerateKuesioner(context, strName);
+//                                                gen.GenerateKuesInstance(ask);
+//                                                dialog.dismiss();
+////                                            }
+////                                        });
+////                                        builderInner.show();
+//                                    }
+//                                });
+//                                builderSingle.show();
+//
+
                             toIsiListing(null, -1);
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListRumahTangga.this);
@@ -1075,6 +1148,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
                 toIsianListing.putExtra("status", status);
                 toIsianListing.putExtra("kodeBs", kodeBs);
                 toIsianListing.putExtra("posisi", posisi);
+                toIsianListing.putExtra("rutaBr", true);
+                Log.d(TAG,"masuk ruta baru");
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
 
@@ -1098,6 +1173,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
             if (rumahTangga == null) {
                 toIsianListing.putExtra("status", status);
                 toIsianListing.putExtra("kodeBs", kodeBs);
+                toIsianListing.putExtra("rutaBr", true);
+                Log.d(TAG,"masuk ruta baru");
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
 

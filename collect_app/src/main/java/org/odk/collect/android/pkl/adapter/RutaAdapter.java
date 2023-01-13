@@ -97,7 +97,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + item.getNoHp()));
+                intent.setData(Uri.parse("tel:+" + item.getNoHp()));
                 activity.startActivity(intent);
             }
         });

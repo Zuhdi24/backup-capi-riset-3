@@ -3,6 +3,7 @@ package org.odk.collect.android.pkl.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -30,6 +31,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.odk.collect.android.R;
+import org.odk.collect.android.activities.FormChooserList;
+import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.preference.StaticFinal;
@@ -58,7 +61,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_rutaplus, no_rutaminus,
             no_uupplus, no_uupminus, jumlahisUUPplus, jumlahisUUPminus, no_urut_artplus, no_urut_artminus;
 
-//    TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNoUUP, pertanyaanNamaKRT,
+    //    TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNoUUP, pertanyaanNamaKRT,
 //            pertanyaanisUUP, pertanyaanAlamat, pertanyaanJumlahIsUUP, pertanyaanNoUrutIsUUP, pertanyaanKedudukanUP, pertanyaanStatusUP,
 //            pertanyaanLokasiUP, pertanyaanNamaPemilik, pertanyaanJenisUUP;
     TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNamaKRT, pertanyaanAlamat,
@@ -103,6 +106,15 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                     LocationService.MY_PERMISSION_ACCESS_COURSE_LOCATION);
         } else {
             Log.d(TAG, "onCreate: Fine Location Permision Granted");
+        }
+
+        if (getIntent().getBooleanExtra("rutaBr", false)) {
+            Intent i;
+            Collect.getInstance().getActivityLogger()
+                    .logAction(this, "fillBlankForm", "click");
+            i = new Intent(IsiRumahTanggaActivity.this,
+                    FormChooserList.class);
+            startActivity(i);
         }
 
         db = DatabaseSampling.getInstance();
@@ -1189,7 +1201,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             a2 = (RadioButton) findViewById(R.id.kategori_kode_eligible_tidak);
             a2.setChecked(true);
         }
-
 
 
 //        if(uup.getJumlahisUUP().equals("00")){
