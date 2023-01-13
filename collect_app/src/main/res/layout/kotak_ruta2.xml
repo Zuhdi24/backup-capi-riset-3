@@ -212,6 +212,28 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Jumlah ART : "
+                                android:textColor="@color/common_google_signin_btn_text_light_default"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/jumlah_art"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:paddingBottom="0dp">
 
@@ -221,18 +243,19 @@
                                 android:background="@color/colorPrimaryDark">
                             </TextView>
 
-                            <TextView
-                                android:id="@+id/ruta_pertanian"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Jenis Usaha Pariwisata : "
-                                android:textColor="@color/common_google_signin_btn_text_light_default"
-                                android:textSize="12sp" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/ruta_pertanian"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Jenis Usaha Pariwisata : "-->
+<!--                                android:textColor="@color/common_google_signin_btn_text_light_default"-->
+<!--                                android:textSize="12sp" />-->
 
                         </LinearLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
+                            android:layout_marginTop="10dp"
                             android:layout_height="wrap_content">
 
                             <com.google.android.material.button.MaterialButton
@@ -244,6 +267,28 @@
                                 android:gravity="center"
                                 android:padding="1dp"
                                 android:text="Petunjuk Arah"
+                                android:textColor="@drawable/white"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/hubungi_ruta_button"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@color/colorPrimaryDark"
+                                android:gravity="center"
+                                android:padding="1dp"
+                                android:text="Hubungi Ruta"
                                 android:textColor="@drawable/white"
                                 android:textSize="14sp" />
                         </RelativeLayout>

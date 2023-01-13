@@ -225,7 +225,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Klasifikasi ART"
+                            android:text="Rincian Ruta"
                             android:textAllCaps="false"
                             android:textColor="#AAAAAA"
                             android:textSize="14sp"
@@ -254,7 +254,7 @@
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="match_parent"
-                                            android:text="Banyak ART Hasil Listing :"
+                                            android:text="Banyak Ruta Hasil Listing :"
                                             android:textColor="@color/common_google_signin_btn_text_light_default"
                                             android:textSize="12sp" />
 

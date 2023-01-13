@@ -600,9 +600,9 @@ public class SynchronizeTask extends AsyncTask<String, String, String> {
                     if (BlokSensus.FLAG_BS_SAMPLED.equals(blokSensus.getStatus()) ||
                             BlokSensus.FLAG_BS_SAMPLE_UPLOADED.equals(blokSensus.getStatus())) {
 //                        if (blokSensus.getKodeBs().substring(2, 4).equals("02")) {
-                            if (db.getRutaTerpilih(blokSensus.getKodeBs()).size() != CapiKey.N_SAMPLE) {
-                                db.updateStatusBlokSensus(blokSensus.getKodeBs(), BlokSensus.FLAG_BS_READY);
-                            }
+//                            if (db.getRutaTerpilih(blokSensus.getKodeBs()).size() != CapiKey.N_SAMPLE) {
+//                                db.updateStatusBlokSensus(blokSensus.getKodeBs(), BlokSensus.FLAG_BS_READY);
+//                            }
 //                        } else {
 //                            if (db.getRutaTerpilih(blokSensus.getKodeBs()).size() > CapiKey.N_SAMPLE) {
 //                                db.updateStatusBlokSensus(blokSensus.getKodeBs(), BlokSensus.FLAG_BS_READY);

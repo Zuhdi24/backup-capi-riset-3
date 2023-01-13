@@ -75,10 +75,12 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         TextView NoUrut = (TextView) convertView.findViewById(R.id.no_urt);
 //        TextView NoUrutUP = (TextView) convertView.findViewById(R.id.no_uup);
         TextView Alamat = (TextView) convertView.findViewById(R.id.alamat);
+        TextView JumlahART = (TextView) convertView.findViewById(R.id.jumlah_art);
         TextView NamaPemilik = (TextView) convertView.findViewById(R.id.nama_pemilik);
 //        TextView NamaPemilikUUP = (TextView) convertView.findViewById(R.id.nama_pemilik_uup);
-        TextView kegiatanUtama = (TextView) convertView.findViewById(R.id.ruta_pertanian);
+//        TextView kegiatanUtama = (TextView) convertView.findViewById(R.id.ruta_pertanian);
         Button petunjukArah = (Button) convertView.findViewById(R.id.petunjuk_arah_button);
+        Button hubungiRuta = (Button) convertView.findViewById(R.id.hubungi_ruta_button);
 //        TextView Detail_Bs = (TextView) convertView.findViewById(R.id.detail_bs);
         RumahTangga item = ruta.get(position);
         petunjukArah.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,15 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
                 String uri = "http://maps.google.com/maps?daddr=" + item.getLatitude() + "," + item.getLongitude();
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 intent.setPackage("com.google.android.apps.maps");
+                activity.startActivity(intent);
+            }
+        });
+
+        hubungiRuta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + item.getNoHp()));
                 activity.startActivity(intent);
             }
         });
@@ -132,6 +143,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         NoBf.setText(item.getBf());
         NoBs.setText(item.getBs());
         Alamat.setText(item.getAlamat());
+        JumlahART.setText("" + item.getJumlahART());
         if (("").equals(item.getNamaKRT())) {
             NamaPemilik.setText("-");
         } else {
