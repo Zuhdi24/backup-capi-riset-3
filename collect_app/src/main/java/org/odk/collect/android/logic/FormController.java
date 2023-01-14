@@ -26,6 +26,7 @@ import org.javarosa.core.model.SubmissionProfile;
 import org.javarosa.core.model.ValidateOutcome;
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.core.model.data.IAnswerData;
+import org.javarosa.core.model.data.IntegerData;
 import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.model.data.helper.Selection;
@@ -1781,12 +1782,62 @@ public class FormController {
         return null;
     }
 
+    public String getreRrenceForElementName(String elementname, Integer answer) {
+        FormDef formDef = mFormEntryController.getModel().getForm();
+        TreeElement rootElement = formDef.getInstance().getRoot();
+
+        List<TreeElement> e = rootElement.getChildrenWithName(elementname);
+        if (e.size() != 0) {
+            Log.d("reproduce_get", "1 " + e.get(0).getRef() + " 1");
+            e.get(0).setAnswer(new IntegerData(answer));
+            return e.get(0).getRef().toString();
+        } else if (rootElement.getNumChildren() == 0) {
+            //Log.d("reproduce","1 "+e.get(0).getRef()+" 2");
+            return null;
+        } else {
+            //Log.d("reproduce","1  3");
+            for (int i = 0; i < rootElement.getNumChildren(); i++) {
+                String location = null;
+                //Log.d("reproduce",rootElement.getChildAt(i).getRef().toString());
+                location = getChildrenReferenceForElementName(rootElement.getChildAt(i), elementname, answer);
+                if (location != null) {
+                    return getCleanfref(location);
+                }
+            }
+        }
+        return null;
+    }
+
     public String getChildrenReferenceForElementName(TreeElement treeElement, String elementName, String answer) {
         //Log.d("reproduce",TreeElement.getRef().toString());
         List<TreeElement> e = treeElement.getChildrenWithName(elementName);
         if (e.size() != 0) {
             //Log.d("reproduce_get","2 "+e.get(0).getRef()+" 1");
             e.get(0).setAnswer(new StringData(answer));
+            return e.get(0).getRef().toString();
+        } else if (treeElement.getNumChildren() == 0) {
+            //Log.d("reproduce","2 "+e.get(0).getRef()+" 2");
+            return null;
+        } else {
+            //Log.d("reproduce","2 3");
+            for (int i = 0; i < treeElement.getNumChildren(); i++) {
+                String location = null;
+                //Log.d("reproduce", treeElement.getChildAt(i).getRef().toString());
+                location = getChildrenReferenceForElementName(treeElement.getChildAt(i), elementName, answer);
+                if (location != null) {
+                    return getCleanfref(location);
+                }
+            }
+        }
+        return null;
+    }
+
+    public String getChildrenReferenceForElementName(TreeElement treeElement, String elementName, Integer answer) {
+        //Log.d("reproduce",TreeElement.getRef().toString());
+        List<TreeElement> e = treeElement.getChildrenWithName(elementName);
+        if (e.size() != 0) {
+            //Log.d("reproduce_get","2 "+e.get(0).getRef()+" 1");
+            e.get(0).setAnswer(new IntegerData(answer));
             return e.get(0).getRef().toString();
         } else if (treeElement.getNumChildren() == 0) {
             //Log.d("reproduce","2 "+e.get(0).getRef()+" 2");

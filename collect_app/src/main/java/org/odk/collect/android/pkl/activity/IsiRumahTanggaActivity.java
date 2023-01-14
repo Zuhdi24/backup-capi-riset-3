@@ -793,17 +793,17 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             pertanyaanNoHp.requestFocus();
             noHp.requestFocus();
             Log.d(TAG, "submitRT: No HP salah");
-        } else if (noHp.getText().toString().indexOf("62") != 0) {
-            message = "No. HP harus diawali dengan 62";
+        } else if (!Pattern.compile("^(62)8[1-9][0-9]{6,10}$").matcher(noHp.getText().toString()).find()) {
+            message = "Harap masukkan nomor telepon valid yang diawali dengan 62";
             pertanyaanNoHp.requestFocus();
             noHp.requestFocus();
             Log.d(TAG, "submitRT: No HP salah");
         } else if (noHp2.getText().length() > 0) {
-            if (noHp2.getText().toString().indexOf("62") != 0) {
-                message = "No. HP harus diawali dengan 62";
+            if (!Pattern.compile("^(62)8[1-9][0-9]{6,10}$").matcher(noHp2.getText().toString()).find()) {
+                message = "Harap masukkan nomor telepon valid yang diawali dengan 62";
                 pertanyaanNoHp2.requestFocus();
                 noHp2.requestFocus();
-                Log.d(TAG, "submitRT: No HP salah");
+                Log.d(TAG, "submitRT: No HP 2 salah");
             } else {
                 isFormClear = true;
             }
