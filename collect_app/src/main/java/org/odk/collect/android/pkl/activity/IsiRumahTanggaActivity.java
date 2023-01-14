@@ -783,6 +783,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             pertanyaanJumlahART10.requestFocus();
             jumlahART10.requestFocus();
             Log.d(TAG, "submitRT: Jumlah ART 10 tahun salah");
+        } else if (Integer.parseInt(jumlahART10.getText().toString()) > Integer.parseInt(jumlahART.getText().toString())) {
+            message = "Jumlah ART 10 tahun ke atas tidak boleh lebih dari jumlah ART";
+            pertanyaanJumlahART10.requestFocus();
+            jumlahART10.requestFocus();
+            Log.d(TAG, "submitRT: Jumlah ART 10 tahun salah");
         } else if (noHp.getText().length() < 1) {
             message = "No HP harus diisi";
             pertanyaanNoHp.requestFocus();

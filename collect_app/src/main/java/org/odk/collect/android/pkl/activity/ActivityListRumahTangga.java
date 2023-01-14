@@ -567,7 +567,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
                                 RumahTangga rta = rutaAdapter2.getItem(position);
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss");
                                 String timeStamp = dateFormat.format(new Date());
-                                String fileName = "R3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
+//                                String fileName = "R3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
+                                String fileName = "R3-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
                                 if (strName.contains("KM5")) {
                                     fileName = fileName + "-KM5";
                                 } else if (strName.contains("M5")) {
