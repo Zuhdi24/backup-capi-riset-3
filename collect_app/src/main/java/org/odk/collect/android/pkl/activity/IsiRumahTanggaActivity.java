@@ -58,7 +58,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             rb2jenisUUP, rb3jenisUUP;
     RadioGroup kodeEligible;
     RadioButton rbEligibleYa, rbEligibleTidak;
-    Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_rutaplus, no_rutaminus,
+    Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_rutaplus, no_rutaminus, kuesionerBlokV,
             no_uupplus, no_uupminus, jumlahisUUPplus, jumlahisUUPminus, no_urut_artplus, no_urut_artminus;
 
     //    TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNoUUP, pertanyaanNamaKRT,
@@ -108,14 +108,14 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             Log.d(TAG, "onCreate: Fine Location Permision Granted");
         }
 
-        if (getIntent().getBooleanExtra("rutaBr", false)) {
-            Intent i;
-            Collect.getInstance().getActivityLogger()
-                    .logAction(this, "fillBlankForm", "click");
-            i = new Intent(IsiRumahTanggaActivity.this,
-                    FormChooserList.class);
-            startActivity(i);
-        }
+//        if (getIntent().getBooleanExtra("rutaBr", false)) {
+//            Intent i;
+//            Collect.getInstance().getActivityLogger()
+//                    .logAction(this, "fillBlankForm", "click");
+//            i = new Intent(IsiRumahTanggaActivity.this,
+//                    FormChooserList.class);
+//            startActivity(i);
+//        }
 
         db = DatabaseSampling.getInstance();
 
@@ -131,6 +131,19 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         noHp = findViewById(R.id.nohp);
         noHp2 = findViewById(R.id.nohp2);
         kodeEligible = findViewById(R.id.kategori_kode_eligible);
+        kuesionerBlokV = findViewById(R.id.kuesioner_blok5);
+
+        kuesionerBlokV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                Collect.getInstance().getActivityLogger()
+                        .logAction(this, "fillBlankForm", "click");
+                i = new Intent(IsiRumahTanggaActivity.this,
+                        FormChooserList.class);
+                startActivity(i);
+            }
+        });
 //        rbEligibleYa = findViewById(R.id.kategori_kode_eligible_ya);
 //        rbEligibleTidak = findViewById(R.id.kategori_kode_eligible_tidak);
 
@@ -865,7 +878,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             rumahTangga.setNoHp(noHp.getText().toString());
             rumahTangga.setNoHp2(noHp2.getText().toString());
 
-            switch (kodeEligible.getCheckedRadioButtonId()){
+            switch (kodeEligible.getCheckedRadioButtonId()) {
                 case R.id.kode_eligible_pernah_bekerja:
                     rumahTangga.setKodeEligible("1");
                     break;
@@ -1208,7 +1221,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //        }
 
         RadioButton a1, a2, a3, a4;
-        switch(uup.getKodeEligible()){
+        switch (uup.getKodeEligible()) {
             case "1":
                 a1 = (RadioButton) findViewById(R.id.kode_eligible_pernah_bekerja);
                 a1.setChecked(true);
@@ -1428,7 +1441,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //        }
 
         RadioButton a1, a2, a3, a4;
-        switch(ruta.getKodeEligible()){
+        switch (ruta.getKodeEligible()) {
             case "1":
                 a1 = (RadioButton) findViewById(R.id.kode_eligible_pernah_bekerja);
                 a1.setChecked(true);

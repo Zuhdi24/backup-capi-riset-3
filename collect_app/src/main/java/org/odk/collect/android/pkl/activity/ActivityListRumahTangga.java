@@ -1078,7 +1078,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
                 toIsianListing.putExtra("status", status);
                 toIsianListing.putExtra("kodeBs", kodeBs);
                 toIsianListing.putExtra("posisi", posisi);
-                toIsianListing.putExtra("rutaBr", true);
+//                toIsianListing.putExtra("rutaBr", true);
                 Log.d(TAG,"masuk ruta baru");
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
@@ -1103,7 +1103,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
             if (rumahTangga == null) {
                 toIsianListing.putExtra("status", status);
                 toIsianListing.putExtra("kodeBs", kodeBs);
-                toIsianListing.putExtra("rutaBr", true);
+//                toIsianListing.putExtra("rutaBr", true);
                 Log.d(TAG,"masuk ruta baru");
                 if (lastInsert != null)
                     toIsianListing.putExtra(StaticFinal.BUNDLE_INSERT, lastInsert);
