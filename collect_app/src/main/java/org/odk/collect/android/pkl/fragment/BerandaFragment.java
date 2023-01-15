@@ -121,7 +121,6 @@ public class BerandaFragment extends Fragment {
         ekstraKonten = (CardView) rootView.findViewById(R.id.ekstra_konten);
 
 
-
         namaKortim = (TextView) rootView.findViewById(R.id.nama_kortim_saya);
         nimKortim = (TextView) rootView.findViewById(R.id.nim_kortim_saya);
         recyclerBebanOrAnggota = (RecyclerView) rootView.findViewById(R.id.list_beban_cacah);
@@ -232,7 +231,7 @@ public class BerandaFragment extends Fragment {
 
         if (kortimSaya.isEnabled()) {
             namaKortim.setText(namaKortimSaya);
-            nimKortim.setText(nimKortimSaya);
+            nimKortim.setText("2" + nimKortimSaya.substring(1));
             kortimSaya.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

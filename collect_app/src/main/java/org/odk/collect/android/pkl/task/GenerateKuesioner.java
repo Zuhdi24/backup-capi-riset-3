@@ -213,7 +213,7 @@ public class GenerateKuesioner implements FormLoaderListener, FormSavedListener 
             fc.getreRrenceForElementName(VariableGenerate.namaPcl, String.valueOf(preference.get(CapiKey.KEY_NAMA)).toUpperCase());
             fc.getreRrenceForElementName(VariableGenerate.nimPcl, String.valueOf(preference.get(CapiKey.KEY_NIM)));
             fc.getreRrenceForElementName(VariableGenerate.namaKortim, String.valueOf(preference.get(CapiKey.KEY_NAMA_KORTIM)).toUpperCase());
-            fc.getreRrenceForElementName(VariableGenerate.nimKortim, String.valueOf(preference.get(CapiKey.KEY_NIM_KORTIM)));
+            fc.getreRrenceForElementName(VariableGenerate.nimKortim, "2" + String.valueOf(preference.get(CapiKey.KEY_NIM_KORTIM)).substring(1));
 
             // Isian dari Listing
             fc.getreRrenceForElementName(VariableGenerate.noUrutRuta, st.getNoUrutRuta());
