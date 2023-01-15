@@ -398,7 +398,7 @@
 
     <string name="get_monitoring">Monitoring</string>
     <string name="cek_error">Cek Error</string>
-    <string name="normal_save">Simpan Normal</string>
+    <string name="normal_save">Simpan Final</string>
     <string name="get_notifikasi">Notifikasi</string>
 
     <!--Bukped-->
@@ -457,7 +457,7 @@
     <string translatable="false" name="l17">Tekan AKHIR untuk langsung menuju akhir kuesioner(22)</string>
     <string translatable="false" name="l18">Selalu SAVE (23) jika ada perubahan. Cek JUMLAH ERROR (24) dan tekan CEK ERROR (25) untuk memperbaiki error. PENTING! Save kuesioner setiap 5 menit.</string>
     <string translatable="false" name="l19">ERROR ditandai dengan warna merah (26)</string>
-    <string translatable="false" name="l20">Setelah ERROR teratasi, tekan SIMPAN NORMAL (27)</string>
+    <string translatable="false" name="l20">Setelah ERROR teratasi, tekan SIMPAN FINAL (27)</string>
     <string translatable="false" name="l21">Tekan KIRIM KUESIONER (28)</string>
     <string translatable="false" name="l22">Pilih KUESIONER (29) yang akan dikirim ke server, kemudian tekan KIRIM (30)</string>
     <string translatable="false" name="l23">Tap PEMBERITAHUAN (31)</string>

@@ -600,7 +600,7 @@
                     android:layout_centerVertical="true"
                     android:background="@drawable/tombol_submit"
                     android:padding="10dp"
-                    android:text="Simpan"
+                    android:text="Listing ART"
                     android:textColor="#ffffff" />
             </RelativeLayout>
 

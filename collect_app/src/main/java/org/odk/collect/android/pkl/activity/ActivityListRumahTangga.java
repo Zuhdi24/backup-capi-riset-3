@@ -848,7 +848,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
     private void ambilSampel(final String kodeBs) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Sampel belum diambil");
-        builder.setMessage("Pengambilan Sampel memerlukan persetujuan Kortim. \nMasukan password master yang diperoleh dari Kortim.");
+        builder.setMessage("Pengambilan Sampel memerlukan persetujuan PML. \nMasukan password master yang diperoleh dari PML.");
         final EditText input = new EditText(context);
         input.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

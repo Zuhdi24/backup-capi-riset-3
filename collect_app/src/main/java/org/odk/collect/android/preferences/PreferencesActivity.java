@@ -402,7 +402,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
         }
 
         boolean fontAvailable = adminPreferences.getBoolean(
-                AdminPreferencesActivity.KEY_CHANGE_FONT_SIZE, false);
+                AdminPreferencesActivity.KEY_CHANGE_FONT_SIZE, true);
         mFontSizePreference.setSummary(mFontSizePreference.getEntry());
         mFontSizePreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 

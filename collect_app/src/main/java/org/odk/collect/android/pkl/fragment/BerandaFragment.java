@@ -83,7 +83,7 @@ public class BerandaFragment extends Fragment {
     private DBhandler db;
     private DatabaseSampling dbs;
 
-    CardView kortimSaya;
+    CardView kortimSaya, ekstraKonten;
 
     private SynchronizeTask sync;
 
@@ -118,6 +118,10 @@ public class BerandaFragment extends Fragment {
         dbs = DatabaseSampling.getInstance();
 
         kortimSaya = (CardView) rootView.findViewById(R.id.kortim_saya);
+        ekstraKonten = (CardView) rootView.findViewById(R.id.ekstra_konten);
+
+
+
         namaKortim = (TextView) rootView.findViewById(R.id.nama_kortim_saya);
         nimKortim = (TextView) rootView.findViewById(R.id.nim_kortim_saya);
         recyclerBebanOrAnggota = (RecyclerView) rootView.findViewById(R.id.list_beban_cacah);
@@ -174,6 +178,7 @@ public class BerandaFragment extends Fragment {
         } else {
             txJudulExtra.setText("PROGRES CACAH");
             kortimSaya.setVisibility(View.VISIBLE);
+            ekstraKonten.setVisibility(View.GONE);
             isKoor = false;
         }
         TextView txNim = (TextView) rootView.findViewById(R.id.nim_pcl);

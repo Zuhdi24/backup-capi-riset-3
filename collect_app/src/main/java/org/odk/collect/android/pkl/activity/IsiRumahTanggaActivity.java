@@ -30,8 +30,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.vision.text.Line;
+
 import org.odk.collect.android.R;
 import org.odk.collect.android.activities.FormChooserList;
+import org.odk.collect.android.activities.InstanceChooserList;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.pkl.database.DatabaseSampling;
 import org.odk.collect.android.pkl.object.RumahTangga;
@@ -133,6 +136,15 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         kodeEligible = findViewById(R.id.kategori_kode_eligible);
         kuesionerBlokV = findViewById(R.id.kuesioner_blok5);
 
+        // Hide Kode Eligible dan Tombol Simpan
+        LinearLayout linKodeEligible = findViewById(R.id.lin_kode_eligible);
+        linKodeEligible.setVisibility(View.GONE);
+
+        submit = findViewById(R.id.next);
+        submit.setVisibility(View.GONE);
+
+        pertanyaanKodeEligible = findViewById(R.id.textview10);
+
         kuesionerBlokV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,6 +154,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 i = new Intent(IsiRumahTanggaActivity.this,
                         FormChooserList.class);
                 startActivity(i);
+
+                // Tampilkan Kode Eligible dan Tombol Simpan
+                linKodeEligible.setVisibility(View.VISIBLE);
+                submit.setVisibility(View.VISIBLE);
+
             }
         });
 //        rbEligibleYa = findViewById(R.id.kategori_kode_eligible_ya);
@@ -1220,6 +1237,25 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //            noHp2.setText("");
 //        }
 
+        LinearLayout linKodeEligible = findViewById(R.id.lin_kode_eligible);
+        linKodeEligible.setVisibility(View.VISIBLE);
+
+        submit = findViewById(R.id.next);
+        submit.setVisibility(View.VISIBLE);
+
+        Button listingART = findViewById(R.id.kuesioner_blok5);
+        listingART.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                Collect.getInstance().getActivityLogger()
+                        .logAction(this, "editSavedForm", "click");
+                i = new Intent(IsiRumahTanggaActivity.this,
+                        InstanceChooserList.class);
+                startActivity(i);
+            }
+        });
+
         RadioButton a1, a2, a3, a4;
         switch (uup.getKodeEligible()) {
             case "1":
@@ -1439,6 +1475,12 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //        } else {
 //            noHp2.setText("");
 //        }
+
+        LinearLayout linKodeEligible = findViewById(R.id.lin_kode_eligible);
+        linKodeEligible.setVisibility(View.VISIBLE);
+
+        submit = findViewById(R.id.next);
+        submit.setVisibility(View.VISIBLE);
 
         RadioButton a1, a2, a3, a4;
         switch (ruta.getKodeEligible()) {

@@ -64,6 +64,9 @@ public class AnggotaTimAdapter extends ExpandableRecyclerAdapter<HolderParentAng
         ParentListAnggotaTim ls = (ParentListAnggotaTim) parentListItem;
         final AnggotaTim at = ls.getAt();
         String prog = at.getProgres();
+
+        // Hide progress bar
+        parentViewHolder.getProgress().setVisibility(View.GONE);
         int pro;
         if (prog.isEmpty() || at.getProgres() == null) {
             parentViewHolder.getProgress().setProgressInTime(0, 0, 1000);

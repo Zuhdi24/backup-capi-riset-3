@@ -318,7 +318,7 @@
     <string name="google_video_error">File video tidak didukung oleh Google Sheets pada saat ini.</string>
     <string name="invalid_sheet_id">sheet id tidak valid: %1$s</string>
     <string name="manajemen">Manajemen Survei</string>
-    <string name="normal_save">Simpan Normal</string>
+    <string name="normal_save">Simpan Final</string>
     <string name="password_error_whitespace">Whitespace tidak diizinkan di awal dan akhir password</string>
     <string name="recapture_osm">Redo OSM Tagging</string>
     <string name="returned_again_on_date_at_time_clear">\'Dikembalikan Clear pada\' EEE, MMM dd, yyyy \'at\' HH:mm</string>
