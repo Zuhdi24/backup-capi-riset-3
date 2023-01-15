@@ -224,11 +224,38 @@
 
                             <TextView
                                 android:id="@+id/jumlah_art"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:layout_marginRight="10dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="5dp">
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Status Eligible ART : "
+                                android:textColor="@color/common_google_signin_btn_text_light_default"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/status_eligible"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                />
                         </LinearLayout>
 
                         <LinearLayout

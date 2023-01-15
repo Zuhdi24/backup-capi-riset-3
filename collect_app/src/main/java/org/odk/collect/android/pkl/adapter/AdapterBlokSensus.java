@@ -261,7 +261,7 @@ public class AdapterBlokSensus extends BaseAdapter {
 
 //        ruta_tp.setText(String.valueOf(dbSampling.getJumlahUUPByType(item.getKodeBs(), 1)));
 //        bukan_ruta_tp.setText(String.valueOf(dbSampling.getJumlahUUPByType(item.getKodeBs(), 2)));
-        jumlahRuta.setText(String.valueOf(dbSampling.getJumlahUUP(item.getKodeBs())));
+        jumlahRuta.setText(String.valueOf(dbSampling.getJumlahRuta(item.getKodeBs())));
 
         statusBs.setText("STATUS " + item.getStatus().toUpperCase());
 
@@ -368,7 +368,7 @@ public class AdapterBlokSensus extends BaseAdapter {
                         Pesan.tampilkan("Listing Belum Selesai", "Selesaikan Listing sebelum memulai proses sampling", context);
                         break;
                     case BlokSensus.FLAG_BS_READY:
-                        if (dbSampling.getJumlahUUP(kodeBs) < 10) {
+                        if (dbSampling.getJumlahRuta(kodeBs) < CapiKey.N_SAMPLE) {
                             warningBstttd(kodeBs);
                         } else {
                             ambilSampel(kodeBs);

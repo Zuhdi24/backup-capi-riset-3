@@ -294,10 +294,19 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
                 }
 
                 TextView kodeEligible = (TextView) dialog.findViewById(R.id.kode_eligible);
-                if (item.getKodeEligible().equals("1")) {
-                    kodeEligible.setText("Ya");
-                } else {
-                    kodeEligible.setText("Tidak");
+                switch (item.getKodeEligible()){
+                    case "1":
+                        kodeEligible.setText("Eligible Pernah Bekerja");
+                        break;
+                    case "2":
+                        kodeEligible.setText("Eligible Sedang Bekerja");
+                        break;
+                    case "3":
+                        kodeEligible.setText("Eligible Pernah Bekerja dan Sedang Bekerja");
+                        break;
+                    default:
+                        kodeEligible.setText("Tidak Eligible");
+                        break;
                 }
 
 //                TextView no_urut_isUUP = (TextView) dialog.findViewById(R.id.no_urut_isUUP);

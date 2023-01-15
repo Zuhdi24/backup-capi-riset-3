@@ -623,22 +623,36 @@
                         android:layout_centerVertical="true"
                         android:textAppearance="?android:attr/textAppearanceMedium">
 
-
                         <RadioButton
-                            android:id="@+id/kategori_kode_eligible_ya"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentRight="true"
-                            android:text="Ya" />
-
-                        <RadioButton
-                            android:id="@+id/kategori_kode_eligible_tidak"
+                            android:id="@+id/kode_eligible_pernah_bekerja"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentRight="true"
-                            android:text="Tidak" />
+                            android:text="Eligible Pernah Bekerja" />
+
+                        <RadioButton
+                            android:id="@+id/kode_eligible_sedang_bekerja"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Eligible Sedang Bekerja" />
+
+                        <RadioButton
+                            android:id="@+id/kode_eligible_sedang_dan_pernah_bekerja"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Eligible Pernah Bekerja dan Sedang Bekerja" />
+                        <RadioButton
+                            android:id="@+id/kode_eligible_tidak_eligible"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="Tidak Eligible" />
 
                     </RadioGroup>
                 </RelativeLayout>

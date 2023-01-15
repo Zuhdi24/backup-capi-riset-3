@@ -131,8 +131,8 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         noHp = findViewById(R.id.nohp);
         noHp2 = findViewById(R.id.nohp2);
         kodeEligible = findViewById(R.id.kategori_kode_eligible);
-        rbEligibleYa = findViewById(R.id.kategori_kode_eligible_ya);
-        rbEligibleTidak = findViewById(R.id.kategori_kode_eligible_tidak);
+//        rbEligibleYa = findViewById(R.id.kategori_kode_eligible_ya);
+//        rbEligibleTidak = findViewById(R.id.kategori_kode_eligible_tidak);
 
 //        no_segmen = findViewById(R.id.no_urut_segmen);
 //        no_bf = findViewById(R.id.no_urut_bf);
@@ -865,10 +865,19 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             rumahTangga.setNoHp(noHp.getText().toString());
             rumahTangga.setNoHp2(noHp2.getText().toString());
 
-            if (kodeEligible.getCheckedRadioButtonId() == R.id.kategori_kode_eligible_ya) {
-                rumahTangga.setKodeEligible("1");
-            } else {
-                rumahTangga.setKodeEligible("0");
+            switch (kodeEligible.getCheckedRadioButtonId()){
+                case R.id.kode_eligible_pernah_bekerja:
+                    rumahTangga.setKodeEligible("1");
+                    break;
+                case R.id.kode_eligible_sedang_bekerja:
+                    rumahTangga.setKodeEligible("2");
+                    break;
+                case R.id.kode_eligible_sedang_dan_pernah_bekerja:
+                    rumahTangga.setKodeEligible("3");
+                    break;
+                default:
+                    rumahTangga.setKodeEligible("0");
+                    break;
             }
 //            if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_yes) {
 //            rumahTangga.setJumlahEligible("1");
@@ -1198,15 +1207,25 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //            noHp2.setText("");
 //        }
 
-        RadioButton a1, a2;
-        if (uup.getKodeEligible().equals("1")) {
-            a1 = (RadioButton) findViewById(R.id.kategori_kode_eligible_ya);
-            a1.setChecked(true);
-        } else {
-            a2 = (RadioButton) findViewById(R.id.kategori_kode_eligible_tidak);
-            a2.setChecked(true);
+        RadioButton a1, a2, a3, a4;
+        switch(uup.getKodeEligible()){
+            case "1":
+                a1 = (RadioButton) findViewById(R.id.kode_eligible_pernah_bekerja);
+                a1.setChecked(true);
+                break;
+            case "2":
+                a2 = (RadioButton) findViewById(R.id.kode_eligible_sedang_bekerja);
+                a2.setChecked(true);
+                break;
+            case "3":
+                a3 = (RadioButton) findViewById(R.id.kode_eligible_sedang_dan_pernah_bekerja);
+                a3.setChecked(true);
+                break;
+            default:
+                a4 = (RadioButton) findViewById(R.id.kode_eligible_tidak_eligible);
+                a4.setChecked(true);
+                break;
         }
-
 
 //        if(uup.getJumlahisUUP().equals("00")){
 //            a1 = (RadioButton) findViewById(R.id.kategori_isUUP_no);
@@ -1408,13 +1427,24 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //            noHp2.setText("");
 //        }
 
-        RadioButton a1, a2;
-        if (ruta.getKodeEligible().equals("1")) {
-            a1 = (RadioButton) findViewById(R.id.kategori_kode_eligible_ya);
-            a1.setChecked(true);
-        } else if (ruta.getKodeEligible().equals("2")) {
-            a2 = (RadioButton) findViewById(R.id.kategori_kode_eligible_tidak);
-            a2.setChecked(true);
+        RadioButton a1, a2, a3, a4;
+        switch(ruta.getKodeEligible()){
+            case "1":
+                a1 = (RadioButton) findViewById(R.id.kode_eligible_pernah_bekerja);
+                a1.setChecked(true);
+                break;
+            case "2":
+                a2 = (RadioButton) findViewById(R.id.kode_eligible_sedang_bekerja);
+                a2.setChecked(true);
+                break;
+            case "3":
+                a3 = (RadioButton) findViewById(R.id.kode_eligible_sedang_dan_pernah_bekerja);
+                a3.setChecked(true);
+                break;
+            default:
+                a4 = (RadioButton) findViewById(R.id.kode_eligible_tidak_eligible);
+                a4.setChecked(true);
+                break;
         }
 
 //        RadioButton isUUP_ya = (RadioButton) findViewById(R.id.kategori_isUUP_yes);

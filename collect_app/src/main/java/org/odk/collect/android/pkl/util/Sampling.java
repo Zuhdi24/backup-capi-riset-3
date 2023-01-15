@@ -36,7 +36,7 @@ public class Sampling {
         Log.d(TAG, "ambilSampel: Frame total : " + frame.size());
 
 
-        if (nPopulasi < nSampel) {
+        if (db.getJumlahRutaEligible(kodeBs) < nSampel) {
             Log.d(TAG, "nPopulasi = " + nPopulasi + ", nSampel = " + nSampel);
 //            if (db.getBlokSensusByKode( kodeBs ).getKodeBs().substring( 2, 4 ).equals( "05" )) {
 //
@@ -54,7 +54,7 @@ public class Sampling {
             if (db.deleteSampel(kodeBs)) {
                 if (db.insertSampel(sampelTerpilih)) {
                     Log.d(TAG, "ambilSampel: True");
-                    Toast.makeText(context, "Berhasil Memasukan ke Database", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Berhasil Memasukan ke Database. Take All Eligible Sampel", Toast.LENGTH_SHORT).show();
                     return true;
                 } else {
                     Log.d(TAG, "ambilSampel: False");
@@ -95,7 +95,7 @@ public class Sampling {
             if (db.deleteSampel(kodeBs)) {
                 if (db.insertSampel(sampelTerpilih)) {
                     Log.d(TAG, "ambilSampel: True");
-                    Toast.makeText(context, "Berhasil Memasukan ke Database", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Berhasil Memasukan ke Database. Angka random = "+String.valueOf(angkaRandom), Toast.LENGTH_SHORT).show();
                     return true;
                 } else {
                     Log.d(TAG, "ambilSampel: False");

@@ -13,9 +13,13 @@ import org.odk.collect.android.pkl.object.JumlahRutaBS;
 import org.odk.collect.android.pkl.object.ObjekUpload;
 import org.odk.collect.android.pkl.object.RumahTangga;
 import org.odk.collect.android.pkl.object.SampelRuta;
+import org.odk.collect.android.pkl.preference.CapiKey;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.UUID;
 
 /**
@@ -165,7 +169,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             v.put(STATUS, bs.getStatus());
 
             db.insert(TABLE_BS, null, v);
-            
+
 
             Log.d("STATUS", bs.getStatus());
             Log.d("INSERT DATABASE BS", "SUCCESS");
@@ -270,7 +274,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 //            v.put(NKS, bsUpdate.getNks());
 
             db.update(TABLE_BS, v, KODE_BS + "=" + kodeBs, null);
-            
+
             Log.d("UPDATE ", "BS SUCCESS");
             return true;
         } catch (Exception e) {
@@ -306,7 +310,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             db.update(TABLE_BS, v, KODE_BS + " = '" + kodeBs + "'", null);
 
             Log.d("UPDATE ", "STATUS BLOK SENSUS SUKSES");
-            
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -391,7 +395,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 
             db.insert(TABLE_RT, null, v);
 
-            
+
             Log.d("INSERT DATABASE", "SUCCESS");
 //            Log.d("INSERT DATABASE 2",uup.getKeterangan());
         } catch (Exception e) {
@@ -423,7 +427,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 
     public ArrayList<RumahTangga> getListUnitUsahaPariwisata(String kodeBs) {
         String sql = "SELECT * FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND "
-                    + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' ORDER BY " + TIME + " ASC";
+                + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' ORDER BY " + TIME + " ASC";
         ArrayList<RumahTangga> listRumahTangga = new ArrayList<>();
         try {
             SQLiteDatabase database = getInstance().getReadableDatabase();
@@ -556,11 +560,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             if (uup.getStatus().equals(RumahTangga.STATUS_UPLOADED)) {
                 v.put(STATUS, RumahTangga.STATUS_UPDATE);
             }
-            
+
             db.update(TABLE_RT, v, KODE_BS + " = '" + kodeBs + "' AND " + KODE_RUTA + " = '" + kodeUUP + "'", null);
 
             Log.d("UPDATE ", "RUTA SUKSES");
-            
+
 //        }
             return true;
         } catch (Exception e) {
@@ -594,27 +598,28 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listRumahTangga;
     }
 
-    public ArrayList<RumahTangga> getListUUPForSampel(String kodeBs) {
-        String sql = "SELECT *" +  //produk sql jahiliyah
-//                KODE_RUTA + ", " +
-//                KODE_BS + ", " +
-//                NO_SLS + ", " +
-//                BF + ", " +
-//                BS + ", " +
-//                NORUTA + ", " +
-//                NAMA_KRT + ", " +
-//                ALAMAT + ", " +
-//                LATITUDE + ", " +
-//                LONGITUDE + ", " +
-//                AKURASI + ", " +
-//                STATUS + ", " +
-//                R4_RTUP + ", " +
-//                R4_RTUP_TP + ", " +
-//                R4_NO_RTUP_TP + ", " +
-//                R4_CIRI_FISIK +
-                " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND "
-                + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' AND " + NO_RUTA + " <> '000" +"' ORDER BY "
-                 + TIME + " ASC, " + NO_RUTA + " ASC";
+    public int getJumlahRutaEligible(String kodeBs) {
+        String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_rt_update FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs +
+                "' AND " + KODE_ELIGIBLE + "<> '0' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' AND " + NO_RUTA + " <> 0";
+        try {
+            SQLiteDatabase database = getInstance().getReadableDatabase();
+            Cursor cursor = database.rawQuery(sql, null);
+            int i = 0;
+            if (cursor.moveToFirst()) {
+                i = cursor.getInt(0);
+            }
+            cursor.close();
+            return i;
+        } catch (Exception e) {
+            Log.d("getRT rusak goro-goro ", e.toString());
+            return 0;
+        }
+    }
+
+    public ArrayList<RumahTangga> getListRutaEligibleByKodeEligible(String kodeBs, String kodeEligible) {
+        String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + KODE_ELIGIBLE + "= '" + kodeEligible + "' AND "
+                + STATUS + " <> '" + RumahTangga.STATUS_DELETE
+                + "' AND " + NO_RUTA + " <> '000" + "' ORDER BY "  + NO_RUTA + " ASC, "+ TIME + " ASC ";
         ArrayList<RumahTangga> listRumahTangga = new ArrayList<>();
         try {
             SQLiteDatabase database = getInstance().getReadableDatabase();
@@ -640,32 +645,93 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 
     // TODO YGY
     public ArrayList<RumahTangga> getListRutaForSampelListing(String kodeBs) {
-        String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs +"' AND "+ KODE_ELIGIBLE + "= '1' AND "
-                + STATUS + " <> '" + RumahTangga.STATUS_DELETE
-                + "' AND " + NO_RUTA + " <> '000" +"' ORDER BY " + TIME + " ASC, " + NO_RUTA + " ASC";
-        ArrayList<RumahTangga> listRumahTangga = new ArrayList<>();
-        try {
-            SQLiteDatabase database = getInstance().getReadableDatabase();
-            Cursor cursor = database.rawQuery(sql, null);
-            if (cursor.moveToFirst()) {
-                RumahTangga rumahTangga;
-                do {
-                    rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
-                            cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
-                            cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                            cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17));
-                    listRumahTangga.add(rumahTangga);
+        ArrayList<RumahTangga> listRumahTanggaForSampel = new ArrayList<>();
+        ArrayList<RumahTangga> listSedangPernahBekerja = getListRutaEligibleByKodeEligible(kodeBs, "3");
+        if (listSedangPernahBekerja.size() == 0) {
+            String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + KODE_ELIGIBLE + "<> '0' AND "
+                    + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' AND " + NO_RUTA + " <> '000" + "' ORDER BY " + KODE_ELIGIBLE + " ASC, " + TIME + " ASC, " + NO_RUTA + " ASC";
+            try {
+                SQLiteDatabase database = getInstance().getReadableDatabase();
+                Cursor cursor = database.rawQuery(sql, null);
+                if (cursor.moveToFirst()) {
+                    RumahTangga rumahTangga;
+                    do {
+                        rumahTangga = new RumahTangga(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
+                                cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
+                                cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
+                                cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17));
+                        listRumahTanggaForSampel.add(rumahTangga);
 //                    Log.d(TAG, "getListRumahTanggaForSampel: " + rumahTangga.getNamaPemilikUUP() + " " + rumahTangga.getNoUrutUUP());
-                } while (cursor.moveToNext());
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.i("Rumah tangga ", "masalah di " + e);
             }
-            cursor.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.i("Rumah tangga ", "masalah di " + e);
+        } else {
+            ArrayList<RumahTangga> listPernahBekerja = getListRutaEligibleByKodeEligible(kodeBs, "1");
+            ArrayList<RumahTangga> listSedangBekerja = getListRutaEligibleByKodeEligible(kodeBs, "2");
+            if (listPernahBekerja.size() < listSedangBekerja.size()) {
+                int jumlahEligibleKeduanya = listSedangPernahBekerja.size();
+                int position = 0;
+                while (listPernahBekerja.size() < listSedangBekerja.size()) {
+                    if (jumlahEligibleKeduanya == 0) break;
+                    listPernahBekerja.add(listSedangPernahBekerja.get(position));
+                    jumlahEligibleKeduanya--;
+                    position++;
+                }
+                if (jumlahEligibleKeduanya != 0) {
+                    int bagiDua = (listSedangPernahBekerja.size() - position - 1) / 2;
+                    for (int i = position; i < position + 1 + bagiDua; i++) {
+                        listPernahBekerja.add(listSedangPernahBekerja.get(position));
+                        position = i;
+                    }
+                    for (int j = position; j < listSedangPernahBekerja.size(); j++) {
+                        listSedangBekerja.add(listSedangPernahBekerja.get(j));
+                    }
+                    listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
+                    listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
+                    listRumahTanggaForSampel.addAll(listPernahBekerja);
+                    listRumahTanggaForSampel.addAll(listSedangBekerja);
+                }
+            } else if (listPernahBekerja.size() > listSedangBekerja.size()) {
+                int jumlahEligibleKeduanya = listSedangPernahBekerja.size();
+                int position = 0;
+                while (listPernahBekerja.size() > listSedangBekerja.size()) {
+                    if (jumlahEligibleKeduanya == 0) break;
+                    listSedangBekerja.add(listSedangPernahBekerja.get(position));
+                    jumlahEligibleKeduanya--;
+                    position++;
+                }
+                if (jumlahEligibleKeduanya != 0) {
+                    int bagiDua = (listSedangPernahBekerja.size() - position - 1) / 2;
+                    for (int i = position; i < position + 1 + bagiDua; i++) {
+                        listPernahBekerja.add(listSedangPernahBekerja.get(position));
+                        position = i;
+                    }
+                    for (int j = position; j < listSedangPernahBekerja.size(); j++) {
+                        listSedangBekerja.add(listSedangPernahBekerja.get(j));
+                    }
+                    listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
+                    listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
+                    listRumahTanggaForSampel.addAll(listPernahBekerja);
+                    listRumahTanggaForSampel.addAll(listSedangBekerja);
+                }
+            } else { // jika sama
+                int bagiDua = listSedangPernahBekerja.size() / 2;
+                listRumahTanggaForSampel.addAll(listPernahBekerja);
+                for (int i = 0; i < bagiDua; i++) {
+                    listRumahTanggaForSampel.add(listSedangPernahBekerja.get(i));
+                }
+                listRumahTanggaForSampel.addAll(listSedangBekerja);
+                for (int j = bagiDua; j < listSedangPernahBekerja.size(); j++) {
+                    listRumahTanggaForSampel.add(listSedangPernahBekerja.get(j));
+                }
+            }
         }
-        return listRumahTangga;
+        return listRumahTanggaForSampel;
     }
-
 
     public boolean clearkanNoUUP(String kodeBs) {
         ArrayList<RumahTangga> listUUP = getListUUPByNoUrut(kodeBs);
@@ -741,7 +807,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
-    public int getJumlahUUP(String kodeBs) {
+    public int getJumlahRuta(String kodeBs) {
         String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_rt_update FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs +
                 "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' AND " + NO_RUTA + " <> 0";
         try {
@@ -777,8 +843,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 //        }
 //    }
 
-    public String getJumlahUUPByType(String kodeBs, int type) {
-        String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_uup FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE;
+    public int getJumlahRutaByKodeEligible(String kodeBs, String kodeEligible) {
+        String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_ruta FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + KODE_ELIGIBLE + " = '" + kodeEligible + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE;
         try {
             SQLiteDatabase database = getInstance().getReadableDatabase();
             Cursor cursor = database.rawQuery(sql, null);
@@ -788,14 +854,14 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                 i = cursor.getString(0);
             }
             cursor.close();
-            return i;
+            return Integer.parseInt(i);
         } catch (Exception e) {
             e.printStackTrace();
-            return "0";
+            return 0;
         }
     }
 
-    public JumlahRutaBS getJumlahRutaBS(String kodeBs){
+    public JumlahRutaBS getJumlahRutaBS(String kodeBs) {
 //        String allRuta = getJumlahRutaUpdate(kodeBs);
 //        String rutaInternet = getJumlahRutaInternetByType(kodeBs,1);
 
@@ -945,11 +1011,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(sql, null);
             if (cursor.moveToFirst()) {
                 cursor.close();
-                
+
                 return true;
             } else {
                 cursor.close();
-                
+
                 return false;
             }
         } catch (Exception e) {
@@ -1291,6 +1357,16 @@ public class DatabaseSampling extends SQLiteOpenHelper {
             Log.d("Rumah tangga Type ", "masalah di " + e);
         }
         return listRumahTangga;
+    }
+
+    public ArrayList<RumahTangga> sortRutaByNoUrut(ArrayList<RumahTangga> listRuta) {
+        Collections.sort(listRuta, new Comparator<RumahTangga>() {
+            @Override
+            public int compare(RumahTangga o1, RumahTangga o2) {
+                return Integer.valueOf(o1.getNoUrutRuta()).compareTo(Integer.valueOf(o2.getNoUrutRuta()));
+            }
+        });
+        return listRuta;
     }
 
 //    public ArrayList<RumahTanggaRiset4> getListRumahTanggaByKeberadaan(String kodeBs) {

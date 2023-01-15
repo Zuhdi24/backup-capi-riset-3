@@ -142,7 +142,7 @@ public class BlokSensus {
         if (db.getBlokSensusByKode(kodeBs).getStatus() == FLAG_BS_SAMPLED) {
             return FLAG_BS_SAMPLED;
         } else {
-            if (((db.getJumlahUUP(kodeBs)) >= CapiKey.N_MINIMUM_RUTA) && db.getBlokSensusByKode(kodeBs).getStatus() == FLAG_BS_READY) {
+            if (((db.getJumlahRuta(kodeBs)) >= CapiKey.N_MINIMUM_RUTA) && db.getBlokSensusByKode(kodeBs).getStatus() == FLAG_BS_READY) {
 //                Toast.makeText(context, String.valueOf(db.getBlokSensusByKode(status).getJumlahRuta()), Toast.LENGTH_SHORT);
                 return FLAG_BS_READY;
             } else {

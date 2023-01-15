@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import org.odk.collect.android.R;
@@ -77,6 +78,7 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         TextView Alamat = (TextView) convertView.findViewById(R.id.alamat);
         TextView JumlahART = (TextView) convertView.findViewById(R.id.jumlah_art);
         TextView NamaPemilik = (TextView) convertView.findViewById(R.id.nama_pemilik);
+        TextView statusEligible = (TextView) convertView.findViewById(R.id.status_eligible);
 //        TextView NamaPemilikUUP = (TextView) convertView.findViewById(R.id.nama_pemilik_uup);
 //        TextView kegiatanUtama = (TextView) convertView.findViewById(R.id.ruta_pertanian);
         Button petunjukArah = (Button) convertView.findViewById(R.id.petunjuk_arah_button);
@@ -144,6 +146,20 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         NoBs.setText(item.getBs());
         Alamat.setText(item.getAlamat());
         JumlahART.setText("" + item.getJumlahART());
+        switch (item.getKodeEligible()){
+            case "1":
+                statusEligible.setText("Pernah Bekerja");
+                break;
+            case "2":
+                statusEligible.setText("Sedang Bekerja");
+                break;
+            case "3":
+                statusEligible.setText("Pernah dan Sedang Bekerja");
+                break;
+            default:
+                statusEligible.setText("Tidak Eligible");
+                break;
+        }
         if (("").equals(item.getNamaKRT())) {
             NamaPemilik.setText("-");
         } else {
