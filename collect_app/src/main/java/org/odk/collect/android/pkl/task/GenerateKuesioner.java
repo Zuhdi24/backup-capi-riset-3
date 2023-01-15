@@ -219,7 +219,8 @@ public class GenerateKuesioner implements FormLoaderListener, FormSavedListener 
             fc.getreRrenceForElementName(VariableGenerate.noUrutRuta, st.getNoUrutRuta());
             fc.getreRrenceForElementName(VariableGenerate.namaKrt, st.getNamaKrt().toUpperCase());
             fc.getreRrenceForElementName(VariableGenerate.noHp, st.getNoHp());
-            fc.getreRrenceForElementName(VariableGenerate.jumlahART10, Integer.parseInt(st.getJumlahART10()));
+            fc.getreRrenceForElementName(VariableGenerate.jumlahART, Integer.parseInt(st.getJumlahART()));
+//            fc.getreRrenceForElementName(VariableGenerate.jumlahART10, Integer.parseInt(st.getJumlahART10()));
 
             fc.setBeforeMetadata();
 

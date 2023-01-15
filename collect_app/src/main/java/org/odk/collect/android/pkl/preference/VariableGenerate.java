@@ -25,7 +25,7 @@ public class VariableGenerate {
     public static final String noUrutRuta = "b106";
     public static final String namaKrt = "b107";
     public static final String alamat = "b302";
-    public static final String jumlahART = "b303";
+    public static final String jumlahART = "placeholder_jumlah_art";
     public static final String jumlahART10 = "placeholder_jumlah_art_10_tahun";
     public static final String noHp = "b110";
     public static final String kodeEligible = "b306";
