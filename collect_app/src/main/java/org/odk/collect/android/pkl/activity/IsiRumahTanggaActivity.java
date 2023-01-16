@@ -1476,11 +1476,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //            noHp2.setText("");
 //        }
 
-        LinearLayout linKodeEligible = findViewById(R.id.lin_kode_eligible);
-        linKodeEligible.setVisibility(View.VISIBLE);
-
-        submit = findViewById(R.id.next);
-        submit.setVisibility(View.VISIBLE);
+//        LinearLayout linKodeEligible = findViewById(R.id.lin_kode_eligible);
+//        linKodeEligible.setVisibility(View.VISIBLE);
+//
+//        submit = findViewById(R.id.next);
+//        submit.setVisibility(View.VISIBLE);
 
         RadioButton a1, a2, a3, a4;
         switch (ruta.getKodeEligible()) {

@@ -496,8 +496,8 @@ public class ActivityListRumahTangga extends AppCompatActivity
                                 RumahTangga rta = rutaAdapter2.getItem(position);
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss");
                                 String timeStamp = dateFormat.format(new Date());
-//                                String fileName = "R3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
-                                String fileName = "R3-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();
+//                                String fileName = "R3-35-" + bs.getKabupaten() + "-" + bs.getKecamatan() + "-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNoUrutRuta();S
+                                String fileName = "R3-" + bs.getDesa() + "-" + bs.getNoBs() + "-" + rta.getNamaKRT() + "-" + rta.getNoUrutRuta();
                                 if (strName.contains("KM5")) {
                                     fileName = fileName + "-KM5";
                                 } else if (strName.contains("M5")) {
@@ -732,7 +732,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
     public void passwordHapusRutaKortim(final RumahTangga ruta) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListRumahTangga.this);
         builder.setTitle("Konfirmasi");
-        builder.setMessage("Hapus Rumah Tangga membutuhkan persetujuan Kortim. \nMasukan password master yang diperoleh dari Kortim.");
+        builder.setMessage("Hapus Rumah Tangga membutuhkan persetujuan PML. \nMasukan password master yang diperoleh dari PML.");
         final EditText input = new EditText(ActivityListRumahTangga.this);
         input.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

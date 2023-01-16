@@ -506,7 +506,7 @@ public class RumahTanggaAdapter extends BaseAdapter implements Filterable {
     public void passwordHapusRutaKortim(final RumahTangga ruta) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Konfirmasi");
-        builder.setMessage("Hapus Rumah Tangga membutuhkan persetujuan Kortim. \nMasukan password master yang diperoleh dari Kortim.");
+        builder.setMessage("Hapus Rumah Tangga membutuhkan persetujuan PML. \nMasukan password master yang diperoleh dari PML.");
         final EditText input = new EditText(activity);
         input.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
