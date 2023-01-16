@@ -58,7 +58,7 @@ public class Collect extends Application {
 
     // Storage paths ganti path
     public static final String ODK_ROOT = Environment.getExternalStorageDirectory()
-            + File.separator + "capi61" + File.separator + "Kuesioner";
+            + File.separator + "capi62" + File.separator + "Kuesioner";
     public static final String FORMS_PATH = ODK_ROOT + File.separator + "forms";
     public static String INSTANCES_PATH = ODK_ROOT + File.separator + "instances";
     public static final String BRIEFCASE_PATH = ODK_ROOT + File.separator + "briefcase";

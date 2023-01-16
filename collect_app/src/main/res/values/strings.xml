@@ -139,7 +139,7 @@
     <string name="username">Nama pengguna</string>
     <string name="view_hierarchy">Risalah</string>
     <string name="general_preferences">Pengaturan Umum</string>
-    <string name="click_to_web">Tap untuk berkunjung ke pedoman penggunaan dan update aplikasi</string>
+    <string name="click_to_web">Tap untuk pada video tutorial penggunaan aplikasi CAPI</string>
     <string name="client">Klien</string>
     <string name="show_splash">Perlihatkan tampilan pembuka</string>
     <string name="show_splash_summary">Tampilkan pada awal aplikasi berjalan</string>
@@ -405,8 +405,8 @@
 
     <string name="catatan">Catatan</string>
 <!--    <item name="action_next" type="id">Next</item>-->
-    <string name="pedoman_penggunaan">Pedoman Penggunaan dan Update Aplikasi</string>
-    <string name="pedoman_penggunaan_value">http://capi.pkl59.stis.ac.id/home</string>
+    <string name="pedoman_penggunaan">Pedoman Penggunaan CAPI</string>
+    <string name="pedoman_penggunaan_value">https://youtu.be/_aSE4-SQdL8</string>
 
 
     <string name="sent_again_on_date_at_time_clear">\'Sent Again Clear on\' EEE, MMM dd, yyyy \'at\' HH:mm</string>

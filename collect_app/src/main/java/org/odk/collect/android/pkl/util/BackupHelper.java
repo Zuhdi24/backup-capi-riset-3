@@ -35,10 +35,10 @@ import java.util.Comparator;
 public class BackupHelper {
 
     private static final String TAG = "BackupHelper";
-    public static final String BASE_PATH = "/capi61/listing/";
+    public static final String BASE_PATH = "/capi62/listing/";
     public static final String BACKUP = "/backup/";
     public static final String RESTORE_POINT = "/restore_point/";
-    public static final String PREFIX = "capi61-listing";
+    public static final String PREFIX = "capi62-listing";
     public static final String SEPARATOR = "_";
     public static final int fileLimit = 10;
     public static final String SOURCE_LOCAL = "Local Backup";

@@ -337,8 +337,8 @@
     <string name="platform_settings">Pengaturan Platform</string>
     <string name="permission_alert">Mohon perbolehkan izin aplikasi</string>
 
-    <string name="pedoman_penggunaan">Pedoman Penggunaan dan Update Aplikasi</string>
-    <string name="pedoman_penggunaan_value">http://capi.pkl59.stis.ac.id/home</string>
+    <string name="pedoman_penggunaan">Pedoman Penggunaan CAPI</string>
+    <string name="pedoman_penggunaan_value">https://youtu.be/_aSE4-SQdL8</string>
     <string name="capi55">CAPI STIS</string>
     <string name="ruta_mutakhir">"No. Urut Mutakhir "</string>
 </resources>
