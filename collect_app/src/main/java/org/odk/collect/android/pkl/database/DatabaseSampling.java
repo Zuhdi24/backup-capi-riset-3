@@ -672,6 +672,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         } else {
             ArrayList<RumahTangga> listPernahBekerja = getListRutaEligibleByKodeEligible(kodeBs, "1");
             ArrayList<RumahTangga> listSedangBekerja = getListRutaEligibleByKodeEligible(kodeBs, "2");
+            Log.d(TAG,"ada yang sedang dan pernah bekerja");
             if (listPernahBekerja.size() < listSedangBekerja.size()) {
                 int jumlahEligibleKeduanya = listSedangPernahBekerja.size();
                 int position = 0;
@@ -679,6 +680,7 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     if (jumlahEligibleKeduanya == 0) break;
                     listPernahBekerja.add(listSedangPernahBekerja.get(position));
                     jumlahEligibleKeduanya--;
+                    Log.d(TAG,"yang sedang bekerja udah dibagi2in");
                     position++;
                 }
                 if (jumlahEligibleKeduanya != 0) {
@@ -690,11 +692,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     for (int j = position; j < listSedangPernahBekerja.size(); j++) {
                         listSedangBekerja.add(listSedangPernahBekerja.get(j));
                     }
-                    listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
-                    listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
-                    listRumahTanggaForSampel.addAll(listPernahBekerja);
-                    listRumahTanggaForSampel.addAll(listSedangBekerja);
                 }
+                listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
+                listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
+                listRumahTanggaForSampel.addAll(listPernahBekerja);
+                listRumahTanggaForSampel.addAll(listSedangBekerja);
             } else if (listPernahBekerja.size() > listSedangBekerja.size()) {
                 int jumlahEligibleKeduanya = listSedangPernahBekerja.size();
                 int position = 0;
@@ -713,11 +715,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                     for (int j = position; j < listSedangPernahBekerja.size(); j++) {
                         listSedangBekerja.add(listSedangPernahBekerja.get(j));
                     }
-                    listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
-                    listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
-                    listRumahTanggaForSampel.addAll(listPernahBekerja);
-                    listRumahTanggaForSampel.addAll(listSedangBekerja);
                 }
+                listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
+                listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
+                listRumahTanggaForSampel.addAll(listPernahBekerja);
+                listRumahTanggaForSampel.addAll(listSedangBekerja);
             } else { // jika sama
                 int bagiDua = listSedangPernahBekerja.size() / 2;
                 listRumahTanggaForSampel.addAll(listPernahBekerja);
