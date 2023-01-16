@@ -452,65 +452,6 @@
                     android:textColor="#383838" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lin_jumlahart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium">
-
-                <TextView
-                    android:id="@+id/textview7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="7. Jumlah ART (Termasuk KRT) Keseluruhan"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <EditText
-                    android:id="@+id/jumlah_art"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:backgroundTint="@color/colorAccent"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:padding="10dp"
-                    android:textColor="#383838" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_jumlahart10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium">
-
-                <TextView
-                    android:id="@+id/textview8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="8. Jumlah ART (Termasuk KRT) yang Berusia 10 Tahun ke Atas"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <EditText
-                    android:id="@+id/jumlah_art10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:backgroundTint="@color/colorAccent"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:padding="10dp"
-                    android:textColor="#383838" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lin_nohp"
@@ -526,7 +467,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="9a. No. Telp/HP"
+                    android:text="7a. No. Telp/HP"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -563,7 +504,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="9b. No. Telp/HP Lainnya (Opsional)"
+                    android:text="7b. No. Telp/HP Lainnya (Opsional)"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -586,6 +527,67 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:id="@+id/lin_jumlahart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/textview7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="8. Jumlah ART (Termasuk KRT) Keseluruhan"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <EditText
+                    android:id="@+id/jumlah_art"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:backgroundTint="@color/colorAccent"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textColor="#383838" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_jumlahart10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
+
+                <TextView
+                    android:id="@+id/textview8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="9. Jumlah ART (Termasuk KRT) yang Berusia 10 Tahun ke Atas"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <EditText
+                    android:id="@+id/jumlah_art10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:backgroundTint="@color/colorAccent"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textColor="#383838" />
+            </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/RelativeLayout2"
                 android:layout_width="match_parent"
@@ -600,7 +602,7 @@
                     android:layout_centerVertical="true"
                     android:background="@drawable/tombol_submit"
                     android:padding="10dp"
-                    android:text="Listing ART"
+                    android:text="Listing ART  ➔"
                     android:textColor="#ffffff" />
             </RelativeLayout>
 
