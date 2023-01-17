@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -257,7 +258,8 @@ public class BerandaFragment extends Fragment {
                     final PopUpTest[] popUpTests = {
                             //new PopUpTest("WhatsApp", R.drawable.wa_unf),
                             new PopUpTest("Hubungi lewat telepon", R.drawable.ic_phone_black_24dp),
-                            new PopUpTest("Kirim pesan (SMS)", R.drawable.ic_email_black_24dp)
+                            new PopUpTest("Kirim pesan (SMS)", R.drawable.ic_email_black_24dp),
+                            new PopUpTest("Kirim pesan (WhatsApp)", R.drawable.whatsapp)
                     };
                     ListAdapter la = new ArrayAdapter<PopUpTest>(
                             getContext(),
@@ -302,13 +304,13 @@ public class BerandaFragment extends Fragment {
                                         Toast.makeText(context, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
                                     }
                                     break;
-//                                case 2:
-//                                    if (hasNomor) {
-//                                        openWhatsApp(nomorKortimSaya);
-//                                    } else {
-//                                        Toast.makeText(context, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                    break;
+                                case 2:
+                                    if (hasNomor) {
+                                        openWhatsapp(nomorKortimSaya);
+                                    } else {
+                                        Toast.makeText(context, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
+                                    }
+                                    break;
                             }
                         }
                     }).show();
@@ -444,6 +446,13 @@ public class BerandaFragment extends Fragment {
             Toast.makeText(context,
                     "SMS failed, please try again later.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void openWhatsapp(String nomor) {
+        String url = "https://api.whatsapp.com/send?phone=" + nomor;
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 
     private void getAllRefresh() {

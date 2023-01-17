@@ -111,7 +111,8 @@ public class AnggotaTimAdapter extends ExpandableRecyclerAdapter<HolderParentAng
                 final PopUpTest[] popUpTests = {
 //                        new PopUpTest("WhatsApp", R.drawable.wa_unf),
                         new PopUpTest("Hubungi lewat telepon", R.drawable.ic_phone_black_24dp),
-                        new PopUpTest("Kirim pesan (SMS)", R.drawable.ic_email_black_24dp)
+                        new PopUpTest("Kirim pesan (SMS)", R.drawable.ic_email_black_24dp),
+                        new PopUpTest("Kirim pesan (WhatsApp)", R.drawable.whatsapp),
                 };
                 ListAdapter la = new ArrayAdapter<PopUpTest>(
                         mContext,
@@ -162,6 +163,12 @@ public class AnggotaTimAdapter extends ExpandableRecyclerAdapter<HolderParentAng
                                     Toast.makeText(mContext, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
+                            case 2:
+                                if (hasNomor) {
+                                    openWhatsapp("+" + at.getNomorAng());
+                                } else {
+                                    Toast.makeText(mContext, "Nomor Tidak Tersedia", Toast.LENGTH_SHORT).show();
+                                }
                         }
                     }
                 }).show();
@@ -229,5 +236,12 @@ public class AnggotaTimAdapter extends ExpandableRecyclerAdapter<HolderParentAng
             Toast.makeText(mContext,
                     "SMS faild, please try again later.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void openWhatsapp(String nomor) {
+        String url = "https://api.whatsapp.com/send?phone=" + nomor;
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        mContext.startActivity(i);
     }
 }

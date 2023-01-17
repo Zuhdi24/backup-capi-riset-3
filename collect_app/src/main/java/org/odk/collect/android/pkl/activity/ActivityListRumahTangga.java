@@ -83,7 +83,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
     public final static String MODE_SAMPEL = "sampel";
     private final String TAG = "LIST RUTA";
     private static final String SHOWCASE_ID = "info";
-    private Location location;
+        private Location location;
     private LocationService ls;
 
     Parcelable state;
@@ -431,24 +431,6 @@ public class ActivityListRumahTangga extends AppCompatActivity
             listV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                    //Cek GPS dulu
-                    if(!isGpsActive()){
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListRumahTangga.this);
-                        builder.setTitle("Peringatan")
-                                .setMessage("Pastikan GPS anda berfungsi dengan benar")
-                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        activity.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                                        dialog.dismiss();
-                                    }
-                                })
-                                .show();
-                    }
-                    else{
-//                        dapatkan lokasi
-                        ls = LocationService.getLocationManager(ActivityListRumahTangga.this);
-                        location = ls.getBestLoc();
-
                         //Pilih Kuesioner dulu
                         AlertDialog.Builder builderSingle = new AlertDialog.Builder(ActivityListRumahTangga.this);
                         builderSingle.setTitle("Pilih Kuesioner untuk Digenerate : ");
@@ -513,9 +495,7 @@ public class ActivityListRumahTangga extends AppCompatActivity
 //                                    String.valueOf(location.getLatitude()),
 //                                    String.valueOf(location.getLongitude()),
 //                                    String.valueOf(location.getAccuracy()),
-                                        String.valueOf(location.getLatitude()),
-                                        String.valueOf(location.getLongitude()),
-                                        String.valueOf(location.getAccuracy()),
+                                        rta.getLatitude(), rta.getLongitude(), rta.getAkurasi(),
                                         bs.getKodeBs(),
                                         bs.getKabupaten(), bs.getKecamatan(),
                                         bs.getDesa(), bs.getNoBs(),
@@ -541,7 +521,6 @@ public class ActivityListRumahTangga extends AppCompatActivity
                             }
                         });
                         builderSingle.show();
-                    }
                 }
             });
 
