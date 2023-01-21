@@ -140,6 +140,7 @@
     <string name="view_hierarchy">Risalah</string>
     <string name="general_preferences">Pengaturan Umum</string>
     <string name="click_to_web">Tap untuk berkunjung ke video tutorial penggunaan aplikasi CAPI</string>
+    <string name="click_to_web2" translatable="false">Tap untuk berkunjung ke video tutorial fitur aplikasi CAPI</string>
     <string name="client">Klien</string>
     <string name="show_splash">Perlihatkan tampilan pembuka</string>
     <string name="show_splash_summary">Tampilkan pada awal aplikasi berjalan</string>
@@ -408,6 +409,8 @@
     <string name="pedoman_penggunaan">Pedoman Penggunaan CAPI</string>
     <string name="pedoman_penggunaan_value">https://youtu.be/_aSE4-SQdL8</string>
 
+    <string name="pedoman_fitur">Pedoman Fitur CAPI</string>
+    <string name="pedoman_fitur_value">https://youtu.be/-o9vAhG32PQ</string>
 
     <string name="sent_again_on_date_at_time_clear">\'Sent Again Clear on\' EEE, MMM dd, yyyy \'at\' HH:mm</string>
     <string name="sent_on_date_at_time_unclear">\'Sent unclear on\' EEE, MMM dd, yyyy \'at\' HH:mm</string>

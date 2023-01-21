@@ -106,7 +106,7 @@
 
     <string-array name="listHost_values" translatable="false">
         <item>https://capi62.stis.ac.id/web-service-62/public</item>
-        <item>https://capi62.stis.ac.id/web-service-62/public</item>
+        <item>http://103.102.152.229/web-service-62/public</item>
     </string-array>
 
 </resources>

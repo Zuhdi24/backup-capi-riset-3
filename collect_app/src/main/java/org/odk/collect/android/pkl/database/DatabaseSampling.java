@@ -16,6 +16,7 @@ import org.odk.collect.android.pkl.object.SampelRuta;
 import org.odk.collect.android.pkl.preference.CapiKey;
 
 import java.io.BufferedReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -677,49 +678,91 @@ public class DatabaseSampling extends SQLiteOpenHelper {
                 int jumlahEligibleKeduanya = listSedangPernahBekerja.size();
                 int position = 0;
                 while (listPernahBekerja.size() < listSedangBekerja.size()) {
-                    if (jumlahEligibleKeduanya == 0) break;
+                    if (jumlahEligibleKeduanya == 0) {
+                        Log.d(TAG, "masuk break");
+                        break;
+                    }
                     listPernahBekerja.add(listSedangPernahBekerja.get(position));
                     jumlahEligibleKeduanya--;
                     Log.d(TAG,"yang sedang bekerja udah dibagi2in");
                     position++;
                 }
                 if (jumlahEligibleKeduanya != 0) {
-                    int bagiDua = (listSedangPernahBekerja.size() - position - 1) / 2;
-                    for (int i = position; i < position + 1 + bagiDua; i++) {
+//                    Log.d(TAG,"sisa ruta = " + String.valueOf(jumlahEligibleKeduanya-position+1));
+                    int bagiDua = (jumlahEligibleKeduanya - position + 1) / 2;
+//                    Log.d(TAG,"bagi dua = " + String.valueOf(bagiDua));
+//                    Log.d(TAG,"bagi dua + position = " + String.valueOf(bagiDua + position));
+//                    Log.d(TAG,"position sekarang sebelum masuk looping = " + String.valueOf(position));
+                    int batasAtas = bagiDua + position;
+                    while (position < batasAtas) {
                         listPernahBekerja.add(listSedangPernahBekerja.get(position));
-                        position = i;
+                        Log.d(TAG,"position sekarang = " + String.valueOf(position));
+                        position++;
                     }
-                    for (int j = position; j < listSedangPernahBekerja.size(); j++) {
-                        listSedangBekerja.add(listSedangPernahBekerja.get(j));
+
+//                    Log.d(TAG, "posisi sekarang = " + String.valueOf(position));
+//                    Log.d(TAG, "list pernah bekerja sekarang: " + String.valueOf(listPernahBekerja.size()));
+//                    Log.d(TAG, "list sedang bekerja : " + String.valueOf(listSedangBekerja.size()));
+//                    Log.d(TAG,"jumlah sedang pernah bekerja = " + listSedangPernahBekerja.size());
+
+                    while (position < listSedangPernahBekerja.size()){
+                        listSedangBekerja.add(listSedangPernahBekerja.get(position));
+                        position++;
                     }
+//
+//                    Log.d(TAG, "posisi sekarang = " + String.valueOf(position));
+//                    Log.d(TAG, "list pernah bekerja sekarang: " + String.valueOf(listPernahBekerja.size()));
+//                    Log.d(TAG, "list sedang bekerja : " + String.valueOf(listSedangBekerja.size()));
                 }
-                listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
-                listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
-                listRumahTanggaForSampel.addAll(listPernahBekerja);
-                listRumahTanggaForSampel.addAll(listSedangBekerja);
+                ArrayList<RumahTangga> listPernahBekerjaDiurutkan =sortRutaByNoUrut(listPernahBekerja);
+                ArrayList<RumahTangga> listSedangBekerjaDiurutkan =sortRutaByNoUrut(listSedangBekerja);
+
+                listRumahTanggaForSampel.addAll(listPernahBekerjaDiurutkan);
+                listRumahTanggaForSampel.addAll(listSedangBekerjaDiurutkan);
             } else if (listPernahBekerja.size() > listSedangBekerja.size()) {
                 int jumlahEligibleKeduanya = listSedangPernahBekerja.size();
                 int position = 0;
                 while (listPernahBekerja.size() > listSedangBekerja.size()) {
-                    if (jumlahEligibleKeduanya == 0) break;
-                    listSedangBekerja.add(listSedangPernahBekerja.get(position));
+                    if (jumlahEligibleKeduanya == 0) {
+                        Log.d(TAG, "masuk break");
+                        break;
+                    }
+                    listPernahBekerja.add(listSedangPernahBekerja.get(position));
                     jumlahEligibleKeduanya--;
+                    Log.d(TAG,"yang sedang bekerja udah dibagi2in");
                     position++;
                 }
                 if (jumlahEligibleKeduanya != 0) {
-                    int bagiDua = (listSedangPernahBekerja.size() - position - 1) / 2;
-                    for (int i = position; i < position + 1 + bagiDua; i++) {
+//                    Log.d(TAG,"sisa ruta = " + String.valueOf(jumlahEligibleKeduanya-position+1));
+                    int bagiDua = (jumlahEligibleKeduanya - position + 1) / 2;
+//                    Log.d(TAG,"bagi dua = " + String.valueOf(bagiDua));
+//                    Log.d(TAG,"bagi dua + position = " + String.valueOf(bagiDua + position));
+//                    Log.d(TAG,"position sekarang sebelum masuk looping = " + String.valueOf(position));
+                    int batasAtas = bagiDua + position;
+                    while (position < batasAtas) {
                         listPernahBekerja.add(listSedangPernahBekerja.get(position));
-                        position = i;
+                        Log.d(TAG,"position sekarang = " + String.valueOf(position));
+                        position++;
                     }
-                    for (int j = position; j < listSedangPernahBekerja.size(); j++) {
-                        listSedangBekerja.add(listSedangPernahBekerja.get(j));
+
+//                    Log.d(TAG, "posisi sekarang = " + String.valueOf(position));
+//                    Log.d(TAG, "list pernah bekerja sekarang: " + String.valueOf(listPernahBekerja.size()));
+//                    Log.d(TAG, "list sedang bekerja : " + String.valueOf(listSedangBekerja.size()));
+//                    Log.d(TAG,"jumlah sedang pernah bekerja = " + listSedangPernahBekerja.size());
+
+                    while (position < listSedangPernahBekerja.size()){
+                        listSedangBekerja.add(listSedangPernahBekerja.get(position));
+                        position++;
                     }
+//
+//                    Log.d(TAG, "posisi sekarang = " + String.valueOf(position));
+//                    Log.d(TAG, "list pernah bekerja sekarang: " + String.valueOf(listPernahBekerja.size()));
+//                    Log.d(TAG, "list sedang bekerja : " + String.valueOf(listSedangBekerja.size()));
                 }
-                listPernahBekerja = sortRutaByNoUrut(listPernahBekerja);
-                listSedangBekerja = sortRutaByNoUrut(listSedangBekerja);
-                listRumahTanggaForSampel.addAll(listPernahBekerja);
-                listRumahTanggaForSampel.addAll(listSedangBekerja);
+                ArrayList<RumahTangga> listPernahBekerjaDiurutkan =sortRutaByNoUrut(listPernahBekerja);
+                ArrayList<RumahTangga> listSedangBekerjaDiurutkan =sortRutaByNoUrut(listSedangBekerja);
+                listRumahTanggaForSampel.addAll(listPernahBekerjaDiurutkan);
+                listRumahTanggaForSampel.addAll(listSedangBekerjaDiurutkan);
             } else { // jika sama
                 int bagiDua = listSedangPernahBekerja.size() / 2;
                 listRumahTanggaForSampel.addAll(listPernahBekerja);

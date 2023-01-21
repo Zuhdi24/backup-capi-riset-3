@@ -61,6 +61,7 @@ public class StaticFinal {
     public static final String JSON_NAMA = "nama";
     public static final String JSON_NIM = "nim";
     public static final String JSON_NAMA_TIM = "namaTim";
+    public static final String JSON_ID_TIM = "idTim";
     public static final String JSON_IS_KOOR = "isKoor";
     public static final String JSON_AVATAR = "avatar";
     public static final String JSON_NIM_KOOR = "nimKoor";

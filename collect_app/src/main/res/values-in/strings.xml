@@ -339,6 +339,8 @@
 
     <string name="pedoman_penggunaan">Pedoman Penggunaan CAPI</string>
     <string name="pedoman_penggunaan_value">https://youtu.be/_aSE4-SQdL8</string>
+    <string name="pedoman_fitur">Pedoman Fitur CAPI</string>
+    <string name="pedoman_fitur_value">https://youtu.be/-o9vAhG32PQ</string>
     <string name="capi55">CAPI STIS</string>
     <string name="ruta_mutakhir">"No. Urut Mutakhir "</string>
 </resources>

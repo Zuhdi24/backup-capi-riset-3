@@ -10,9 +10,18 @@
             android:data="@string/pedoman_penggunaan_value" />
     </PreferenceScreen>
     <PreferenceScreen
+        android:id="@+id/info2"
+        android:key="info"
+        android:summary="@string/click_to_web2"
+        android:title="@string/pedoman_fitur">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="@string/pedoman_fitur_value" />
+    </PreferenceScreen>
+    <PreferenceScreen
         android:id="@+id/versionNumber"
         android:key="App Version"
-        android:summary="CAPI PKL 62 Riset 3 v1"
+        android:summary="CAPI PKL 62 Riset 3 v2.4"
         android:title="App Version">
     </PreferenceScreen>
     <PreferenceCategory

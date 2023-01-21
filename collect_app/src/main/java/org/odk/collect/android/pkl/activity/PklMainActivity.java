@@ -212,7 +212,7 @@ public class PklMainActivity extends AppCompatActivity
                 .setButtonDismiss("Nanti")
                 .setButtonDoNotShowAgain(null)
                 .setUpdateFrom(UpdateFrom.JSON)
-                .setUpdateJSON("https://capi62.stis.ac.id/web-service-62/latestVersion/index/4");
+                .setUpdateJSON("https://capi62.stis.ac.id/web-service-62/latestVersion/index/3");
         appUpdater.start();
 
     }

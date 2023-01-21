@@ -204,7 +204,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
                 }
 
                 if (UrlUtils.isValidUrl(url)) {
-                    preference.setSummary(newValue.toString());
+//                    preference.setSummary(newValue.toString());
                     return true;
                 } else {
                     Toast.makeText(getApplicationContext(),
