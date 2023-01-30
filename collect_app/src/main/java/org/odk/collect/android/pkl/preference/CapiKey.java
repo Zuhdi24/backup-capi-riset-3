@@ -10,7 +10,7 @@ public class CapiKey {
 
     //key beban cacah
 //    public final static int N_SAMPLE_D3 = 10;
-    public final static int N_SAMPLE = 10;
+    public final static int N_SAMPLE = 16;
     public final static int N_MINIMUM_RUTA = 0;
 
     // key profil
