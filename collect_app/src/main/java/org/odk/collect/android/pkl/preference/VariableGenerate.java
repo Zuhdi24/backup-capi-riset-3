@@ -1,6 +1,8 @@
 package org.odk.collect.android.pkl.preference;
 
 /**
+ * Class yang berisi variabel-variabel yang akan digenerate dari kuesioner ODK
+ *
  * Created by raja on 25/01/2017.
  */
 

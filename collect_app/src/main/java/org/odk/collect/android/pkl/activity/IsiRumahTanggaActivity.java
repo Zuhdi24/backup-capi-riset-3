@@ -55,22 +55,12 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
     LocationService ls;
 
     EditText no_segmen, no_bf, no_bs, no_urut_ruta, namaKRT, alamat, jumlahART, jumlahART10, noHp, noHp2;
-
-    RadioGroup isUUP, kedudukanUP, statusKelola, lokasiUP, jenisUUP;
-    RadioButton rbyes, rbno, rbPemilik, rbPengelola, rbStatusyes, rbStatusno, rbLokasiluar, rbLokasidalam, rb1jenisUUP,
-            rb2jenisUUP, rb3jenisUUP;
     RadioGroup kodeEligible;
-    RadioButton rbEligibleYa, rbEligibleTidak;
-    Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_rutaplus, no_rutaminus, kuesionerBlokV,
-            no_uupplus, no_uupminus, jumlahisUUPplus, jumlahisUUPminus, no_urut_artplus, no_urut_artminus;
-
-    //    TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNoUUP, pertanyaanNamaKRT,
-//            pertanyaanisUUP, pertanyaanAlamat, pertanyaanJumlahIsUUP, pertanyaanNoUrutIsUUP, pertanyaanKedudukanUP, pertanyaanStatusUP,
-//            pertanyaanLokasiUP, pertanyaanNamaPemilik, pertanyaanJenisUUP;
+//    RadioButton rbEligibleYa, rbEligibleTidak;
+    Button submit, segmenplus, segmenminus, bfplus, bfminus, bsplus, bsminus, no_rutaplus, no_rutaminus, kuesionerBlokV;
     TextView pertanyaanNoSegmen, pertanyaanNoBf, pertanyaanNoBs, pertanyaanNoRuta, pertanyaanNamaKRT, pertanyaanAlamat,
             pertanyaanJumlahART, pertanyaanJumlahART10, pertanyaanNoHp, pertanyaanNoHp2, pertanyaanKodeEligible;
     View noteView;
-    //    LinearLayout lin_rtup_tp, lin_nortup_tp, lin_ciri_fisik;
     TextView noSegmenTerakhir, noBfTerakhir, noBsTerakhir;
     Toolbar toolbar;
     Location lokasi;
@@ -110,15 +100,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         } else {
             Log.d(TAG, "onCreate: Fine Location Permision Granted");
         }
-
-//        if (getIntent().getBooleanExtra("rutaBr", false)) {
-//            Intent i;
-//            Collect.getInstance().getActivityLogger()
-//                    .logAction(this, "fillBlankForm", "click");
-//            i = new Intent(IsiRumahTanggaActivity.this,
-//                    FormChooserList.class);
-//            startActivity(i);
-//        }
 
         db = DatabaseSampling.getInstance();
 
@@ -161,36 +142,8 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
             }
         });
-//        rbEligibleYa = findViewById(R.id.kategori_kode_eligible_ya);
-//        rbEligibleTidak = findViewById(R.id.kategori_kode_eligible_tidak);
 
-//        no_segmen = findViewById(R.id.no_urut_segmen);
-//        no_bf = findViewById(R.id.no_urut_bf);
-//        no_bs = findViewById(R.id.no_urut_bs);
-//        no_urut_ruta = findViewById(R.id.no_urt); //no urut rumah tangga
-//        no_urut_up = findViewById(R.id.no_urut_up); //no urut unit usaha pariwisata
-//        namaKRT = findViewById(R.id.nama_KRT);
-//        namaPemilik = findViewById(R.id.nama_pemilik);
-//        no_hp = findViewById(R.id.nohp);
-//        alamat = findViewById(R.id.alamat);
-//        jumlahisUUP = findViewById(R.id.jumlah_isUUP);
-//        no_urut_isUUP = findViewById(R.id.no_urut_art);
-//        isUUP = findViewById(R.id.kategori_isUUP);
-//        rbyes = findViewById(R.id.kategori_isUUP_yes);
-//        rbno = findViewById(R.id.kategori_isUUP_no);
-//        kedudukanUP = findViewById(R.id.kategori_kedudukan_up);
-//        rbPemilik = findViewById(R.id.kategori_kedudukan_pemilik);
-//        rbPengelola = findViewById(R.id.kategori_kedudukan_pengelola);
-//        statusKelola = findViewById(R.id.kategori_status_kelola);
-//        rbStatusyes = findViewById(R.id.kategori_statuskelola_yes);
-//        rbStatusno = findViewById(R.id.kategori_statuskelola_no);
-//        lokasiUP = findViewById(R.id.kategori_lokasi_usaha);
-//        rbLokasiluar = findViewById(R.id.kategori_lokasiusaha_luar);
-//        rbLokasidalam = findViewById(R.id.kategori_lokasiusaha_dalam);
-        jenisUUP = findViewById(R.id.kategori_uup);
-        rb1jenisUUP = findViewById(R.id.kategori_uup_1);
-//        rb2jenisUUP = findViewById(R.id.kategori_uup_2);
-//        rb3jenisUUP = findViewById(R.id.kategori_uup_3);
+        // Inisasi tombol-tombol
         segmenplus = findViewById(R.id.segmenplus);
         segmenminus = findViewById(R.id.segmenminus);
         bfplus = findViewById(R.id.bfplus);
@@ -199,12 +152,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         bsminus = findViewById(R.id.bsminus);
         no_rutaplus = findViewById(R.id.no_urtplus);
         no_rutaminus = findViewById(R.id.no_urtminus);
-//        no_uupplus = findViewById(R.id.upplus);
-//        no_uupminus = findViewById(R.id.upminus);
-//        jumlahisUUPplus = findViewById(R.id.jumlah_isUUPplus);
-//        jumlahisUUPminus = findViewById(R.id.jumlah_isUUPminus);
-//        no_urut_artplus = findViewById(R.id.no_urut_artplus);
-//        no_urut_artminus = findViewById(R.id.no_urut_artminus);
         submit = findViewById(R.id.next);
 
         // Daftar Pertanyaan
@@ -220,28 +167,9 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         pertanyaanNoHp2 = findViewById(R.id.textview9b);
         pertanyaanKodeEligible = findViewById(R.id.textview10);
 
-//        pertanyaanNoSegmen = findViewById(R.id.textview1);
-//        pertanyaanNoBf = findViewById(R.id.textview2);
-//        pertanyaanNoBs = findViewById(R.id.textview3);
-//        pertanyaanNoRuta = findViewById(R.id.textview15);
-//        pertanyaanNoUUP = findViewById(R.id.textview4);
-//        pertanyaanNamaKRT = findViewById(R.id.textview5);
-//        pertanyaanAlamat = findViewById(R.id.textview7);
-//        pertanyaanisUUP = findViewById(R.id.isUUP);
-//        pertanyaanJumlahIsUUP = findViewById(R.id.text_jumlah_isUUP);
-//        pertanyaanNoUrutIsUUP = findViewById(R.id.text_no_urut_art);
-//        pertanyaanNamaPemilik = findViewById(R.id.textview10);
-//        pertanyaanKedudukanUP = findViewById(R.id.kedudukan_up);
-//        pertanyaanStatusUP = findViewById(R.id.status_kelola);
-//        pertanyaanLokasiUP = findViewById(R.id.lokasi_usaha);
-//        pertanyaanJenisUUP = findViewById(R.id.textview9);
-
         kodeUUP = getIntent().getStringExtra("kodeUUP");
         kodeBs = getIntent().getStringExtra("kodeBs");
         posisi = getIntent().getIntExtra("posisi", 0);
-
-//        Log.e("update1", kodeUUP);
-//        Log.e("update1", String.valueOf(posisi));
 
         noteView = findViewById(R.id.note_card);
         noSegmenTerakhir = findViewById(R.id.note_segmen);
@@ -257,10 +185,8 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             no_segmen.setSelection(1);
         }
 
-
         // SET CAPSLOCK ON EDITTEXT
         InputFilter allCaps = new InputFilter.AllCaps();
-//        namaPemilik.setFilters(new InputFilter[]{allCaps});
         namaKRT.setFilters(new InputFilter[]{allCaps});
         alamat.setFilters(new InputFilter[]{allCaps});
         no_bf.setFilters(new InputFilter[]{allCaps});
@@ -398,108 +324,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             }
         });
 
-//        jumlahisUUP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if (hasFocus) {
-//                    if (jumlahisUUP.getText().length() < 2) {
-//                        jumlahisUUP.setInputType(InputType.TYPE_CLASS_NUMBER);
-//                    } else {
-//                        jumlahisUUP.setInputType(InputType.TYPE_CLASS_TEXT);
-//                    }
-//                }
-//            }
-//        });
-
-//        jumlahisUUP.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if (jumlahisUUP.getText().length() < 2) {
-//                    jumlahisUUP.setInputType(InputType.TYPE_CLASS_NUMBER);
-//                } else {
-//                    jumlahisUUP.setInputType(InputType.TYPE_CLASS_TEXT);
-//                }
-//            }
-//        });
-//
-//        no_urut_art.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if (hasFocus) {
-//                    if (no_urut_art.getText().length() < 2) {
-//                        no_urut_art.setInputType(InputType.TYPE_CLASS_NUMBER);
-//                    } else {
-//                        no_urut_art.setInputType(InputType.TYPE_CLASS_TEXT);
-//                    }
-//                }
-//            }
-//        });
-//
-//        no_urut_art.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if (no_urut_art.getText().length() < 2) {
-//                    no_urut_art.setInputType(InputType.TYPE_CLASS_NUMBER);
-//                } else {
-//                    no_urut_art.setInputType(InputType.TYPE_CLASS_TEXT);
-//                }
-//            }
-//        });
-
-//        no_urut_up.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if (hasFocus) {
-//                    if (no_urut_up.getText().length() < 3) {
-//                        no_urut_up.setInputType(InputType.TYPE_CLASS_NUMBER);
-//                    } else {
-//                        no_urut_up.setInputType(InputType.TYPE_CLASS_TEXT);
-//                    }
-//                }
-//            }
-//        });
-
-//        no_urut_up.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if (no_urut_up.getText().length() < 3) {
-//                    no_urut_up.setInputType(InputType.TYPE_CLASS_NUMBER);
-//                } else {
-//                    no_urut_up.setInputType(InputType.TYPE_CLASS_TEXT);
-//                }
-//            }
-//        });
-
         segmenplus.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -582,154 +406,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
             }
         });
 
-//        jumlahisUUPplus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int art = 0;
-//                setPlusMinus1(jumlahisUUP, plus, art);
-//            }
-//        });
-
-//        jumlahisUUPminus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int art = 0;
-//                setPlusMinus1(jumlahisUUP, minus, art);
-//            }
-//        });
-
-//        no_urut_artplus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int art = 0;
-//                setPlusMinus1(no_urut_isUUP, plus, art);
-//            }
-//        });
-//
-//        no_urut_artminus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int art = 0;
-//                setPlusMinus1(no_urut_isUUP, minus, art);
-//            }
-//        });
-
-//        no_uupplus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int art = 0;
-//                setPlusMinus(no_urut_up, plus, art);
-//            }
-//        });
-//
-//        no_uupminus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int art = 0;
-//                setPlusMinus(no_urut_up, minus, art);
-//            }
-//        });
-
-        // SET VIEW ON RADIO BUTTON
-//        LinearLayout lljumlahisUUP = (LinearLayout) findViewById(R.id.lin_jumlah_isUUP);
-//        LinearLayout llnoUrutisUUP = (LinearLayout) findViewById(R.id.lin_no_urut_art);
-//        LinearLayout llkedudukan = (LinearLayout) findViewById(R.id.lin_kedudukan);
-//        LinearLayout llstatuskelola = (LinearLayout) findViewById(R.id.lin_status_kelola);
-//        LinearLayout lllokasi = (LinearLayout) findViewById(R.id.lin_lokasi_usaha);
-//        LinearLayout llpemilik = (LinearLayout) findViewById(R.id.lin_nama_pemilik);
-//        LinearLayout lljenis = (LinearLayout) findViewById(R.id.lin_rtup_tp);
-//        LinearLayout llnortup = (LinearLayout) findViewById(R.id.lin_no_ruta);
-//        LinearLayout llnohp = (LinearLayout) findViewById(R.id.lin_nohp);
-
-//        lljumlahisUUP.setVisibility(View.GONE);
-//        llnoUrutisUUP.setVisibility(View.GONE);
-//        llpemilik.setVisibility(View.GONE);
-//        llkedudukan.setVisibility(View.GONE);
-//        llstatuskelola.setVisibility(View.GONE);
-//        lllokasi.setVisibility(View.GONE);
-//        lljenis.setVisibility(View.GONE);
-//        llnortup.setVisibility(View.GONE);
-//        llnohp.setVisibility(View.GONE);
-
-//        isUUP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                if (rbyes.isChecked()) {
-//                    lljumlahisUUP.setVisibility(View.VISIBLE);
-//                    llnoUrutisUUP.setVisibility(View.VISIBLE);
-////                    llpemilik.setVisibility(View.VISIBLE);
-//                    llkedudukan.setVisibility(View.VISIBLE);
-//                } else if (rbno.isChecked()) {
-//
-//                    lljumlahisUUP.setVisibility(View.GONE);
-//                    llnoUrutisUUP.setVisibility(View.GONE);
-////                    llpemilik.setVisibility(View.GONE);
-//                    llkedudukan.setVisibility(View.GONE);
-//                    llstatuskelola.setVisibility(View.GONE);
-////                    lllokasi.setVisibility(View.GONE);
-////                    lljenis.setVisibility(View.GONE);
-////                    llnortup.setVisibility(View.GONE);
-//                } else {
-//                    lljumlahisUUP.setVisibility(View.GONE);
-//                    llnoUrutisUUP.setVisibility(View.GONE);
-////                    llpemilik.setVisibility(View.GONE);
-//                    llkedudukan.setVisibility(View.GONE);
-//                    llstatuskelola.setVisibility(View.GONE);
-////                    lllokasi.setVisibility(View.GONE);
-////                    lljenis.setVisibility(View.GONE);
-////                    llnortup.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-//
-//        kedudukanUP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                if (rbPemilik.isChecked() == true) {
-//                    llstatuskelola.setVisibility(View.VISIBLE);
-////                    lllokasi.setVisibility(View.GONE);
-////                    lljenis.setVisibility(View.GONE);
-////                    llnortup.setVisibility(View.GONE);
-//                } else if (rbPengelola.isChecked() == true) {
-//                    llstatuskelola.setVisibility(View.GONE);
-////                    lllokasi.setVisibility(View.VISIBLE);
-////                    lljenis.setVisibility(View.GONE);
-////                    llnortup.setVisibility(View.GONE);
-//                } else {
-//                    llstatuskelola.setVisibility(View.GONE);
-////                    lllokasi.setVisibility(View.GONE);
-////                    lljenis.setVisibility(View.GONE);
-////                    llnortup.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-//
-//        statusKelola.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                if (rbStatusyes.isChecked() == true) {
-////                    lllokasi.setVisibility(View.VISIBLE);
-//                } else {
-////                    lllokasi.setVisibility(View.GONE);
-////                    lljenis.setVisibility(View.GONE);
-////                    llnortup.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-//
-//        lokasiUP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                if (rbLokasidalam.isChecked() == true) {
-////                    lljenis.setVisibility(View.VISIBLE);
-////                    llnortup.setVisibility(View.VISIBLE);
-//                } else {
-////                    lljenis.setVisibility(View.GONE);
-////                    llnortup.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -749,6 +425,9 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         }
     }
 
+    /**
+     * Method yang dijalankan ketika tombol submit ditekan
+     */
     public void submitRT() {
         boolean isFormClear = false;
         String message = "";
@@ -756,8 +435,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
         lokasi = ls.getBestLoc();
 
-//        RumahTanggaRiset4 rTangga = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-
+        // Validasi isian listing rumah tangga
         if (no_segmen.getText().length() != 4 || no_segmen.getText().toString().indexOf("S") != 0) {
             message = "No segmen harus 4 digit dan diisi";
             pertanyaanNoSegmen.requestFocus();
@@ -848,40 +526,7 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 
         Log.d(TAG, "submitRT: no urut ruta " + no_urut_ruta.getText().toString() + " ,posisi " + posisi);
 
-        //TODO FUNGSI Noruta Usaha Pariwisata UNIK
-//        ArrayList<UnitUsahaPariwisata> listRutaUP = db.getListUnitUsahaPariwisata(kodeBs);
-//        for (int i = 0; i<listRutaUP.size() ; i++){
-//            if(no_urut_up.getText().toString().equals(listRutaUP.get(i).getNoUrutRuta()) && posisi != 0){
-//                if(no_urut_up.getText().toString().equals("000")){
-//                    isFormClear = true;
-//                }else{
-//                    message = "No Urut Ruta Usaha Pariwisata harus unik";
-//                    pertanyaanNoUUP.requestFocus();
-//                    no_urut_up.requestFocus();
-//                    isFormClear = false;
-//                    Log.d(TAG, "submitRT: No Urut Ruta Usaha Pariwisata salah");
-//                }
-//            }
-//            Log.d(TAG, "submitRT: UNIK!");
-//        }
-
-//        //TODO FUNGSI Noruta UNIK
-//        ArrayList<UnitUsahaPariwisata> listRuta = db.getListUnitUsahaPariwisata(kodeBs);
-//        for (int i = 0; i<listRuta.size() ; i++){
-//            if(no_urt.getText().toString().equals(listRuta.get(i).getNoUrutRuta()) && posisi != 0){
-//                if(no_urt.getText().toString().equals("000")){
-//                    isFormClear = true;
-//                }else{
-//                    message = "No Urut Ruta harus harus unik";
-//                    pertanyaanNoURT.requestFocus();
-//                    no_urt.requestFocus();
-//                    isFormClear = false;
-//                    Log.d(TAG, "submitRT: No Urut Ruta salah");
-//                }
-//            }
-//            Log.d(TAG, "submitRT: UNIK!");
-//        }
-
+        // jika validasi sudah terisi dengan benar
         if (isFormClear) {
             rumahTangga.setKodeBs(kodeBs);
             rumahTangga.setNoSLS(no_segmen.getText().toString());
@@ -909,79 +554,9 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                     rumahTangga.setKodeEligible("0");
                     break;
             }
-//            if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_yes) {
-//            rumahTangga.setJumlahEligible("1");
-//            rumahTangga.setListNamaEligible("Dani danu");
-//            rumahTangga.setNoUrutRuta(no_urut_isUUP.getText().toString());
-//            rumahTangga.setNamaKRT(namaPemilik.getText().toString());
-//                if(kedudukanUP.getCheckedRadioButtonId() == R.id.kategori_kedudukan_pemilik) {
-//                    rumahTangga.setKedudukanUP("1");
-//                    if(statusKelola.getCheckedRadioButtonId() == R.id.kategori_statuskelola_yes) {
-//                        rumahTangga.setStatusKelola("1");
-//                        if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_dalam) {
-//                            rumahTangga.setLokasiUP("1");
-//                        } else if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_luar) {
-//                            rumahTangga.setLokasiUP("0");
-//                        }
-//                    } else if(statusKelola.getCheckedRadioButtonId() == R.id.kategori_statuskelola_no) {
-//                        rumahTangga.setStatusKelola("0");
-//                        rumahTangga.setLokasiUP("-");
-//                    }
-//                } else if(kedudukanUP.getCheckedRadioButtonId() == R.id.kategori_kedudukan_pengelola) {
-//                    rumahTangga.setKedudukanUP("2");
-//                    rumahTangga.setStatusKelola("-");
-//                    if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_dalam) {
-//                        rumahTangga.setLokasiUP("1");
-//                    } else if(lokasiUP.getCheckedRadioButtonId() == R.id.kategori_lokasiusaha_luar) {
-//                        rumahTangga.setLokasiUP("0");
-//                    }
-//                }
-//            } else if(isUUP.getCheckedRadioButtonId() == R.id.kategori_isUUP_no) {
-//            jumlahisUUP.setText("00");
-//                rumahTangga.setJumlahisUUP(jumlahisUUP.getText().toString());
-//                rumahTangga.setNoUrutPemilikUUP("-");
-//                rumahTangga.setNamaPemilikUUP("-");
-//                rumahTangga.setKedudukanUP("-");
-//                rumahTangga.setStatusKelola("-");
-//                rumahTangga.setLokasiUP("-");
-//            }
-//            if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_1) {
-//                rumahTangga.setJenisUUP("1");
-//            } else if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_2) {
-//                rumahTangga.setJenisUUP("2");
-//            } else if (jenisUUP.getCheckedRadioButtonId() == R.id.kategori_uup_3) {
-//                rumahTangga.setJenisUUP("3");
-//            } else {
-//                rumahTangga.setJenisUUP("-");
-//            }
+
             SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy kk:mm:ss");
             rumahTangga.setTime(sdf.format(new Date()));
-
-//            int jumlahruta = 1 + db.getJumlahUUP(kodeBs);
-
-//            no_urut_ruta.setText("001");
-//            if(rbno.isChecked()) {
-//                jumlahisUUP.setText("00");
-//            }
-//            no_urut_ruta.setText("001");
-//            no_urut_up.setText("001");
-//            if (kodeUUP != null && posisi == 0) {
-//                if(no_urt.getText().toString().equals("000")){
-//                    unitUsahaPariwisata.setNoUrutRuta("000");
-////                    RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
-////                    rumahTanggaRiset4.setNoUrutRuta(no_urt.getText().toString());
-//                }
-//            } else{
-////                rumahTangga.setStatus(RumahTangga.STATUS_INSERT);
-//                if(no_urt.getText().toString().equals("000")){
-//                    unitUsahaPariwisata.setNoUrutRuta("000");
-//                }
-//                else{
-//                    unitUsahaPariwisata.setNoUrutRuta(ubahNomor(jumlahruta));
-//                }
-//            }
-//            Log.i(TAG, "submitRT: norut " + unitUsahaPariwisata.getNoUrutRuta());
-
 
             //TODO CEK kodeUUP setelah input
             if ((kodeUUP != null) && posisi == 0) {
@@ -1216,6 +791,11 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         Log.d(TAG, "setPlusMinusTen: set cursor");
     }
 
+    /**
+     * Method untuk mengisi form edit
+     * @param kodeBs
+     * @param kodeUUP
+     */
     public void prefillFormEdit(String kodeBs, String kodeUUP) {
         RumahTangga uup = db.getRumahTanggaByKode(kodeBs, kodeUUP);
 //        Log.e("NOMOR SEGMEN", ruta.getNoSegmen());
@@ -1229,13 +809,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         jumlahART10.setText(uup.getJumlahART10());
         noHp.setText(uup.getNoHp());
         noHp2.setText(uup.getNoHp2());
-
-//        // Check if null
-//        if (uup.getNoHp2() != null) {
-//            noHp2.setText(uup.getNoHp2());
-//        } else {
-//            noHp2.setText("");
-//        }
 
         LinearLayout linKodeEligible = findViewById(R.id.lin_kode_eligible);
         linKodeEligible.setVisibility(View.VISIBLE);
@@ -1275,66 +848,12 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 a4.setChecked(true);
                 break;
         }
-
-//        if(uup.getJumlahisUUP().equals("00")){
-//            a1 = (RadioButton) findViewById(R.id.kategori_isUUP_no);
-//            a1.setChecked(true);
-//        }else{
-//            a2 = (RadioButton) findViewById(R.id.kategori_isUUP_yes);
-//            a2.setChecked(true);
-//            jumlahisUUP.setText(uup.getJumlahisUUP());
-//        no_urut_isUUP.setText(uup.getNoUrutRuta());
-//        namaPemilik.setText(uup.getNamaKRT());
-//        }
-
-        RadioButton b1, b2;
-//        if(uup.getKedudukanUP().equals("1")) {
-//            b1 = kedudukanUP.findViewById(R.id.kategori_kedudukan_pemilik);
-//            b1.setChecked(true);
-//        }
-//        else if(uup.getKedudukanUP().equals("2")){
-//            b2 = kedudukanUP.findViewById(R.id.kategori_kedudukan_pengelola);
-//            b2.setChecked(true);
-//        }
-
-        RadioButton c1, c2;
-//        if(uup.getStatusKelola().equals("1")) {
-//            c1 = statusKelola.findViewById(R.id.kategori_statuskelola_yes);
-//            c1.setChecked(true);
-//        }
-//        else if(uup.getStatusKelola().equals("0")){
-//            c2 = statusKelola.findViewById(R.id.kategori_statuskelola_no);
-//            c2.setChecked(true);
-//        }
-
-        RadioButton d1, d2;
-//        if(uup.getLokasiUP().equals("1")) {
-//            d1 = lokasiUP.findViewById(R.id.kategori_lokasiusaha_dalam);
-//            d1.setChecked(true);
-//        }
-//        else if(uup.getLokasiUP().equals("0")){
-//            d2 = lokasiUP.findViewById(R.id.kategori_lokasiusaha_luar);
-//            d2.setChecked(true);
-//        }
-//        no_hp.setText(uup.getNoHp());
-        RadioButton e1, e2, e3;
-//        if(uup.getJenisUUP().equals("1")) {
-//            e1 = jenisUUP.findViewById(R.id.kategori_uup_1);
-//            e1.setChecked(true);
-//        }
-//        else if(uup.getJenisUUP().equals("2")){
-//            e2 = jenisUUP.findViewById(R.id.kategori_uup_2);
-//            e2.setChecked(true);
-//        }
-//        else if(uup.getJenisUUP().equals("3")){
-//            e3 = jenisUUP.findViewById(R.id.kategori_uup_3);
-//            e3.setChecked(true);
-//        }
-//
-//        no_urut_up.setText(uup.getNoUrutUUP());
-
     }
 
+    /**
+     * Method untuk mengisi berdasarkan Ruta terakhir
+     * @param kodeBs
+     */
     public void prefillFromLastRuta(String kodeBs) {
         Log.d(TAG, "prefillFromLastRuta: masuk");
         int jumlahRuta = db.getListUnitUsahaPariwisata(kodeBs).size();
@@ -1350,25 +869,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 no_urutRuta = Integer.parseInt(lastRuta.getNoUrutRuta());
             } catch (Exception e) {
             }
-//
-//            no_bf.setText(incBf());
-//            no_bs.setText( incBs() );
-
-//            if (noBf + 1 < 10) {
-//                no_bf.setText(("00" + (noBf + 1)));
-//            } else if (noBf + 1 < 100) {
-//                no_bf.setText(("0" + (noBf + 1)));
-//            } else {
-//                no_bf.setText(String.valueOf((noBf + 1)));
-//            }
-//
-//            if (noBs + 1 < 10) {
-//                no_bs.setText(("00" + (noBs + 1)));
-//            } else if (noBf + 1 < 100) {
-//                no_bs.setText(("0" + (noBs + 1)));
-//            } else {
-//                no_bs.setText(String.valueOf((noBs + 1)));
-//            }
 
             if (no_urutRuta + 1 < 10) {
                 no_urut_ruta.setText(("00" + (no_urutRuta + 1)));
@@ -1383,77 +883,21 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
 //                no_urutUP = Integer.parseInt(lastRuta.getNoUrutUUP());
             } catch (Exception e) {
             }
-//            String last_apakahUUP = lastRuta.getJumlahisUUP();
-//            String last_kedudukanUP = lastRuta.getKedudukanUP();
-//            String last_statusKelola = lastRuta.getStatusKelola();
-//            String last_lokasiUP = lastRuta.getLokasiUP();
-
-//            if (last_apakahUUP.equals("00")) {
-//                no_urut_up.setText(lastRuta.getNoUrutUUP());
-//            } else {
-//                if (last_kedudukanUP.equals("1")) {
-//                    if (last_statusKelola.equals("1") && last_lokasiUP.equals("1")) {
-//                        if (no_urutUP + 1 < 10) {
-//                            no_urut_up.setText(("00" + (no_urutUP + 1)));
-//                        } else if (no_urutUP + 1 < 100) {
-//                            no_urut_up.setText(("0" + (no_urutUP + 1)));
-//                        } else {
-//                            no_urut_up.setText(String.valueOf((no_urutUP + 1)));
-//                        }
-//                    } else {
-//                        no_urut_up.setText(lastRuta.getNoUrutUUP());
-//                    }
-//                } else if (last_kedudukanUP.equals("2")) {
-//                    if (last_lokasiUP.equals("1")) {
-//                        if (no_urutUP + 1 < 10) {
-//                            no_urut_up.setText(("00" + (no_urutUP + 1)));
-//                        } else if (no_urutUP + 1 < 100) {
-//                            no_urut_up.setText(("0" + (no_urutUP + 1)));
-//                        } else {
-//                            no_urut_up.setText(String.valueOf((no_urutUP + 1)));
-//                        }
-//                    } else {
-//                        no_urut_up.setText(lastRuta.getNoUrutUUP());
-//                    }
-//                } else {
-//                    no_urut_up.setText(lastRuta.getNoUrutUUP());
-//                }
-//            }
-
-//            int no_urutUP = 0;
-//            try {
-//                no_urutUP = Integer.parseInt(lastRuta.getNoUrutUUP());
-//            } catch (Exception e) {
-//            }
-//            String jenisUUP = lastRuta.getJenisUUP();
-//            if(jenisUUP == "1"){
-//                if (no_urutUP + 1 < 10) {
-//                    no_urut.setText(("00" + (no_urutUP + 1)));
-//                } else if (no_urutUP + 1 < 100) { //TADI noBf
-//                    no_urut.setText(("0" + (no_urutUP + 1)));
-//                } else {
-//                    no_urut.setText(String.valueOf((no_urutUP + 1)));
-//                }
-//            }
 
             //no segmen
             no_segmen.setText(lastRuta.getNoSLS());
-
             //no bf
             no_bf.setText(noBf);
-
             //no bs
             no_bs.setText(noBs);
-
-            //RT/RW
-//            alamat.setText(lastRuta.getAlamat());
-//
-//            //No Urut UUP
-//            no_urut.setText(lastRuta.getNoUrutUUP());
         }
     }
 
-    //PREFILL SALIN ISIAN RUTA
+    /**
+     * Method untuk prefill salin isian Ruta
+     * @param kodeBs
+     * @param kodeUUP
+     */
     public void prefillSameBs(String kodeBs, String kodeUUP) {
         RumahTangga ruta = db.getRumahTanggaByKode(kodeBs, kodeUUP);
         RumahTangga lastRuta = db.getLastRuta(kodeBs);
@@ -1468,19 +912,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
         jumlahART10.setText(ruta.getJumlahART10());
         noHp.setText(ruta.getNoHp());
         noHp2.setText(ruta.getNoHp2());
-
-//        // Check if null
-//        if (ruta.getNoHp2() != null) {
-//            noHp2.setText(ruta.getNoHp2());
-//        } else {
-//            noHp2.setText("");
-//        }
-
-//        LinearLayout linKodeEligible = findViewById(R.id.lin_kode_eligible);
-//        linKodeEligible.setVisibility(View.VISIBLE);
-//
-//        submit = findViewById(R.id.next);
-//        submit.setVisibility(View.VISIBLE);
 
         RadioButton a1, a2, a3, a4;
         switch (ruta.getKodeEligible()) {
@@ -1501,70 +932,6 @@ public class IsiRumahTanggaActivity extends AppCompatActivity implements Activit
                 a4.setChecked(true);
                 break;
         }
-
-//        RadioButton isUUP_ya = (RadioButton) findViewById(R.id.kategori_isUUP_yes);
-//        isUUP_ya.setChecked(true);
-
-//        jumlahisUUP.setText(ruta.getJumlahisUUP());
-
-        int no_urutPemilikUUP = 0;
-        int jumlahisUUP = 0;
-        try {
-//            jumlahisUUP = Integer.parseInt(lastRuta.getJumlahisUUP());
-//            no_urutPemilikUUP = Integer.parseInt(lastRuta.getNoUrutPemilikUUP());
-        } catch (Exception e) {
-        }
-
-        if (no_urutPemilikUUP < jumlahisUUP) {
-            if (no_urutPemilikUUP + 1 < 10) {
-//                no_urut_isUUP.setText(("0" + (no_urutPemilikUUP + 1)));
-            }
-        } else {
-//            no_urut_isUUP.setText("Telah Terisi Semua");
-        }
-
-        // AUTO INCREMENT NO URUT UUP
-        int no_urutUP = 0;
-        try {
-//            no_urutUP = Integer.parseInt(lastRuta.getNoUrutUUP());
-        } catch (Exception e) {
-        }
-//        String last_apakahUUP = lastRuta.getJumlahisUUP();
-//        String last_kedudukanUP = lastRuta.getKedudukanUP();
-//        String last_statusKelola = lastRuta.getStatusKelola();
-//        String last_lokasiUP = lastRuta.getLokasiUP();
-
-//        if (last_apakahUUP.equals("00")) {
-////            no_urut_up.setText(lastRuta.getNoUrutUUP());
-//        } else {
-//            if (last_kedudukanUP.equals("1")) {
-//                if (last_statusKelola.equals("1") && last_lokasiUP.equals("1")) {
-//                    if (no_urutUP + 1 < 10) {
-//                        no_urut_up.setText(("00" + (no_urutUP + 1)));
-//                    } else if (no_urutUP + 1 < 100) {
-//                        no_urut_up.setText(("0" + (no_urutUP + 1)));
-//                    } else {
-//                        no_urut_up.setText(String.valueOf((no_urutUP + 1)));
-//                    }
-//                } else {
-//                    no_urut_up.setText(lastRuta.getNoUrutUUP());
-//                }
-//            } else if (last_kedudukanUP.equals("2")) {
-//                if (last_lokasiUP.equals("1")) {
-//                    if (no_urutUP + 1 < 10) {
-//                        no_urut_up.setText(("00" + (no_urutUP + 1)));
-//                    } else if (no_urutUP + 1 < 100) {
-//                        no_urut_up.setText(("0" + (no_urutUP + 1)));
-//                    } else {
-//                        no_urut_up.setText(String.valueOf((no_urutUP + 1)));
-//                    }
-//                } else {
-//                    no_urut_up.setText(lastRuta.getNoUrutUUP());
-//                }
-//            } else {
-//                no_urut_up.setText(lastRuta.getNoUrutUUP());
-//            }
-//        }
     }
 
     public void prefillNearBf(String kodeBs, String kodeUUP) {

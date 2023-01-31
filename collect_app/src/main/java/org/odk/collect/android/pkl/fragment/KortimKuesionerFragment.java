@@ -165,7 +165,7 @@ public class KortimKuesionerFragment extends Fragment {
                 startActivity(i);
             }
         });
-//
+
         ImageButton kirimKues = (ImageButton) rootView.findViewById(R.id.kirimkues_button);
         kirimKues.setOnClickListener(new View.OnClickListener() {
             @Override

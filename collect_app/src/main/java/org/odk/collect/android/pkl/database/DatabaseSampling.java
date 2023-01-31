@@ -57,8 +57,8 @@ public class DatabaseSampling extends SQLiteOpenHelper {
     public static final String NAMA_KECAMATAN = "nama_kecamatan";
     public static final String NAMA_DESA = "nama_desa";
 
-    //Usaha Pariwisata
-    public static final String NO_SLS = "noSls";  // ini no segen
+    //Rumah Tangga
+    public static final String NO_SLS = "noSls";  // ini no segmen
     public static final String BF = "bf";
     public static final String BS = "bs";
     public static final String NO_RUTA = "noUrutRuta";
@@ -329,6 +329,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk insert data Rumah Tangga
+     * @param uup
+     * @return boolean
+     */
     public boolean insertUUP(RumahTangga uup) {
         try {
             SQLiteDatabase db = getInstance().getWritableDatabase();
@@ -370,6 +375,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk insert data Rumah Tangga
+     * @param uup
+     * @param kodeRuta
+     */
     public void insertUUP(RumahTangga uup, String kodeRuta) {
         try {
             SQLiteDatabase db = getInstance().getWritableDatabase();
@@ -404,6 +414,10 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk get data last Rumah Tangga
+     * @return RumahTangga
+     */
     public RumahTangga getLastUUP() {
         String sql = "SELECT * FROM " + TABLE_RT + " ORDER BY " + NO_RUTA + " DESC LIMIT 1";
 
@@ -426,6 +440,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return rumahTangga;
     }
 
+    /**
+     * Method untuk get list data Rumah Tangga
+     * @param kodeBs
+     * @return list Rumah Tangga
+     */
     public ArrayList<RumahTangga> getListUnitUsahaPariwisata(String kodeBs) {
         String sql = "SELECT * FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND "
                 + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' ORDER BY " + TIME + " ASC";
@@ -477,6 +496,12 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 //        return listRumahTanggaRiset4;
 //    }
 
+    /**
+     * Method untuk get data Rumah Tangga by kode
+     * @param kodeBs
+     * @param kodeUUP
+     * @return RumahTangga
+     */
     public RumahTangga getRumahTanggaByKode(String kodeBs, String kodeUUP) {
         String sql = "SELECT * FROM " + TABLE_RT + " WHERE " + KODE_RUTA + " = '" + kodeUUP + "' AND " + KODE_BS + " = '" + kodeBs + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "'";
         RumahTangga rumahTangga;
@@ -498,6 +523,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk get data Rumah Tangga Last
+     * @param kodeBs
+     * @return
+     */
     public RumahTangga getLastRuta(String kodeBs) {
         String sql = "SELECT * FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' ORDER BY " + TIME + " DESC LIMIT 1";
         Log.d("lastRuta", "" + kodeBs);
@@ -520,6 +550,12 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk update rumah tangga
+     * @param kodeBs
+     * @param kodeUUP
+     * @param statusAkhir
+     */
     public void updateUnitUsahaPariwisata(String kodeBs, String kodeUUP, String statusAkhir) {
         try {
             ContentValues v = new ContentValues();
@@ -536,6 +572,13 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk update rumah tangga
+     * @param uup
+     * @param kodeBs
+     * @param kodeUUP
+     * @return boolean
+     */
     public boolean updateUUP(RumahTangga uup, String kodeBs, String kodeUUP) {
         try {
             ContentValues v = new ContentValues();
@@ -575,6 +618,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk get data Rumah Tangga by no urut
+     * @param kodeBs
+     * @return list Rumah Tangga
+     */
     public ArrayList<RumahTangga> getListUUPByNoUrut(String kodeBs) {
         String sql = "SELECT * FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' AND " + NO_RUTA + " <> '000" + "' ORDER BY " + TIME + " ASC";
         ArrayList<RumahTangga> listRumahTangga = new ArrayList<>();
@@ -599,6 +647,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listRumahTangga;
     }
 
+    /**
+     * Method untuk get jumlah ruta eligible
+     * @param kodeBs
+     * @return jumlah ruta eligible
+     */
     public int getJumlahRutaEligible(String kodeBs) {
         String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_rt_update FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs +
                 "' AND " + KODE_ELIGIBLE + "<> '0' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' AND " + NO_RUTA + " <> 0";
@@ -617,6 +670,12 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk get list ruta eligible berdasarkan kode eligible
+     * @param kodeBs
+     * @param kodeEligible
+     * @return list ruta eligible
+     */
     public ArrayList<RumahTangga> getListRutaEligibleByKodeEligible(String kodeBs, String kodeEligible) {
         String sql = "SELECT *" + " FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs + "' AND " + KODE_ELIGIBLE + "= '" + kodeEligible + "' AND "
                 + STATUS + " <> '" + RumahTangga.STATUS_DELETE
@@ -644,7 +703,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listRumahTangga;
     }
 
-    // TODO YGY
+    /**
+     * Method untuk get list ruta untuk sampel listing
+     * @param kodeBs
+     * @return
+     */
     public ArrayList<RumahTangga> getListRutaForSampelListing(String kodeBs) {
         ArrayList<RumahTangga> listRumahTanggaForSampel = new ArrayList<>();
         ArrayList<RumahTangga> listSedangPernahBekerja = getListRutaEligibleByKodeEligible(kodeBs, "3");
@@ -778,6 +841,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listRumahTanggaForSampel;
     }
 
+    /**
+     * Method untuk mengurutkan list rumah tangga berdasarkan no urut
+     * @param kodeBs
+     * @return
+     */
     public boolean clearkanNoUUP(String kodeBs) {
         ArrayList<RumahTangga> listUUP = getListUUPByNoUrut(kodeBs);
         int N = listUUP.size();
@@ -831,6 +899,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Method untuk mengurutkan list rumah tangga berdasarkan no urut
+     * @param uup
+     * @param noUrut
+     */
     private void UpdateNoUrutRuta(RumahTangga uup, String noUrut) {
         try {
             SQLiteDatabase db = getInstance().getWritableDatabase();
@@ -852,6 +925,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Method untuk get jumlah ruta
+     * @param kodeBs
+     * @return jumlah ruta
+     */
     public int getJumlahRuta(String kodeBs) {
         String sql = "SELECT count(" + KODE_RUTA + ") as jumlah_rt_update FROM " + TABLE_RT + " WHERE " + KODE_BS + " = '" + kodeBs +
                 "' AND " + STATUS + " <> '" + RumahTangga.STATUS_DELETE + "' AND " + NO_RUTA + " <> 0";
@@ -1091,6 +1169,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 //        return true;
 //    }
 
+    /**
+     * Insert sampel ke database
+     * @param listSampel
+     * @return true jika berhasil
+     */
     public boolean insertSampel(ArrayList<SampelRuta> listSampel) {
         try {
             SQLiteDatabase db = DatabaseSampling.getInstance().getWritableDatabase();
@@ -1109,6 +1192,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Hapus sampel berdasarkan kode bs
+     * @param kodeBs
+     * @return true jika berhasil
+     */
     public boolean deleteSampel(String kodeBs) {
         SQLiteDatabase db = getInstance().getReadableDatabase();
         try {
@@ -1132,6 +1220,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
 //        }
 //    }
 
+    /**
+     * Get ruta terpilih berdasarkan kode bs
+     * @param kodeBs
+     * @return list rumah tangga
+     */
     public ArrayList<RumahTangga> getRutaTerpilih(String kodeBs) {
         ArrayList<RumahTangga> sampelRuta = new ArrayList<>();
         String sql = "SELECT " + KODE_RUTA + " FROM " + TABLE_UUP_SAMPLING + " WHERE " + KODE_BS + " = '" + kodeBs + "' ORDER BY " + KODE_BS + " ASC";
@@ -1151,6 +1244,10 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return sampelRuta;
     }
 
+    /**
+     * Get semua sampel berdasarkan kode bs
+     * @return list sampel
+     */
     public ArrayList<SampelRuta> getAllSampelRuta() {
         String sql = "SELECT * FROM " + TABLE_UUP_SAMPLING + " ORDER BY " + KODE_BS + " ASC";
         ArrayList<SampelRuta> listSampel = new ArrayList<>();
@@ -1171,6 +1268,11 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listSampel;
     }
 
+    /**
+     * Get sampel berdasarkan kode bs
+     * @param kodeBs
+     * @return list sampel
+     */
     public ArrayList<SampelRuta> getSampelRuta(String kodeBs) {
         String sql = "SELECT * FROM " + TABLE_UUP_SAMPLING + " WHERE " + KODE_BS + " = '" + kodeBs + "'";
         ArrayList<SampelRuta> listSampel = new ArrayList<>();
@@ -1191,6 +1293,10 @@ public class DatabaseSampling extends SQLiteOpenHelper {
         return listSampel;
     }
 
+    /**
+     * Method untuk get semua rumah tangga
+      * @return list rumah tangga
+     */
     public ArrayList<RumahTangga> getAllRumahTangga() {
         String sql = "SELECT* FROM " + TABLE_RT + " ORDER BY " + TIME + " ASC";
         ArrayList<RumahTangga> listRumahTangga = new ArrayList<>();

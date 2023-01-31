@@ -74,16 +74,13 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         TextView NoBf = (TextView) convertView.findViewById(R.id.bf);
         TextView NoBs = (TextView) convertView.findViewById(R.id.bs);
         TextView NoUrut = (TextView) convertView.findViewById(R.id.no_urt);
-//        TextView NoUrutUP = (TextView) convertView.findViewById(R.id.no_uup);
         TextView Alamat = (TextView) convertView.findViewById(R.id.alamat);
         TextView JumlahART = (TextView) convertView.findViewById(R.id.jumlah_art);
         TextView NamaPemilik = (TextView) convertView.findViewById(R.id.nama_pemilik);
         TextView statusEligible = (TextView) convertView.findViewById(R.id.status_eligible);
-//        TextView NamaPemilikUUP = (TextView) convertView.findViewById(R.id.nama_pemilik_uup);
-//        TextView kegiatanUtama = (TextView) convertView.findViewById(R.id.ruta_pertanian);
         Button petunjukArah = (Button) convertView.findViewById(R.id.petunjuk_arah_button);
         Button hubungiRuta = (Button) convertView.findViewById(R.id.hubungi_ruta_button);
-//        TextView Detail_Bs = (TextView) convertView.findViewById(R.id.detail_bs);
+
         RumahTangga item = ruta.get(position);
         petunjukArah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,45 +100,9 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
                 activity.startActivity(intent);
             }
         });
-//        final String koordinat = item.getLatitude() + "," + item.getLongitude();
 
-//        try{
-//            final String koordinat = item.getLatitude()+","+item.getLongitude();
-//            petunjukArah.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Uri gmmIntentUri = Uri.parse("google.navigation:q="+koordinat);
-//                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-//                    mapIntent.setPackage("com.google.android.apps.maps");
-//                    activity.startActivity(mapIntent);
-//                }
-//            });
-//        }catch (Exception e){
-//
-//        }
-
-
-
-        /*switch (item.getType()) {
-            case 1:
-                Detail_Bs.setText("Bangunan Sensus Tempat Tinggal");
-                break;
-            case 2:
-                Detail_Bs.setText("Bangunan Sensus Tempat Tinggal Campuran");
-                break;
-            case 3:
-                Detail_Bs.setText("Bangunan Sensus Tempat Tinggal Kosong");
-                break;
-            case 4:
-                Detail_Bs.setText("Rumah Tangga Khusus");
-                break;
-            case 5:
-                Detail_Bs.setText("Bangunan Sensus Bukan Tempat Tinggal");
-                break;
-        }*/
         NoSegmen.setText(item.getNoSLS());
         NoUrut.setText("" + item.getNoUrutRuta());
-//        NoUrutUP.setText("" + item.getNoUrutUUP());
         NoBf.setText(item.getBf());
         NoBs.setText(item.getBs());
         Alamat.setText(item.getAlamat());
@@ -165,16 +126,6 @@ public class RutaAdapter extends BaseAdapter implements Filterable {
         } else {
             NamaPemilik.setText(item.getNamaKRT());
         }
-
-//        if (item.().equals("1")){
-//            kegiatanUtama.setText("Jasa Perjalanan Wisata");
-//        } else if (item.getJenisUUP().equals("2")) {
-//            kegiatanUtama.setText("Jasa Makanan dan Minuman");
-//        } else if (item.getJenisUUP().equals("3")) {
-//            kegiatanUtama.setText("Penyedia Akomodasi");
-//        } else {
-//            kegiatanUtama.setText("-");
-//        }
 
         String alamat = item.getAlamat().toLowerCase(Locale.getDefault());
         if (alamat.contains(searchKey) && searchKey.length() != 0) {

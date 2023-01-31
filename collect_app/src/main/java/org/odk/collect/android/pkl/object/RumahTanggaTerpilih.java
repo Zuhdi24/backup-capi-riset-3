@@ -1,9 +1,10 @@
 package org.odk.collect.android.pkl.object;
 
 /**
+ * Objek untuk menyimpan data rumah tangga yang terpilih (Untuk generate kuesioner)
+ *
  * Created by Geri_ on 12/19/2016.
  */
-
 public class RumahTanggaTerpilih {
     private String fileName;
     private String latitude;
@@ -17,6 +18,7 @@ public class RumahTanggaTerpilih {
     private String namaKabupaten;
     private String namaKecamatan;
     private String namaDesa;
+
     // Isian menu listing
     private String noUrutRuta;
     private String namaKrt;

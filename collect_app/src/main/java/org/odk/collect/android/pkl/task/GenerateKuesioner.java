@@ -200,6 +200,8 @@ public class GenerateKuesioner implements FormLoaderListener, FormSavedListener 
         }
         try {
             preference = CapiPreference.getInstance();
+
+            // GENERATE VARIABEL UNTUK KUESIONER
             fc.getreRrenceForElementName(VariableGenerate.latitude, st.getLatitude());
             fc.getreRrenceForElementName(VariableGenerate.longitude, st.getLongitude());
             fc.getreRrenceForElementName(VariableGenerate.accuracy, st.getAccuracy());

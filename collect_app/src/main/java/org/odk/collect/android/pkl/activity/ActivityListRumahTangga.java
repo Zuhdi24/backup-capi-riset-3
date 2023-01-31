@@ -262,6 +262,9 @@ public class ActivityListRumahTangga extends AppCompatActivity
         super.onPause();
     }
 
+    /**
+     * Method untuk menampilkan daftar semua rumah tangga
+     */
     public void showAllRuta() {
         Log.d(TAG, "showAllRuta: " + listMode);
 
@@ -544,6 +547,9 @@ public class ActivityListRumahTangga extends AppCompatActivity
         }
     }
 
+    /**
+     * Method untuk sorting rumah tangga
+     */
     private void sorting() {
         View convertView;
         listV = findViewById(R.id.listRuta);
@@ -708,6 +714,10 @@ public class ActivityListRumahTangga extends AppCompatActivity
                 .show();
     }
 
+    /**
+     * Hapus ruta dengan password kortim
+     * @param ruta
+     */
     public void passwordHapusRutaKortim(final RumahTangga ruta) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListRumahTangga.this);
         builder.setTitle("Konfirmasi");
@@ -768,6 +778,10 @@ public class ActivityListRumahTangga extends AppCompatActivity
         });
     }
 
+    /**
+     * Method untuk mengembalikan status BS
+     * @param kodeBs
+     */
     private void kembalikanStatus(final String kodeBs) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Pengembalian status BS");
@@ -824,6 +838,10 @@ public class ActivityListRumahTangga extends AppCompatActivity
         });
     }
 
+    /**
+     * Method untuk mengambil sampel
+     * @param kodeBs
+     */
     private void ambilSampel(final String kodeBs) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Sampel belum diambil");
@@ -938,6 +956,9 @@ public class ActivityListRumahTangga extends AppCompatActivity
         }
     }
 
+    /**
+     * Method untuk mengirim finalisasi BS
+     */
     private void send() {
         listV = findViewById(R.id.listRuta);
         if (inflater == null)
@@ -974,6 +995,9 @@ public class ActivityListRumahTangga extends AppCompatActivity
         return locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
+    /**
+     * Method untuk menampilkan dialog warning finalisasi BS
+     */
     private void warningBstttd() {
         listV = findViewById(R.id.listRuta);
         if (inflater == null)
@@ -1009,6 +1033,9 @@ public class ActivityListRumahTangga extends AppCompatActivity
         dialog.show();
     }
 
+    /**
+     * Method untuk menampilkan dialog warning finalisasi BS
+     */
     private void warningBstttd2() {
         listV = findViewById(R.id.listRuta);
         if (inflater == null)
@@ -1044,6 +1071,12 @@ public class ActivityListRumahTangga extends AppCompatActivity
         dialog.show();
     }
 
+    /**
+     * Method untuk menuju ke activity IsiRumahTanggaActivity
+     *
+     * @param rumahTangga
+     * @param posisi
+     */
     private void toIsiListing(RumahTangga rumahTangga, int posisi) {
 
         if (dbSampling.getBlokSensusByKode(kodeBs).getKodeBs().startsWith("02", 2)) {

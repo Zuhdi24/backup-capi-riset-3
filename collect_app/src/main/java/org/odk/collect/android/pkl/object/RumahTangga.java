@@ -16,6 +16,7 @@ public class RumahTangga implements Parcelable {
     public static final String STATUS_UPDATE = "update";
     public static final String STATUS_UPLOADED = "uploaded";
 
+    // Variabel sesuai dengan database dan isian kuesioner listing
     private String kodeRuta;
     private String kodeBs;
     private String noSLS;
@@ -29,27 +30,12 @@ public class RumahTangga implements Parcelable {
     private String noHp;
     private String noHp2;
     private String kodeEligible;
-//    private String jumlahEligible;
-//    private String listNamaEligible;
+
     private String latitude;
     private String longitude;
     private String akurasi;
     private String status;
     private String time;
-
-//    private String noUrutART;
-//    private String nama;
-//    private boolean isBekerjaSeminggu;
-//    private boolean isCuti;
-//    private boolean isPernahBekerja;
-//    private String deskripsi1;
-//    private String kodeUsaha1;
-//    private boolean isMelayani1;
-//    private boolean isPernahBekerjaPariwisata;
-//    private String deskripsi2;
-//    private String kodeUsaha2;
-//    private boolean isMelayani2;
-
 
     public RumahTangga(String kodeRuta, String kodeBs, String noSLS, String bf, String bs, String noUrutRuta, String namaKRT, String alamat, String jumlahART, String jumlahART10, String noHp, String noHp2, String kodeEligible, String latitude, String longitude, String akurasi, String status, String time) {
         this.kodeRuta = kodeRuta;
@@ -65,8 +51,6 @@ public class RumahTangga implements Parcelable {
         this.noHp = noHp;
         this.noHp2 = noHp2;
         this.kodeEligible = kodeEligible;
-//        this.jumlahEligible = jumlahEligible;
-//        this.listNamaEligible = listNamaEligible;
         this.latitude = latitude;
         this.longitude = longitude;
         this.akurasi = akurasi;
