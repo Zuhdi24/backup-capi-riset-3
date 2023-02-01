@@ -29,8 +29,8 @@ Secara umum, aplikasi CAPI terdiri dari 3 menu utama, yaitu :
 - Sampling
 - Kuesioner
 
-Penjelasan lebih lanjut dapat diakses [disini](https://youtu.be/-o9vAhG32PQ)
+Penjelasan lebih lanjut dapat diakses [disini.](https://youtu.be/-o9vAhG32PQ)
 
 ## Alur Penggunaan Aplikasi CAPI
 
-Alur penggunaan CAPI Riset 3 dapat diakses [disini.](https://youtu.be/-o9vAhG32PQ)
+Alur penggunaan CAPI Riset 3 dapat diakses [disini.](https://youtu.be/_aSE4-SQdL8)
