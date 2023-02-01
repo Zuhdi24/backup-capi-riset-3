@@ -20,3 +20,17 @@ By Tim CAPI PKL 62
 1. Buka projek `Capi 62 Riset 3` dengan Android Studio
 2. Pilih menu `Build->Build Bundle(s) / APK(s)-> Build APK(s)`
 3. Tunggu hingga file `.apk` berhasil dibuild
+
+## Penjelasan Fitur CAPI
+
+Secara umum, aplikasi CAPI terdiri dari 3 menu utama, yaitu :
+
+- Beranda
+- Sampling
+- Kuesioner
+
+Penjelasan lebih lanjut dapat diakses [disini](https://youtu.be/-o9vAhG32PQ)
+
+## Alur Penggunaan Aplikasi CAPI
+
+Alur penggunaan CAPI Riset 3 dapat diakses [disini.](https://youtu.be/-o9vAhG32PQ)
